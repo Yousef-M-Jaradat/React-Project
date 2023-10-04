@@ -1,3 +1,7 @@
+// import logo from './logo.svg';
+// import About from './pages/about';
+// import Booking from './pages/Booking';
+import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Login from "./pages/Login";
@@ -25,6 +29,7 @@ function App() {
         <Route path="/booking" element={<Booking />} />
         <Route path="/yacht/:id" element={<Yacht />} />
         <Route path="/yacht" element={<Yacht />} />
+        <Route path="/yacht" element={<SingleProduct />} />
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
