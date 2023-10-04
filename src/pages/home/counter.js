@@ -1,56 +1,107 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
-function Counter() {
-   
-  return(
-<div>
+function CounterComponent() {
+  const [boatCount, setBoatCount] = useState(0);
+  const [locationCount, setLocationCount] = useState(0);
+  const [showroomCount, setShowroomCount] = useState(0);
+  const [professionalCount, setProfessionalCount] = useState(0);
 
-<div class="icon-block-center icon-center-v2 bg-primary">
-                <div class="container text-center space-1">
-                  
-                    <div class="row">
-                     
-                        <div class="col-md-3">
-                            <i class="flaticon-node text-white font-size-80 mb-3"></i>
-                            <h5 class="font-size-30 text-white font-weight-bold mb-2 js-counter">5340</h5>
-                            <p class="text-white px-xl-2 text-lh-inherit px-uw-3">Total Length of Boats Sold Since 2009</p>
-                        </div>
-                   
+  // Function to animate the counters
+  const animateCounters = () => {
+    const targetBoatCount = 1500;
+    const targetLocationCount = 5;
+    const targetShowroomCount = 1000;
+    const targetProfessionalCount = 4000;
 
-                     
-                        <div class="col-md-3">
-                            <i class="flaticon-cardinal-points text-white font-size-80 mb-3"></i>
-                            <h5 class="font-size-30 text-white font-weight-bold mb-2 js-counter">19</h5>
-                            <p class="text-white px-xl-2 text-lh-inherit px-uw-3">Locations with Easy Access off the Deep Water Channel</p>
-                        </div>
-                  
-                        <div class="col-md-3">
-                            <i class="flaticon-anchor text-white font-size-80 mb-3"></i>
-                            <h5 class="font-size-30 text-white font-weight-bold mb-2 js-counter">18000</h5>
-                            <p class="text-white px-xl-2 text-lh-inherit px-uw-3">sq. ft. Showroom loaded with New & Used Boats</p>
-                        </div>
-                  
-                        <div class="col-md-3">
-                            <i class="flaticon-star text-white font-size-80 mb-3"></i>
-                            <h5 class="font-size-30 text-white font-weight-bold mb-2 js-counter">30</h5>
-                            <p class="text-white px-xl-2 text-lh-inherit px-uw-3">Number of Licensed Yachting Professionals</p>
-                        </div>
-              
-                    </div>
-             
-                </div>
-            </div>
+    let boatCounter = 0;
+    let locationCounter = 0;
+    let showroomCounter = 0;
+    let professionalCounter = 0;
 
-    
-</div>
+    const interval = setInterval(() => {
+      if (boatCounter < targetBoatCount) {
+        boatCounter += 100; // You can adjust the speed of counting
+        setBoatCount(boatCounter);
+      }
+      if (locationCounter < targetLocationCount) {
+        locationCounter += 50;
+        setLocationCount(locationCounter);
+      }
+      if (showroomCounter < targetShowroomCount) {
+        showroomCounter += 1; // You can adjust the speed of counting
+        setShowroomCount(showroomCounter);
+      }
+      if (professionalCounter < targetProfessionalCount) {
+        professionalCounter += 100;
+        setProfessionalCount(professionalCounter);
+      }
+    }, 50); // You can adjust the interval for smoother animation
 
+    // Clear the interval when we reach the target numbers
+    if (
+      boatCounter >= targetBoatCount &&
+      locationCounter >= targetLocationCount &&
+      showroomCounter >= targetShowroomCount &&
+      professionalCounter >= targetProfessionalCount
+    ) {
+      clearInterval(interval);
+    }
+  };
 
+  // Use useEffect to start the animation when the component mounts
+  useEffect(() => {
+    animateCounters();
+  }, []);
 
+  return (
+    <div className="icon-block-center icon-center-v2 bg-primary">
+      <div className="container text-center space-1">
+        <div className="row">
+          <div className="col-md-3">
+            <i className="flaticon-node text-white font-size-80 mb-3"></i>
+            <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
+              {boatCount}
+            </h5>
+            <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
+            Number of Licensed Yachting Professionals
+            </p>
+          </div>
 
+          <div className="col-md-3">
+            <i className="flaticon-cardinal-points text-white font-size-80 mb-3"></i>
+            <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
+              {locationCount}
+            </h5>
+            <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
+            The count of places providing these services
+            </p>
+          </div>
 
-  );  
+          <div className="col-md-3">
+            <i className="flaticon-anchor text-white font-size-80 mb-3"></i>
+            <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
+              {showroomCount}
+            </h5>
+            <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
+            Number of yachats
+           
+            </p>
+          </div>
 
+          <div className="col-md-3">
+            <i className="flaticon-star text-white font-size-80 mb-3"></i>
+            <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
+              {professionalCount}
+            </h5>
+            <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
+            Customer satisfied
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-};
-export default Counter;
+export default CounterComponent;
 
