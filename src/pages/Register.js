@@ -51,6 +51,7 @@ function Register() {
         <form onSubmit={handleSubmit} id="login-form">
           <p>
             <input
+              className="logininput"
               onChange={handleUsername}
               type="text"
               id="username"
@@ -61,6 +62,7 @@ function Register() {
           </p>
           <p>
             <input
+              className="logininput"
               onChange={handleEmail}
               type="email"
               id="email"
@@ -71,6 +73,7 @@ function Register() {
           </p>
           <p>
             <input
+              className="logininput"
               onChange={handlePassword}
               type="password"
               id="password"
@@ -80,7 +83,12 @@ function Register() {
             />
           </p>
           <p>
-            <input type="submit" id="login" value="Register" />
+            <input
+              className="logininput"
+              type="submit"
+              id="login"
+              value="Register"
+            />
           </p>
         </form>
         <div id="create-account-wrap">

@@ -179,26 +179,10 @@ function Navbar() {
           </div>
         </div>
       </header>
-      {/* <ul>
-        <li>
-         
-        </li>
-        <li>
-          <Link to="/Login">Login</Link>
-        </li>
-        <li>
-          <Link to="/booking">Booking</Link>
-        </li>
-        <li>
-          <Link to="/Contact">contact</Link>
-        </li>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul> */}
+     
      
    
-     
+  
     </div>
   );
 }
