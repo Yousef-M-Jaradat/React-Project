@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/home/home";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
-import Header from "./pages/home/navbar";
+// import Header from "./pages/home/navbar";
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 
