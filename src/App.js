@@ -5,6 +5,7 @@ import Home from "./pages/home/home";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
+import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 
 // import "./style.css";
@@ -18,6 +19,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login setStatus/>} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path= "/profile" element={<Profile/>} />
+        <Route path= "/singleProduct" element={<SingleProduct/>} />
         <Route path="/Login" element={<Login />} />
         <Route path="/booking" element={<Booking />} />
         {/* <Route path="/" element={<Header />} /> */}
