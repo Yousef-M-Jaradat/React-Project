@@ -9,7 +9,7 @@ import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
 import SingleProduct from "./pages/singleproduct";
 
-import "./style.css";
+// import "./style.css";
 
 
 function App() {

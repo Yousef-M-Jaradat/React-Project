@@ -6,16 +6,18 @@ function SingleProduct()
 {
     const [formData, setFormData] = useState({
       name: "",
-      image1:"",
-      image2:"",
-      image3:"",
-      Description:"",
-      price: "",
-      distance: "",
-      persons: "",
-      time: "",
-      bed: "",
       category_id: "",
+      location: "",
+      price: "",
+      speed: "",
+      size: " ",
+      person: "",
+      beds: "",
+      fuelCapacity: "",
+      description: "",
+      image1: "",
+      image2: "",
+      image3: "",
       id: "",
     }); 
 
@@ -24,7 +26,7 @@ function SingleProduct()
     const fetchEventData = async () => {
         try {
         const response = await axios.get(
-          "https://651be289194f77f2a5af04e4.mockapi.io/yachts/products/1" // Replace with the actual API endpoint
+          "https://651c1cf6194f77f2a5af68e0.mockapi.io/yachts/1" // Replace with the actual API endpoint
         );
           if (response.status === 200) {
             setFormData(response.data);
@@ -105,7 +107,7 @@ function SingleProduct()
             <div
               className="js-slide bg-img-hero min-height-550"
               style={{
-                backgroundImage: 'url("../../assets/img/820x550/img11.jpg")',
+                backgroundImage: `url(${formData.image1})`,
               }}
             ></div>
             <div
@@ -177,31 +179,25 @@ function SingleProduct()
                 <ul class="list-group list-group-borderless list-group-horizontal flex-center-between text-center mx-md-4 flex-wrap">
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-ruler text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">30.53 M</div>
+                    <div class="text-gray-1">{formData.size} M</div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-download-speed text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.distance} MPH </div>
+                    <div class="text-gray-1">{formData.speed} KMPH </div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-user-2 text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.persons}</div>
+                    <div class="text-gray-1">{formData.person}</div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-bed-1 text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.bed}</div>
+                    <div class="text-gray-1">{formData.beds}</div>
                   </li>
                 </ul>
               </div>
               <div class="border-bottom position-relative">
-                <h5 class="font-size-21 font-weight-bold text-dark">
-                  Description
-                </h5>
-                <p>
-                  Explore one of the world’s best art museums at your own pace
-                  with your ticket to the Louvre. Skip the line and walk
-                  straight inside, after a security check.
-                </p>
+                <h5 class="font-size-21 font-weight-bold text-dark"></h5>
+                <p>{formData.description}</p>
                 <p>
                   Once inside the historic palace located on the Right Bank of
                   the Seine, see unmissable and iconic sights such as the Mona
@@ -815,6 +811,8 @@ function SingleProduct()
                             data-rp-type="range"
                             data-rp-date-format="M d / Y"
                             data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
+                            data-min-date="today"
+                            data-default-date="2023-10-08"
                           />
                         </div>
                         {/* <!-- End Datepicker --> */}
