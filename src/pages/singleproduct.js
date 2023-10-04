@@ -5,18 +5,23 @@ import { useNavigate } from "react-router-dom";
 function SingleProduct()
 {
     const [formData, setFormData] = useState({
-      name: "",
-      image1:"",
-      image2:"",
-      image3:"",
-      Description:"",
-      price: "",
-      distance: "",
-      persons: "",
-      time: "",
-      bed: "",
-      category_id: "",
-      id: "",
+        id: "",  
+        name: "",
+        category_id: "",
+        location: "",
+        image1: "",
+        image2: "",
+        image3: "",
+        image4: "",
+        description: "",
+        price: "",
+        speed: "",
+        size : "",
+        person: "",
+        beds: "",
+        fuelCapacity: "",
+        
+        
     }); 
 
     useEffect(() => {
@@ -24,7 +29,7 @@ function SingleProduct()
     const fetchEventData = async () => {
         try {
         const response = await axios.get(
-          "https://651be289194f77f2a5af04e4.mockapi.io/yachts/products/1" // Replace with the actual API endpoint
+          "https://651db05044e393af2d5a346e.mockapi.io/yachts/1" // Replace with the actual API endpoint
         );
           if (response.status === 200) {
             setFormData(response.data);
@@ -51,10 +56,10 @@ function SingleProduct()
                 <a href="#">Home</a>
               </li>
               <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">Hotels</a>
+                <a href="#">All yachts</a>
               </li>
               <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">London Hotels</a>
+                <a href="#">Yachts</a>
               </li>
               <li
                 class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
@@ -78,7 +83,6 @@ function SingleProduct()
             data-slides-scroll="1"
             data-center-mode="true"
             data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
-            data-center-padding="450px"
             data-responsive='[{
                         "breakpoint": 1480,
                         "settings": {
@@ -105,19 +109,41 @@ function SingleProduct()
             <div
               className="js-slide bg-img-hero min-height-550"
               style={{
-                backgroundImage: 'url("../../assets/img/820x550/img11.jpg")',
+                backgroundImage: `url(${formData.image1})`,
+                width: "100%",
+                backgroundAttachment: "cover",
+                backgroundSize: "cover",
+                backgroundPosition: "center", // Center the image horizontally and vertically
               }}
             ></div>
             <div
               className="js-slide bg-img-hero min-height-550"
               style={{
-                backgroundImage: 'url("../../assets/img/820x550/img10.jpg")',
+                backgroundImage: `url(${formData.image2})`,
+                width: "100%",
+                backgroundAttachment: "cover",
+                backgroundSize: "cover",
+                backgroundPosition: "center", // Center the image horizontally and vertically
               }}
             ></div>
             <div
               className="js-slide bg-img-hero min-height-550"
               style={{
-                backgroundImage: 'url("../../assets/img/820x550/img12.jpg")',
+                backgroundImage: `url(${formData.image3})`,
+                width: "100%",
+                backgroundAttachment: "cover",
+                backgroundSize: "cover",
+                backgroundPosition: "center", // Center the image horizontally and vertically
+              }}
+            ></div>
+            <div
+              className="js-slide bg-img-hero min-height-550"
+              style={{
+                backgroundImage: `url(${formData.image4})`,
+                width: "100%",
+                backgroundAttachment: "cover",
+                backgroundSize: "cover",
+                backgroundPosition: "center", // Center the image horizontally and vertically
               }}
             ></div>
           </div>
@@ -141,15 +167,16 @@ function SingleProduct()
                         <small class="fas fa-star"></small>
                       </div>
                       <span class="text-secondary font-size-14 mt-1">
-                        48 Reviews
+                        18 Reviews
                       </span>
                     </div>
                   </div>
                   <div class="d-block d-md-flex flex-horizontal-center font-size-14 text-gray-1">
-                    <i class="icon flaticon-placeholder mr-2 font-size-20"></i>{" "}
-                    Greater London, United Kingdom
+                    <i class="icon flaticon-placeholder mr-2 font-size-20">
+                      {formData.location}
+                    </i>
+
                     <a href="#" class="ml-1 d-block d-md-inline">
-                      {" "}
                       - View on map
                     </a>
                   </div>
@@ -177,40 +204,25 @@ function SingleProduct()
                 <ul class="list-group list-group-borderless list-group-horizontal flex-center-between text-center mx-md-4 flex-wrap">
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-ruler text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">30.53 M</div>
+                    <div class="text-gray-1">{formData.size} M</div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-download-speed text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.distance} MPH </div>
+                    <div class="text-gray-1">{formData.speed} KMPH </div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-user-2 text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.persons}</div>
+                    <div class="text-gray-1">{formData.person} People</div>
                   </li>
                   <li class="list-group-item text-lh-sm ">
                     <i class="flaticon-bed-1 text-primary font-size-40 mb-1 d-block"></i>
-                    <div class="text-gray-1">{formData.bed}</div>
+                    <div class="text-gray-1">{formData.beds} Beds</div>
                   </li>
                 </ul>
               </div>
               <div class="border-bottom position-relative">
-                <h5 class="font-size-21 font-weight-bold text-dark">
-                  Description
-                </h5>
-                <p>
-                  Explore one of the world’s best art museums at your own pace
-                  with your ticket to the Louvre. Skip the line and walk
-                  straight inside, after a security check.
-                </p>
-                <p>
-                  Once inside the historic palace located on the Right Bank of
-                  the Seine, see unmissable and iconic sights such as the Mona
-                  Lisa and Venus de Milo. Discover masterpieces of the
-                  Renaissance and ancient Egyptian relics, along with paintings
-                  from the 13th to 20th centuries, prints from the Royal
-                  Collection, and much more.
-                </p>
-
+                <h5 class="font-size-21 font-weight-bold text-dark"></h5>
+                <p>{formData.description}</p>
                 <div class="collapse" id="collapseLinkExample">
                   <p>
                     Once inside the historic palace located on the Right Bank of
@@ -270,7 +282,7 @@ function SingleProduct()
                   </li>
                   <li class="col-md-4 mb-3 list-group-item">
                     <i class="flaticon-wine-glass mr-3 text-primary font-size-24"></i>
-                    Mini bar
+                    Beverages
                   </li>
                   <li class="col-md-4 mb-3 list-group-item">
                     <i class="flaticon-hair-dryer mr-3 text-primary font-size-24"></i>
@@ -282,7 +294,7 @@ function SingleProduct()
                   </li>
                   <li class="col-md-4 mb-3 list-group-item">
                     <i class="flaticon-hamburger mr-3 text-primary font-size-24"></i>
-                    Restaurant
+                    Kitchen
                   </li>
                   <li class="col-md-4 mb-3 list-group-item">
                     <i class="flaticon-air-conditioner mr-3 text-primary font-size-24"></i>
@@ -301,7 +313,7 @@ function SingleProduct()
                 <ul class="list-group list-group-borderless list-group-horizontal list-group-flush no-gutters row">
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Make</div>
-                    <span class="text-gray-1">Fishing</span>
+                    <span class="text-gray-1">Sailing Yacht</span>
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Engine Model</div>
@@ -309,7 +321,7 @@ function SingleProduct()
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Length</div>
-                    <span class="text-gray-1">110 ft</span>
+                    <span class="text-gray-1">{formData.size}</span>
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Gross Weight</div>
@@ -325,7 +337,7 @@ function SingleProduct()
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Fuel Capacity</div>
-                    <span class="text-gray-1">6150 Gallons</span>
+                    <span class="text-gray-1">{formData.fuelCapacity}</span>
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Fuel Type</div>
@@ -336,12 +348,12 @@ function SingleProduct()
                     <span class="text-gray-1">Caterpillar</span>
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
-                    <div class="font-weight-bold text-dark">Passengers</div>
-                    <span class="text-gray-1">{formData.persons}</span>
+                    <div class="font-weight-bold text-dark">Passengers </div>
+                    <span class="text-gray-1">{formData.person} </span>
                   </li>
                   <li class="col-md-4 mb-5 list-group-item py-0">
                     <div class="font-weight-bold text-dark">Max Speed</div>
-                    <span class="text-gray-1">180</span>
+                    <span class="text-gray-1">{formData.speed} KMPH</span>
                   </li>
                 </ul>
               </div>
@@ -767,29 +779,14 @@ function SingleProduct()
                 <div class="border border-color-7 rounded mb-5">
                   <div class="border-bottom">
                     <div class="p-4">
-                      <span class="font-size-14">From</span>
                       <span class="font-size-24 text-gray-6 font-weight-bold ml-1">
-                        £350.00
+                        {formData.price}€
                       </span>
+                      <span class="font-size-14"> Per Day</span>
                     </div>
                   </div>
+
                   <div class="p-4 m-1">
-                    {/* <!-- Input --> */}
-                    <span class="d-block text-gray-1  font-weight-normal mb-0 text-left">
-                      Destination
-                    </span>
-                    <div class="mb-4">
-                      <div class="input-group border-bottom border-width-2 border-color-1">
-                        <i class="flaticon-pin-1 d-flex align-items-center mr-2 text-primary font-weight-semi-bold font-size-22"></i>
-                        <input
-                          type="text"
-                          class="form-control font-size-16 shadow-none hero-form font-weight-bold border-0 p-0"
-                          placeholder="Where are you going?"
-                          aria-label="Where are you going?"
-                          aria-describedby="keywordInputAddon"
-                        />
-                      </div>
-                    </div>
                     {/* <!-- End Input -->
                                     <!-- Input --> */}
                     <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
@@ -815,6 +812,8 @@ function SingleProduct()
                             data-rp-type="range"
                             data-rp-date-format="M d / Y"
                             data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
+                            data-min-date="today"
+                            data-default-date="2023-10-08"
                           />
                         </div>
                         {/* <!-- End Datepicker --> */}
@@ -960,7 +959,7 @@ function SingleProduct()
                             <small class="fas fa-star"></small>
                           </div>
                           <span class="text-secondary font-size-14 mt-1">
-                            48 Reviews
+                            18 Reviews
                           </span>
                         </div>
                       </div>
@@ -1376,7 +1375,7 @@ function SingleProduct()
                             <small class="fas fa-star"></small>
                           </div>
                           <span class="text-secondary font-size-14 mt-1">
-                            48 Reviews
+                            18 Reviews
                           </span>
                         </div>
                       </div>
@@ -1480,7 +1479,7 @@ function SingleProduct()
                             <small class="fas fa-star"></small>
                           </div>
                           <span class="text-secondary font-size-14 mt-1">
-                            48 Reviews
+                            18 Reviews
                           </span>
                         </div>
                       </div>
