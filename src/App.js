@@ -3,6 +3,7 @@
 import Booking from './pages/booking';
 import './App.css';
 import React from "react";
+import Payment from "./pages/Payment";
 
 // import Home from "./pages/home/home"; 
 import Header from "./pages/home/header";
@@ -22,27 +23,28 @@ function App() {
       <Header />
       <Counter />
       <Blog />
-     
 
-
-
-    <UserProvider>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Registration</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-        <hr />
-        <Routes>
-          <Route path="/" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </UserProvider>
+      <UserProvider>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Registration</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/payment">payment</Link>
+            </li>
+          </ul>
+          <hr />
+          <Routes>
+            <Route path="/" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/payment" element={<Payment />} />
+          </Routes>
+        </div>
+      </UserProvider>
     </div>
   );
 }
