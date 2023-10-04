@@ -6,7 +6,7 @@ function CounterComponent() {
   const [showroomCount, setShowroomCount] = useState(0);
   const [professionalCount, setProfessionalCount] = useState(0);
 
-  // Function to animate the counters
+ 
   const animateCounters = () => {
     const targetBoatCount = 1500;
     const targetLocationCount = 5;
@@ -20,7 +20,7 @@ function CounterComponent() {
 
     const interval = setInterval(() => {
       if (boatCounter < targetBoatCount) {
-        boatCounter += 100; // You can adjust the speed of counting
+        boatCounter += 100; 
         setBoatCount(boatCounter);
       }
       if (locationCounter < targetLocationCount) {
@@ -28,16 +28,15 @@ function CounterComponent() {
         setLocationCount(locationCounter);
       }
       if (showroomCounter < targetShowroomCount) {
-        showroomCounter += 1; // You can adjust the speed of counting
+        showroomCounter += 1; 
         setShowroomCount(showroomCounter);
       }
       if (professionalCounter < targetProfessionalCount) {
         professionalCounter += 100;
         setProfessionalCount(professionalCounter);
       }
-    }, 50); // You can adjust the interval for smoother animation
+    }, 50);
 
-    // Clear the interval when we reach the target numbers
     if (
       boatCounter >= targetBoatCount &&
       locationCounter >= targetLocationCount &&
@@ -48,7 +47,7 @@ function CounterComponent() {
     }
   };
 
-  // Use useEffect to start the animation when the component mounts
+
   useEffect(() => {
     animateCounters();
   }, []);

@@ -1,9 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+
 import Login from "../Login";
 import Register from "../Register";
 import Booking from "../booking";
 import Header from "../home/header";
+import CounterComponent from "../home/counter";
+import Yacht from "../products/yacht"
+import Category from "../home/category";
+
+
+
 
 function Navbar() {
    
@@ -146,12 +153,8 @@ function Navbar() {
         </li>
       </ul> */}
      
-      <Routes>
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/" element={<Header />} />
-      </Routes>
+   
+     
     </div>
   );  
 
