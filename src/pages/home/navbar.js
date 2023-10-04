@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Login from "../Login";
 import Register from "../Register";
-import Booking from "../Booking";
+import Booking from "../booking";
+import Payment from "../Payment";
 
 function Navbar() {
    
@@ -27,6 +28,7 @@ function Navbar() {
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Booking" element={<Booking />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </div>
   );  
