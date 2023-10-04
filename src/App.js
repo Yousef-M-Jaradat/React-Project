@@ -1,12 +1,15 @@
-// import logo from './logo.svg';
-// import About from './pages/about';
-//import Booking from './pages/Booking';
+
 import './App.css';
 import React from "react";
-// import Home from "./pages/home/home"; 
 import Navbar from "./pages/home/navbar";
-// import "./style.css";
-import SingleProduct from './pages/singleproduct';
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Booking from "./pages/booking";
+import Header from "./pages/home/navbar";
+import SingleProduct from "./pages/singleproduct";
+
+import "./style.css";
 
 
 function App() {
@@ -14,6 +17,7 @@ function App() {
     <div>
       <SingleProduct />
       <Navbar />
+      
     </div>
   );
 }

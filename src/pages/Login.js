@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState,useContext,createContext } from "react";
+import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
 
 function Login() {
@@ -8,6 +8,8 @@ function Login() {
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const [data, setData] = useState([]); // Initialize data as an empty array
   const [status, setStatus] = useState(false);
+  const UserContext = createContext();
+
   const navigate = useNavigate(); // Initialize useNavigate for navigation
 
 
@@ -21,9 +23,9 @@ function Login() {
         // check the password is correct
         if (e.target.password.value === apidata.password) {
           setStatus(true);
-          navigate("/Register");
+          navigate("/",setStatus);
         }
-        return console.log("welcom");
+        return console.log("welcome");
       }
 
       return index;
