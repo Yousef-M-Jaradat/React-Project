@@ -4,8 +4,7 @@ function Header() {
     
     const heroBlockStyle = {
         backgroundImage: "url(../../assets/img/1920x960/img1.jpg)",
-      };
-      
+      };   
   return(
 <div>
 
