@@ -7,7 +7,6 @@ import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
-
 // import "./style.css";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
