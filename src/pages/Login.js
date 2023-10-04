@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState,useContext,createContext } from "react";
+import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-
+import '../style.css'
 function Login() {
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const [data, setData] = useState([]); // Initialize data as an empty array
   const [status, setStatus] = useState(false);
+  const UserContext = createContext();
+
   const navigate = useNavigate(); // Initialize useNavigate for navigation
 
 
@@ -21,9 +23,9 @@ function Login() {
         // check the password is correct
         if (e.target.password.value === apidata.password) {
           setStatus(true);
-          navigate("/Register");
+          navigate("/",setStatus);
         }
-        return console.log("welcom");
+        return console.log("welcome");
       }
 
       return index;
@@ -61,6 +63,7 @@ function Login() {
               type="email"
               id="email"
               name="email"
+              className="logininput"
               value={email}
               placeholder="Email Address"
               required
@@ -68,6 +71,7 @@ function Login() {
           </p>
           <p>
             <input
+              className="logininput"
               onChange={(e) => {
                 setpassword(e.target.value);
               }}
@@ -80,7 +84,12 @@ function Login() {
             />
           </p>
           <p>
-            <input type="submit" id="login" value="login" />
+            <input
+              className="logininput"
+              type="submit"
+              id="login"
+              value="login"
+            />
           </p>
         </form>
       </div>
