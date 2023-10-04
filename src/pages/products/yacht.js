@@ -7,7 +7,6 @@ import { useParams } from 'react-router-dom';
 function Yacht() {
   // Access the 'id' parameter from the URL
   const { id } = useParams();
-
   return (
     <div>
       {/* You can use the 'id' from the URL in your Yacht component */}
