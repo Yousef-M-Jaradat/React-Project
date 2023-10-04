@@ -1,14 +1,32 @@
+// import logo from './logo.svg';
+// import About from './pages/about';
+import Booking from './pages/booking';
+import './App.css';
 import React from "react";
-import About from "./pages/about";
+
+// import Home from "./pages/home/home"; 
+import Header from "./pages/home/header";
+import Counter from "./pages/home/counter"
+import Blog from "./pages/home/blog";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./style.css";
-import "./App.css";
+
 
 function App() {
   return (
  
+    <div>
+      <Booking />
+      <Header />
+      <Counter />
+      <Blog />
+     
+
+
+
+  
       <div>
         <ul>
           <li>
@@ -25,6 +43,8 @@ function App() {
         </Routes>
       </div>
    
+    
+    </div>
   );
 }
 
