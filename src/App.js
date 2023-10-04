@@ -15,11 +15,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-      <Route path="/Register" element={<Register />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/booking" element={<Booking />} />
-      </Routes>
+      
     </div>
   );
 }
