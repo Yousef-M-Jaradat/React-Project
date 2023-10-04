@@ -16,7 +16,7 @@ function Header() {
                       <h1 class="font-size-60 font-size-xs-30 text-white font-weight-bold">Boat Holidays Made Easy</h1>
                       <p class="font-size-20 font-weight-normal text-white">Rent a boat from the #1 yacht charter platform</p>
                     </div>
-                   
+                    
                     <div class="space-top-lg-2 space-top-xl-3">
                                    <div class="card border-0">
                             <div class="card-body">
