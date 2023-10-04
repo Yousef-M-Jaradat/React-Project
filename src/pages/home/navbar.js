@@ -24,7 +24,7 @@ function Navbar() {
       </ul>
       <hr />
       <Routes>
-        <Route path="/Register" element={<Register />} />
+        <Route path="/Register" element={<Register/>} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Booking" element={<Booking />} />
       </Routes>

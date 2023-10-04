@@ -7,8 +7,8 @@
 // // Rest of your code...
 
 // function Booking() {
-//   useEffect(() => {
-//     $(window).on("load", function () {
+//   // useEffect(() => {
+//   //   $(window).on("load", function () {
 //       // initialization of HSMegaMenu component
 //       // $(".js-mega-menu").HSMegaMenu({
 //       //   event: "hover",
@@ -17,72 +17,72 @@
 //       //   hideTimeOut: 0,
 //       // });
 
-//       // Page preloader
-//       setTimeout(function () {
-//         $("#jsPreloader").fadeOut(500);
-//       }, 800);
-//     });
+//   //     // Page preloader
+//   //     setTimeout(function () {
+//   //       $("#jsPreloader").fadeOut(500);
+//   //     }, 800);
+//   //   });
 
-//     $(document).on("ready", function () {
-//       // initialization of header
-//       $.HSCore.components.HSHeader.init($("#header"));
+//   //   $(document).on("ready", function () {
+//   //     // initialization of header
+//   //     $.HSCore.components.HSHeader.init($("#header"));
 
-//       // initialization of google map
-//     //   function initMap() {
-//     //     $.HSCore.components.HSGMap.init(".js-g-map");
-//     //   }
+//   //     // initialization of google map
+//   //   //   function initMap() {
+//   //   //     $.HSCore.components.HSGMap.init(".js-g-map");
+//   //   //   }
 
-//       // initialization of unfold component
-//       $.HSCore.components.HSUnfold.init($("[data-unfold-target]"));
+//   //     // initialization of unfold component
+//   //     $.HSCore.components.HSUnfold.init($("[data-unfold-target]"));
 
-//       // initialization of form validation
-//       $.HSCore.components.HSValidation.init(".js-validate", {
-//         rules: {
-//           confirmPassword: {
-//             equalTo: "#signupPassword",
-//           },
-//         },
-//       });
+//   //     // initialization of form validation
+//   //     $.HSCore.components.HSValidation.init(".js-validate", {
+//   //       rules: {
+//   //         confirmPassword: {
+//   //           equalTo: "#signupPassword",
+//   //         },
+//   //       },
+//   //     });
 
-//       // initialization of show animations
-//       $.HSCore.components.HSShowAnimation.init(".js-animation-link");
+//   //     // initialization of show animations
+//   //     $.HSCore.components.HSShowAnimation.init(".js-animation-link");
 
-//       // initialization of forms
-//       $.HSCore.components.HSFocusState.init();
+//   //     // initialization of forms
+//   //     $.HSCore.components.HSFocusState.init();
 
-//       // initialization of show animations
-//       $.HSCore.components.HSShowAnimation.init(".js-animation-link");
+//   //     // initialization of show animations
+//   //     $.HSCore.components.HSShowAnimation.init(".js-animation-link");
 
-//       // initialization of popups
-//       $.HSCore.components.HSFancyBox.init(".js-fancybox");
+//   //     // initialization of popups
+//   //     $.HSCore.components.HSFancyBox.init(".js-fancybox");
 
-//       // initialization of datepicker
-//       $.HSCore.components.HSRangeDatepicker.init(".js-range-datepicker");
+//   //     // initialization of datepicker
+//   //     $.HSCore.components.HSRangeDatepicker.init(".js-range-datepicker");
 
-//       // initialization of select
-//       $.HSCore.components.HSSelectPicker.init(".js-select");
+//   //     // initialization of select
+//   //     $.HSCore.components.HSSelectPicker.init(".js-select");
 
-//       // initialization of sticky blocks
-//       $.HSCore.components.HSStickyBlock.init(".js-sticky-block");
+//   //     // initialization of sticky blocks
+//   //     $.HSCore.components.HSStickyBlock.init(".js-sticky-block");
 
-//       // initialization of quantity counter
-//       $.HSCore.components.HSQantityCounter.init(".js-quantity");
+//   //     // initialization of quantity counter
+//   //     $.HSCore.components.HSQantityCounter.init(".js-quantity");
 
-//       // initialization of slick carousel
-//       $.HSCore.components.HSSlickCarousel.init(".js-slick-carousel");
+//   //     // initialization of slick carousel
+//   //     $.HSCore.components.HSSlickCarousel.init(".js-slick-carousel");
 
-//       // initialization of form validation
-//       $.HSCore.components.HSValidation.init(".js-validate");
+//   //     // initialization of form validation
+//   //     $.HSCore.components.HSValidation.init(".js-validate");
 
-//       // initialization of go to
-//       $.HSCore.components.HSGoTo.init(".js-go-to");
+//   //     // initialization of go to
+//   //     $.HSCore.components.HSGoTo.init(".js-go-to");
 
-//       // initialization of HSScrollNav component
-//       $.HSCore.components.HSScrollNav.init($(".js-scroll-nav"), {
-//         duration: 700,
-//       });
-//     });
-//   }, []);
+//   //     // initialization of HSScrollNav component
+//   //     $.HSCore.components.HSScrollNav.init($(".js-scroll-nav"), {
+//   //       duration: 700,
+//   //     });
+//   //   });
+//   // }, []);
 
 //   return (
 //     <>
