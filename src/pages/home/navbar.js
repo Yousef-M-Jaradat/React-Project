@@ -20,7 +20,7 @@ function Navbar() {
     <div>
       <header
         id="header"
-        class="u-header u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
+        class="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
         data-header-fix-moment="500"
         data-header-fix-effect="slide"
       >
@@ -112,16 +112,6 @@ function Navbar() {
                       contact
                     </Link>
                   </li>
-                  <li
-                    class="nav-item hs-has-sub-menu u-header__nav-item ml-2"
-                    data-event="hover"
-                    data-animation-in="slideInUp"
-                    data-animation-out="fadeOut"
-                  >
-                    <Link to="/Profile" className="link">
-                      Profile
-                    </Link>
-                  </li>
 
                   {/* <li class="nav-item hs-has-sub-menu u-header__nav-item ml-4" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
                                     <a id="yachtMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="yachtSubMenu">Yacht</a>
@@ -189,26 +179,10 @@ function Navbar() {
           </div>
         </div>
       </header>
-      {/* <ul>
-        <li>
-         
-        </li>
-        <li>
-          <Link to="/Login">Login</Link>
-        </li>
-        <li>
-          <Link to="/booking">Booking</Link>
-        </li>
-        <li>
-          <Link to="/Contact">contact</Link>
-        </li>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul> */}
+     
      
    
-     
+  
     </div>
   );
 }

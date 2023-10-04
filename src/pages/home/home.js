@@ -7,8 +7,13 @@ return (
 
 <div>
 <Header/>
+
 <CounterComponent />
 <Category />
+
+
+
+
 </div>
 
 

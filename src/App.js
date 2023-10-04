@@ -25,7 +25,6 @@ function App() {
         <Route path= "/singleProduct" element={<SingleProduct/>} />
         <Route path="/Login" element={<Login />} />
         <Route path="/booking" element={<Booking />} />
-        {/* <Route path="/" element={<Header />} /> */}
         <Route path="/yacht/:id" element={<Yacht />} />
         <Route path="/" element={<Home />} />
       </Routes>
