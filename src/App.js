@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
+import Profile from './pages/profile/Profile';
 
 import "./style.css";
 
@@ -15,7 +16,12 @@ function App() {
   return (
     <div>
       <Navbar />
-      
+      <Routes>
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login setStatus/>} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path= "/profile" element={<Profile/>} />
+      </Routes>
     </div>
   );
 }

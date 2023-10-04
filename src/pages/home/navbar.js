@@ -6,13 +6,14 @@ import Login from "../Login";
 import Register from "../Register";
 import Booking from "../booking";
 import Header from "../home/header";
+import Profile from '../profile/Profile';
 
 function Navbar() {
   return (
     <div>
       <header
         id="header"
-        class="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
+        class="u-header u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
         data-header-fix-moment="500"
         data-header-fix-effect="slide"
       >
@@ -104,6 +105,16 @@ function Navbar() {
                       contact
                     </Link>
                   </li>
+                  <li
+                    class="nav-item hs-has-sub-menu u-header__nav-item ml-2"
+                    data-event="hover"
+                    data-animation-in="slideInUp"
+                    data-animation-out="fadeOut"
+                  >
+                    <Link to="/Profile" className="link">
+                      Profile
+                    </Link>
+                  </li>
 
                   {/* <li class="nav-item hs-has-sub-menu u-header__nav-item ml-4" data-event="hover" data-animation-in="slideInUp" data-animation-out="fadeOut">
                                     <a id="yachtMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="yachtSubMenu">Yacht</a>
@@ -188,16 +199,6 @@ function Navbar() {
           <Link to="/">Home</Link>
         </li>
       </ul> */}
-    
-
-      <Routes>
-        <Route path="/" element={<Header />} />
-      
-
-        <Route path="/Register" element={<Register />} />
-        <Route path="/Login" element={<Login setStatus/>} />
-        <Route path="/booking" element={<Booking />} />
-      </Routes>
     </div>
   );
 }
