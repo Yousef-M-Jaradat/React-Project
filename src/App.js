@@ -6,11 +6,8 @@ import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
 import SingleProduct from "./pages/singleproduct";
-
-// import "./style.css";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
-//import "./style.css";
 
 function App() {
   return (
@@ -22,6 +19,7 @@ function App() {
         <Route path="/booking" element={<Booking />} />
         {/* <Route path="/" element={<Header />} /> */}
         <Route path="/yacht/:id" element={<Yacht />} />
+        <Route path="/yacht" element={<SingleProduct />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </div>
