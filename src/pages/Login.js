@@ -21,7 +21,7 @@ function Login() {
         // check the password is correct
         if (e.target.password.value === apidata.password) {
           setStatus(true);
-          navigate("/");
+          navigate("/Register");
         }
         return console.log("welcom");
       }
