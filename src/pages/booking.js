@@ -5,22 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 function Booking() {
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
-    phone: "",
-    email: "",
-    country: "",
-    city: "",
+
   });
   const navigate = useNavigate();
   const [eventData, setEventData] = useState({
-    name: "",
-    date: "",
-    location: "",
+ 
   });
 
   useEffect(() => {
-    // Fetch data from one API
     const fetchEventData = async () => {
       try {
         const response = await axios.get(
