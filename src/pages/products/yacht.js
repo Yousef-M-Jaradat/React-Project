@@ -17,14 +17,13 @@ function Yacht() {
         setData(filteredData);
       })
   }, [id]);
-  console.log(data);
 
   return (
-   
+    <div>
+      <p> { id }</p>
       <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
                                     <ul class="d-block list-unstyled products-group prodcut-list-view">
-          <p> { id }</p>
       {data.map((yacht) => ( 
       
                                     <li key={yacht.id} class="card mb-5 overflow-hidden">
@@ -160,7 +159,7 @@ function Yacht() {
         </ul>
       </div>
    </div>
-    
+    </div>
   );
 }
 
