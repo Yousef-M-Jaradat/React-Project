@@ -1,22 +1,37 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Login from "../Login";
+import Register from "../Register";
+import Booking from "../Booking";
 
-function navbar() {
+function Navbar() {
    
-  return(
-<div>
-
-
-
-    
-</div>
-
-
-
-
-
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/Register">Registration</Link>
+        </li>
+        <li>
+          <Link to="/Login">Login</Link>
+        </li>
+        <li>
+          <Link to="/Booking">Booking</Link>
+        </li>
+        <li>
+          <Link to="/Contact">contact</Link>
+        </li>
+      </ul>
+      <hr />
+      <Routes>
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Booking" element={<Booking />} />
+      </Routes>
+    </div>
   );  
 
 
 };
-export default navbar;
+export default Navbar;
 

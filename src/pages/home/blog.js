@@ -13,7 +13,7 @@ function Blog() {
                         <div class="col-md-6 col-lg-4">
                             <div class="mb-4 mb-lg-0 text-md-center text-lg-left">
                                 <a class="d-block mb-3" href="../blog/blog-single.html">
-                                    <img class="img-fluid rounded-xs w-100" src="../../assets/img/410x300/img1.jpg" alt="Image-Description"></img>
+                                    {/* <img class="img-fluid rounded-xs w-100" src="../../assets/img/410x300/img1.jpg" alt="Image-Description"></img> */}
                                 </a>
                                 <h6 class="text-gray-6 font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1">
                                     <a href="../blog/blog-single.html">How to travel with paper map</a>
@@ -26,7 +26,7 @@ function Blog() {
                         <div class="col-md-6 col-lg-4">
                             <div class="mb-4 mb-lg-0 text-md-center text-lg-left">
                                 <a class="d-block mb-3" href="../blog/blog-single.html">
-                                    <img class="img-fluid rounded-xs w-100" src="../../assets/img/410x300/img2.jpg" alt="Image-Description"></img>
+                                    {/* <img class="img-fluid rounded-xs w-100" src="../../assets/img/410x300/img2.jpg" alt="Image-Description"></img> */}
                                 </a>
                                 <h6 class="text-gray-6 font-size-17 pt-xl-1 font-weight-bold font-weight-bold mb-1">
                                     <a href="../blog/blog-single.html">Change your place and get fresh air</a>
