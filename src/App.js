@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Header from "./pages/home/navbar";
 import Profile from './pages/profile/Profile';
+import SingleProduct from "./pages/singleproduct";
 
 import "./style.css";
 
@@ -15,6 +16,7 @@ import "./style.css";
 function App() {
   return (
     <div>
+      <SingleProduct />
       <Navbar />
       <Routes>
         <Route path="/Register" element={<Register />} />
