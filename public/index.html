@@ -97,6 +97,9 @@
 <script src="%PUBLIC_URL%/assets/js/components/hs.slick-carousel.js"></script>
 <script src="%PUBLIC_URL%/assets/js/components/hs.fancybox.js"></script>
 
+
+
+
 <!-- JS Plugins Init. -->
 <script>
     $(window).on('load', function () {
@@ -139,57 +142,6 @@
 
         // initialization of datepicker
         $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
-
-
-
-       
-            $(window).on('load', function () {
-                // initialization of HSMegaMenu component
-                $('.js-mega-menu').HSMegaMenu({
-                    event: 'hover',
-                    pageContainer: $('.container'),
-                    breakpoint: 1199.98,
-                    hideTimeOut: 0
-                });
-
-                // initialization of svg injector module
-                $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
-
-                // Page preloader
-                setTimeout(function() {
-                  $('#jsPreloader').fadeOut(500)
-                }, 800);
-            });
-
-            $(document).on('ready', function () {
-                // initialization of header
-                $.HSCore.components.HSHeader.init($('#header'));
-
-                // initialization of unfold component
-                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
-
-                // initialization of show animations
-                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
-
-                // initialization of datepicker
-                $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
-
-                // initialization of select
-                $.HSCore.components.HSSelectPicker.init('.js-select');
-
-                // initialization of quantity counter
-                $.HSCore.components.HSQantityCounter.init('.js-quantity');
-
-                // initialization of slick carousel
-                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
-
-                // initialization of counters
-                var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
-
-                // initialization of go to
-                $.HSCore.components.HSGoTo.init('.js-go-to');
-            });
-       
     });
 </script>
 

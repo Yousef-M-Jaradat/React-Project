@@ -1,19 +1,23 @@
+// import logo from './logo.svg';
+// import About from './pages/about';
+import Booking from './pages/Booking';
+import './App.css';
 import React from "react";
-
 // import Home from "./pages/home/home"; 
-import Header from "./pages/home/header";
-import Counter from "./pages/home/counter"
-import Blog from "./pages/home/blog"
-import "./App.css";
+
+import Navbar from "./pages/home/navbar";
+
+import "./style.css";
+
 
 function App() {
   return (
-    <div>
-     
-      {/* <Home />  */}
-      <Header />
-      <Counter />
-      <Blog />
+ 
+    <div> 
+      
+    
+   <Navbar/>
+    
     </div>
   );
 }
