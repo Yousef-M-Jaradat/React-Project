@@ -1,26 +1,29 @@
-
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-// Define the Yacht component
-function Yacht() {
-  
+function Filter() {
   const { id } = useParams();
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get('https://651be289194f77f2a5af04e4.mockapi.io/yachts/products')
+      .get('https://651db05044e393af2d5a346e.mockapi.io/yachts')
       .then((response) => {
-        const filteredData = response.data.filter((yacht) => yacht.category_id === id);
+        // Filter the yachts based on category_id
+        const filteredData = response.data.filter((yacht) => yacht.category_id=== id);
         setData(filteredData);
       })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
   }, [id]);
-
   return (
+
     <div>
       <p> { id }</p>
+
+      
       <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
                                     <ul class="d-block list-unstyled products-group prodcut-list-view">
@@ -98,7 +101,7 @@ function Yacht() {
                                                                                     <small class="flaticon-ruler font-size-16"></small>
                                                                                 </small>
                                                                                 <div class="media-body font-size-1">
-                                                                                {yacht.distance}
+                                                                                {yacht.size}
                                                                                 </div>
                                                                             </li>
                                                                             <li class="media mb-2 text-gray-1 align-items-center">
@@ -106,7 +109,7 @@ function Yacht() {
                                                                                     <small class="flaticon-user font-size-16"></small>
                                                                                 </small>
                                                                                 <div class="media-body font-size-1">
-                                                                                {yacht.persons}
+                                                                                {yacht.person}
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -118,7 +121,7 @@ function Yacht() {
                                                                                     <small class="flaticon-download-speed font-size-16"></small>
                                                                                 </small>
                                                                                 <div class="media-body font-size-1">
-                                                                                    16 MPH
+                                                                                {yacht.speed}
                                                                                 </div>
                                                                             </li>
                                                                             <li class="media mb-2 text-gray-1 align-items-center">
@@ -126,7 +129,7 @@ function Yacht() {
                                                                                     <small class="flaticon-bed-1 font-size-16"></small>
                                                                                 </small>
                                                                                 <div class="media-body font-size-1">
-                                                                                {yacht.bed}
+                                                                                {yacht.beds}
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -159,9 +162,10 @@ function Yacht() {
         </ul>
       </div>
    </div>
+
     </div>
   );
 }
 
 
-export default Yacht;
+export default Filter;
