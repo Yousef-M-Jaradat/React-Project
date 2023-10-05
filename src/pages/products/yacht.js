@@ -2,21 +2,36 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-// Define the Yacht component
 function Yacht() {
   const { id } = useParams();
-  const [data, setData] = useState([]);
+  const [yachts, setYachts] = useState([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
     axios
-      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
+      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
+        params: {
+          category_id: id,
+        },
+      })
       .then((response) => {
-        const filteredData = response.data.filter(
-          (yacht) => yacht.category_id === parseInt(id)
-        );
-        setData(filteredData);
+        setYachts(response.data);
       });
+      
   }, [id]);
+
+
+  const filteredYachts = yachts.filter((yacht) => {
+    const price = parseFloat(yacht.price);
+    const min = minPrice !== "" ? parseFloat(minPrice) : 0;
+    const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
+
+    
+    return price >= min && price <= max;
+
+
+  });
 
   return (
     <div>
@@ -133,31 +148,30 @@ function Yacht() {
                         class="accordion rounded shadow-none"
                       >
                         <div class="border-0">
-                          <div class="card-collapse" id="shopCardHeadingOne">
-                            <h3 class="mb-0">
-                              <button
-                                type="button"
-                                class="btn btn-link btn-block card-btn py-2 px-5 text-lh-3 collapsed"
-                                data-toggle="collapse"
-                                data-target="#shopCardOne"
-                                aria-expanded="false"
-                                aria-controls="shopCardOne"
-                              >
-                                <span class="row align-items-center">
-                                  <span class="col-9">
-                                    <span class="d-block font-size-lg-15 font-size-17 font-weight-bold text-dark">
-                                      Price Range ($)
-                                    </span>
-                                  </span>
-                                  <span class="col-3 text-right">
-                                    <span class="card-btn-arrow">
-                                      <span class="fas fa-chevron-down small"></span>
-                                    </span>
-                                  </span>
-                                </span>
-                              </button>
-                            </h3>
-                          </div>
+                        <div class="pb-4 mb-2">
+  <span class="d-block text-gray-1 text-left font-weight-normal mb-0">
+    Price Range ($)
+  </span>
+  <div class="border-bottom border-width-2 border-color-1 mb-4">
+    <div class="input-group">
+      <input
+        type="number"
+        placeholder="Min Price"
+        value={minPrice}
+        onChange={(e) => setMinPrice(e.target.value)}
+        className="form-control"
+      />
+      <input
+        type="number"
+        placeholder="Max Price"
+        value={maxPrice}
+        onChange={(e) => setMaxPrice(e.target.value)}
+        className="form-control"
+      />
+    </div>
+  </div>
+</div>
+
                           <div
                             id="shopCardOne"
                             class="collapse show"
@@ -474,7 +488,7 @@ function Yacht() {
                     data-target-group="groups"
                   >
                     <ul className="d-block list-unstyled products-group prodcut-list-view">
-                      {data.map((yacht) => (
+        {filteredYachts.map((yacht) => (
                         <div>
                           <li
                             key={yacht.id}
@@ -591,7 +605,7 @@ function Yacht() {
                                       <div className="text-center text-md-left text-xl-center d-flex flex-column mb-2 pb-1 ml-md-3 ml-xl-0">
                                         <div className="mb-0">
                                           <span className="font-weight-bold font-size-22">
-                                            {yacht.price}
+                                          {parseFloat(yacht.price).toFixed(2)}
                                           </span>
                                           <span className="mr-1 font-size-14 text-gray-1">
                                             / week
