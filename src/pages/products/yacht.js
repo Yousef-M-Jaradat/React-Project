@@ -1,25 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+
+import React, { useState, useEffect } from 'react'; 
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
+
 
 function Yacht() {
+  
   const { id } = useParams();
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
   const [yachts, setYachts] = useState([]);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
 
   useEffect(() => {
     axios
+      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts
+      
+      `)
       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
         params: {
           category_id: id,
         },
       })
       .then((response) => {
+        const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
+        setData(filteredData);
+      })
         setYachts(response.data);
       });
       
   }, [id]);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const offset = currentPage * itemsPerPage;
+  const currentData = data.slice(offset, offset + itemsPerPage);
 
 
   const filteredYachts = yachts.filter((yacht) => {
@@ -488,6 +510,7 @@ function Yacht() {
                     data-target-group="groups"
                   >
                     <ul className="d-block list-unstyled products-group prodcut-list-view">
+                      {currentData.map((yacht) => (
         {filteredYachts.map((yacht) => (
                         <div>
                           <li
@@ -628,6 +651,21 @@ function Yacht() {
                           </li>
                         </div>
                       ))}
+                        <div className="pagination-container">
+      <ReactPaginate
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+      />
+    </div>
                     </ul>
                   </div>
                 </div>
