@@ -13,6 +13,7 @@ import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
+// import Product from "./pages/products/products";
 //import "./style.css";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/booking" element={<Booking />} />
         <Route path="/yacht/:id" element={<Yacht />} />
         <Route path="/yacht" element={<SingleProduct />} />
+        {/* <Route path="/product" element={<Product />} /> */}
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />
