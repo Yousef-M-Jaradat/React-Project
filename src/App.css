@@ -2,6 +2,49 @@
   text-align: center;
 }
 
+/* Pagination container */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination component styles */
+.pagination {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination a.active {
+  background-color: #104d8f;
+}
+
+/* Styling for "Previous" and "Next" buttons */
+.pagination a.previous, .pagination a.next {
+  background-color: #ddd;
+}
+
+/* Styling for the "..." break element */
+.pagination a.break-me {
+  font-weight: bold;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

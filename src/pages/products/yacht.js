@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+
+import React, { useState, useEffect } from 'react'; 
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ReactPaginate from 'react-paginate';
+
 
 // Define the Yacht component
 function Yacht() {
+  
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -13,12 +17,19 @@ function Yacht() {
     axios
       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
       .then((response) => {
-        const filteredData = response.data.filter(
-          (yacht) => yacht.category_id === parseInt(id)
-        );
+        const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
         setData(filteredData);
-      });
+      })
   }, [id]);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const offset = currentPage * itemsPerPage;
+  const currentData = data.slice(offset, offset + itemsPerPage);
 
   return (
     <div>
@@ -476,7 +487,7 @@ function Yacht() {
                     data-target-group="groups"
                   >
                     <ul className="d-block list-unstyled products-group prodcut-list-view">
-                      {data.map((yacht) => (
+                      {currentData.map((yacht) => (
                         <div>
                           <li
                             key={yacht.id}
@@ -616,6 +627,21 @@ function Yacht() {
                           </li>
                         </div>
                       ))}
+                        <div className="pagination-container">
+      <ReactPaginate
+        previousLabel={'Previous'}
+        nextLabel={'Next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+      />
+    </div>
                     </ul>
                   </div>
                 </div>
