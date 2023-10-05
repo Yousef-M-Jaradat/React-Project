@@ -8,12 +8,11 @@ import Login from "./pages/Login";
 import Home from "./pages/home/home";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
-// import Header from "./pages/home/navbar";
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
-// import "./style.css";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
+import Footer from "./pages/home/footer";
 //import "./style.css";
 
 function App() {
@@ -32,6 +31,7 @@ function App() {
         <Route path="/yacht" element={<SingleProduct />} />
         <Route path="/" element={<Home />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
