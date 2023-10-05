@@ -7,7 +7,6 @@ return (
 
 <div>
 <Header/>
-
 <CounterComponent />
 <Category />
 

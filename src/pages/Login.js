@@ -1,11 +1,10 @@
 import React, { useEffect, useState,useContext,createContext } from "react";
 import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-import '../style.css'
 function Login() {
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
-  const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
+  const apiUrl = "https://651db05044e393af2d5a346e.mockapi.io/users";
   const [data, setData] = useState([]); // Initialize data as an empty array
   const [status, setStatus] = useState(false);
   const UserContext = createContext();

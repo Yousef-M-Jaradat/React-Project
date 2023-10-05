@@ -10,7 +10,7 @@ import SingleProduct from "./pages/singleproduct";
 // import "./style.css";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
-//import "./style.css";
+import "./style.css";
 
 function App() {
   return (

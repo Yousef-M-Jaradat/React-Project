@@ -6,7 +6,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
+  const apiUrl = "https://651db05044e393af2d5a346e.mockapi.io/users";
   const navigate = useNavigate(); // Initialize useNavigate for navigation
 
   const handleUsername = (e) => {
