@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 
 function SingleProduct()
 {
+  const { id } = useParams();
     const [formData, setFormData] = useState({
         id: "",  
         name: "",
@@ -29,7 +32,7 @@ function SingleProduct()
     const fetchEventData = async () => {
       try {
         const response = await axios.get(
-          "https://651db05044e393af2d5a346e.mockapi.io/yachts/1" // Replace with the actual API endpoint
+          `https://651db05044e393af2d5a346e.mockapi.io/yachts/${id}` // Replace with the actual API endpoint
         );
         if (response.status === 200) {
           setFormData(response.data);
@@ -48,6 +51,7 @@ function SingleProduct()
   }, []);
 
     return (
+      
       <main id="content">
         <div class="container">
           <nav class="py-3" aria-label="breadcrumb">

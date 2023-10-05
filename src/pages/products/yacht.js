@@ -5,33 +5,45 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 
 
+// Define the Yacht component
 function Yacht() {
   
   const { id } = useParams();
+ 
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
-  const [yachts, setYachts] = useState([]);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
 
+
+//   useEffect(() => {
+//     axios
+//       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
+//         params: {
+//           category_id: id,
+//         },
+//       })
+//       .then((response) => {
+//         setData(response.data);
+//       });
+      
+//   }, [id]);
+
+
+
+
+
+ 
   useEffect(() => {
     axios
       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts
       
       `)
-      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
-        params: {
-          category_id: id,
-        },
-      })
       .then((response) => {
         const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
         setData(filteredData);
       })
-        setYachts(response.data);
-      });
-      
   }, [id]);
 
   const handlePageClick = ({ selected }) => {
@@ -43,17 +55,30 @@ function Yacht() {
   const offset = currentPage * itemsPerPage;
   const currentData = data.slice(offset, offset + itemsPerPage);
 
-
-  const filteredYachts = yachts.filter((yacht) => {
+  
+  const filteredData = currentData.filter((yacht) => {
     const price = parseFloat(yacht.price);
     const min = minPrice !== "" ? parseFloat(minPrice) : 0;
     const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
-
-    
     return price >= min && price <= max;
-
-
   });
+
+  const handleSearch = () => {
+    // Your filtering logic here
+    // This logic is already in your code:
+  
+    const filteredData = currentData.filter((yacht) => {
+      const price = parseFloat(yacht.price);
+      const min = minPrice !== "" ? parseFloat(minPrice) : 0;
+      const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
+      return price >= min && price <= max;
+    });
+  
+    // Update the filtered data with the search results
+    // You may also want to reset the current page to 0
+    setData(filteredData);
+    setCurrentPage(0);
+  };
 
   return (
     <div>
@@ -140,13 +165,15 @@ function Yacht() {
                           </div>
 
                           <div class="text-center">
-                            <button
-                              type="submit"
-                              class="btn btn-primary height-60 w-100 font-weight-bold mb-xl-0 mb-lg-1 transition-3d-hover"
-                            >
-                              <i class="flaticon-magnifying-glass mr-2 font-size-17"></i>
-                              Search
-                            </button>
+                 
+                          <button
+    type="submit"
+    className="btn btn-primary height-60 w-100 font-weight-bold mb-xl-0 mb-lg-1 transition-3d-hover"
+    onClick={handleSearch}
+  >
+    <i className="flaticon-magnifying-glass mr-2 font-size-17"></i>
+    Search
+  </button>
                           </div>
                         </div>
                       </div>
@@ -510,8 +537,8 @@ function Yacht() {
                     data-target-group="groups"
                   >
                     <ul className="d-block list-unstyled products-group prodcut-list-view">
-                      {currentData.map((yacht) => (
-        {filteredYachts.map((yacht) => (
+        {/* {filteredYachts.map((yacht) => ( */}
+                      {filteredData.map((yacht) => (
                         <div>
                           <li
                             key={yacht.id}
@@ -637,7 +664,7 @@ function Yacht() {
                                       </div>
                                       <div className="d-flex justify-content-center justify-content-md-start justify-content-xl-center">
                                         <a
-                                          href="../yacht/yacht-single-v1.html"
+                                        href={`/products/${yacht.id}`}
                                           className="btn btn-outline-primary d-flex align-items-center justify-content-center font-weight-bold min-height-50 border-radius-3 border-width-2 px-2 px-5 py-2"
                                         >
                                           View Detail
@@ -651,6 +678,8 @@ function Yacht() {
                           </li>
                         </div>
                       ))}
+
+</ul>
                         <div className="pagination-container">
       <ReactPaginate
         previousLabel={'Previous'}
@@ -666,7 +695,8 @@ function Yacht() {
         activeClassName={'active'}
       />
     </div>
-                    </ul>
+
+               
                   </div>
                 </div>
               </div>
