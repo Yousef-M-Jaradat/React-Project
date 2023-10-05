@@ -11,122 +11,121 @@ function Yacht() {
 
   useEffect(() => {
     axios
-      .get('https://651be289194f77f2a5af04e4.mockapi.io/yachts/products')
+      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
       .then((response) => {
-        const filteredData = response.data.filter((yacht) => yacht.category_id === id);
+        const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
         setData(filteredData);
       })
-  }, [id]);
+  }, []);
 
   return (
     <div>
-      <p> { id }</p>
-      <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
-                                    <ul class="d-block list-unstyled products-group prodcut-list-view">
-      {data.map((yacht) => ( 
-      
-                                    <li key={yacht.id} class="card mb-5 overflow-hidden">
-                                            <div class="product-item__outer w-100">
-                                                <div class="row">
-                                                    <div class="col-md-5 col-xl-4">
-                                                        <div class="product-item__header">
-                                                            <div class="position-relative">
-                                                                <div class="js-slick-carousel u-slick u-slick--equal-height"
+        
+        {data.map((yacht) => ( 
+            <div>
+ <li key={yacht.id} className="card mb-5 overflow-hidden">
+                                            <div className="product-item__outer w-100">
+      <p>{yacht.name}</p>
+
+                                                <div className="row">
+                                                    <div className="col-md-5 col-xl-4">
+                                                        <div className="product-item__header">
+                                                            <div className="position-relative">
+                                                                <div className="js-slick-carousel u-slick u-slick--equal-height"
                                                                     data-slides-show="1"
                                                                     data-slides-scroll="1"
-                                                                    data-arrows-classes="d-none d-lg-inline-block u-slick__arrow-classic v4 u-slick__arrow-classic--v4 u-slick__arrow-centered--y rounded-circle"
-                                                                    data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left"
-                                                                    data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
-                                                                    data-pagi-classes="js-pagination text-center u-slick__pagination u-slick__pagination--white position-absolute right-0 bottom-0 left-0 mb-3 mb-0">
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img21.jpg"></img></a>
+                                                                    data-arrows-classNamees="d-none d-lg-inline-block u-slick__arrow-classNameic v4 u-slick__arrow-classNameic--v4 u-slick__arrow-centered--y rounded-circle"
+                                                                    data-arrow-left-classNamees="flaticon-back u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--left"
+                                                                    data-arrow-right-classNamees="flaticon-next u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--right"
+                                                                    data-pagi-classNamees="js-pagination text-center u-slick__pagination u-slick__pagination--white position-absolute right-0 bottom-0 left-0 mb-3 mb-0">
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img classNameN="img-fluid min-height-230" src="../../assets/img/300x230/img21.jpg"></img></a>
                                                                     </div>
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img22.jpg"></img></a>
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img22.jpg"></img></a>
                                                                     </div>
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img23.jpg"></img></a>
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img23.jpg"></img></a>
                                                                     </div>
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img24.jpg"></img></a>
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img24.jpg"></img></a>
                                                                     </div>
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img64.jpg"></img></a>
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img64.jpg"></img></a>
                                                                     </div>
-                                                                    <div class="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" class="d-block gradient-overlay-half-bg-gradient-v5"><img class="img-fluid min-height-230" src="../../assets/img/300x230/img65.jpg"></img></a>
+                                                                    <div className="js-slide">
+                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img65.jpg"></img></a>
                                                                     </div>
                                                                 </div>
 
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-7 col-xl-5 flex-horizontal-center">
-                                                        <div class="w-100 position-relative m-4 m-md-0">
-                                                            <div class="position-absolute top-0 right-0 pr-md-3 d-none d-md-block">
-                                                                <button type="button" class="btn btn-sm btn-icon rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
-                                                                    <span class="flaticon-heart-1 font-size-20"></span>
+                                                    <div className="col-md-7 col-xl-5 flex-horizontal-center">
+                                                        <div className="w-100 position-relative m-4 m-md-0">
+                                                            <div className="position-absolute top-0 right-0 pr-md-3 d-none d-md-block">
+                                                                <button type="button" className="btn btn-sm btn-icon rounded-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for later">
+                                                                    <span className="flaticon-heart-1 font-size-20"></span>
                                                                 </button>
                                                             </div>
                                                             <a href="../yacht/yacht-single-v1.html">
-                                                                <span class="font-weight-bold font-size-17 text-dark d-flex mb-1">{yacht.name}</span>
+                                                                <span className="font-weight-bold font-size-17 text-dark d-flex mb-1">{yacht.name}</span>
                                                             </a>
-                                                            <div class="card-body p-0">
-                                                                <a href="../yacht/yacht-single-v1.html" class="d-block mb-1">
-                                                                    <div class="d-flex flex-wrap flex-xl-nowrap align-items-center font-size-14 text-gray-1">
-                                                                        <i class="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
+                                                            <div className="card-body p-0">
+                                                                <a href="../yacht/yacht-single-v1.html" className="d-block mb-1">
+                                                                    <div className="d-flex flex-wrap flex-xl-nowrap align-items-center font-size-14 text-gray-1">
+                                                                        <i className="icon flaticon-placeholder mr-2 font-size-20"></i> Greater London, United Kingdom
                                                                     </div>
                                                                 </a>
-                                                                <div class="mb-3">
-                                                                    <div class="d-inline-flex align-items-center font-size-14 text-lh-1 text-primary">
-                                                                        <div class="green-lighter mr-2">
-                                                                            <small class="fas fa-star"></small>
-                                                                            <small class="fas fa-star"></small>
-                                                                            <small class="fas fa-star"></small>
-                                                                            <small class="fas fa-star"></small>
-                                                                            <small class="fas fa-star"></small>
+                                                                <div className="mb-3">
+                                                                    <div className="d-inline-flex align-items-center font-size-14 text-lh-1 text-primary">
+                                                                        <div className="green-lighter mr-2">
+                                                                            <small className="fas fa-star"></small>
+                                                                            <small className="fas fa-star"></small>
+                                                                            <small className="fas fa-star"></small>
+                                                                            <small className="fas fa-star"></small>
+                                                                            <small className="fas fa-star"></small>
                                                                         </div>
-                                                                        <span class="text-secondary font-size-14 mt-1">48 Reviews</span>
+                                                                        <span className="text-secondary font-size-14 mt-1">48 Reviews</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="d-flex">
-                                                                    <div class="mr-5">
-                                                                        <ul class="list-unstyled mb-0">
-                                                                            <li class="media mb-2 text-gray-1 align-items-center">
-                                                                                <small class="mr-3">
-                                                                                    <small class="flaticon-ruler font-size-16"></small>
+                                                                <div className="d-flex">
+                                                                    <div className="mr-5">
+                                                                        <ul className="list-unstyled mb-0">
+                                                                            <li className="media mb-2 text-gray-1 align-items-center">
+                                                                                <small className="mr-3">
+                                                                                    <small className="flaticon-ruler font-size-16"></small>
                                                                                 </small>
-                                                                                <div class="media-body font-size-1">
-                                                                                {yacht.distance}
+                                                                                <div className="media-body font-size-1">
+                                                                                {yacht.size}
                                                                                 </div>
                                                                             </li>
-                                                                            <li class="media mb-2 text-gray-1 align-items-center">
-                                                                                <small class="mr-3">
-                                                                                    <small class="flaticon-user font-size-16"></small>
+                                                                            <li className="media mb-2 text-gray-1 align-items-center">
+                                                                                <small className="mr-3">
+                                                                                    <small className="flaticon-user font-size-16"></small>
                                                                                 </small>
-                                                                                <div class="media-body font-size-1">
-                                                                                {yacht.persons}
+                                                                                <div className="media-body font-size-1">
+                                                                                {yacht.person}
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
-                                                                    <div class="ml-1">
-                                                                        <ul class="list-unstyled mb-0">
-                                                                            <li class="media mb-2 text-gray-1 align-items-center">
-                                                                                <small class="mr-3">
-                                                                                    <small class="flaticon-download-speed font-size-16"></small>
+                                                                    <div className="ml-1">
+                                                                        <ul className="list-unstyled mb-0">
+                                                                            <li className="media mb-2 text-gray-1 align-items-center">
+                                                                                <small className="mr-3">
+                                                                                    <small className="flaticon-download-speed font-size-16"></small>
                                                                                 </small>
-                                                                                <div class="media-body font-size-1">
-                                                                                    16 MPH
+                                                                                <div className="media-body font-size-1">
+                                                                                {yacht.speed}
                                                                                 </div>
                                                                             </li>
-                                                                            <li class="media mb-2 text-gray-1 align-items-center">
-                                                                                <small class="mr-3">
-                                                                                    <small class="flaticon-bed-1 font-size-16"></small>
+                                                                            <li className="media mb-2 text-gray-1 align-items-center">
+                                                                                <small className="mr-3">
+                                                                                    <small className="flaticon-bed-1 font-size-16"></small>
                                                                                 </small>
-                                                                                <div class="media-body font-size-1">
-                                                                                {yacht.bed}
+                                                                                <div className="media-body font-size-1">
+                                                                                {yacht.beds}
                                                                                 </div>
                                                                             </li>
                                                                         </ul>
@@ -135,17 +134,17 @@ function Yacht() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col col-xl-3 align-self-center py-4 py-xl-0 border-top border-xl-top-0">
-                                                        <div class="border-xl-left border-color-7 py-5">
-                                                            <div class="ml-md-4 ml-xl-0">
-                                                                <div class="text-center text-md-left text-xl-center d-flex flex-column mb-2 pb-1 ml-md-3 ml-xl-0">
-                                                                    <div class="mb-0">
-                                                                        <span class="font-weight-bold font-size-22">{yacht.price}</span>
-                                                                        <span class="mr-1 font-size-14 text-gray-1">/ week</span>
+                                                    <div className="col col-xl-3 align-self-center py-4 py-xl-0 border-top border-xl-top-0">
+                                                        <div className="border-xl-left border-color-7 py-5">
+                                                            <div className="ml-md-4 ml-xl-0">
+                                                                <div className="text-center text-md-left text-xl-center d-flex flex-column mb-2 pb-1 ml-md-3 ml-xl-0">
+                                                                    <div className="mb-0">
+                                                                        <span className="font-weight-bold font-size-22">{yacht.price}</span>
+                                                                        <span className="mr-1 font-size-14 text-gray-1">/ week</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="d-flex justify-content-center justify-content-md-start justify-content-xl-center">
-                                                                    <a href="../yacht/yacht-single-v1.html" class="btn btn-outline-primary d-flex align-items-center justify-content-center font-weight-bold min-height-50 border-radius-3 border-width-2 px-2 px-5 py-2">View Detail</a>
+                                                                <div className="d-flex justify-content-center justify-content-md-start justify-content-xl-center">
+                                                                    <a href="../yacht/yacht-single-v1.html" className="btn btn-outline-primary d-flex align-items-center justify-content-center font-weight-bold min-height-50 border-radius-3 border-width-2 px-2 px-5 py-2">View Detail</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -153,12 +152,12 @@ function Yacht() {
                                                 </div>
                                             </div>
                                         </li>
-  
 
+            </div>
+      
+      
         ))}
-        </ul>
-      </div>
-   </div>
+    
     </div>
   );
 }
