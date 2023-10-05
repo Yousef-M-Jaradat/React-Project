@@ -15,7 +15,9 @@ function Yacht() {
 
   useEffect(() => {
     axios
-      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
+      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts
+      
+      `)
       .then((response) => {
         const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
         setData(filteredData);
