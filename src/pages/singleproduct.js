@@ -24,28 +24,28 @@ function SingleProduct()
         
     }); 
 
-    useEffect(() => {
-      // Fetch data from one API
+  useEffect(() => {
+    // Fetch data from one API
     const fetchEventData = async () => {
-        try {
+      try {
         const response = await axios.get(
           "https://651db05044e393af2d5a346e.mockapi.io/yachts/1" // Replace with the actual API endpoint
         );
-          if (response.status === 200) {
-            setFormData(response.data);
-          } else {
-          }
-        } catch (error) {}
-      };
+        if (response.status === 200) {
+          setFormData(response.data);
+        } else {
+        }
+      } catch (error) {}
+    };
 
-      // Call the function to fetch event data
-      fetchEventData();
+    // Call the function to fetch event data
+    fetchEventData();
 
-      // Cleanup the event listener when the component unmounts
-      return () => {
-        // Cleanup code here (if needed)
-      };
-    }, []);
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      // Cleanup code here (if needed)
+    };
+  }, []);
 
     return (
       <main id="content">
@@ -789,96 +789,96 @@ function SingleProduct()
                   <div class="p-4 m-1">
                     {/* <!-- End Input -->
                                     <!-- Input --> */}
-                    <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
-                      From - To
-                    </span>
-                    <div class="mb-4">
-                      <div class="border-bottom border-width-2 border-color-1">
-                        <div
-                          id="datepickerWrapperPick"
-                          class="u-datepicker input-group"
-                        >
-                          <div class="input-group-prepend">
-                            <span class="d-flex align-items-center mr-2 font-size-21">
-                              <i class="flaticon-calendar text-primary font-weight-semi-bold"></i>
-                            </span>
-                          </div>
-                          <input
-                            class="js-range-datepicker w-auto font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
-                            type="text"
-                            placeholder="October 8/2023"
-                            aria-label="October 10/2023"
-                            data-rp-wrapper="#datepickerWrapperPick"
-                            data-rp-type="range"
-                            data-rp-date-format="M d / Y"
-                            data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
-                            data-min-date="today"
-                            data-default-date="2023-10-08"
-                          />
-                        </div>
-                        {/* <!-- End Datepicker --> */}
-                      </div>
-                    </div>
-                    {/* <!-- End Input --> */}
-                    <div class="text-center">
-                      <a
-                        href="../yacht/yacht-booking.html"
-                        class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
+                  <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
+                    From - To
+                  </span>
+                  <div class="mb-4">
+                    <div class="border-bottom border-width-2 border-color-1">
+                      <div
+                        id="datepickerWrapperPick"
+                        class="u-datepicker input-group"
                       >
-                        Book Now
-                      </a>
+                        <div class="input-group-prepend">
+                          <span class="d-flex align-items-center mr-2 font-size-21">
+                            <i class="flaticon-calendar text-primary font-weight-semi-bold"></i>
+                          </span>
+                        </div>
+                        <input
+                          class="js-range-datepicker w-auto font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
+                          type="text"
+                          placeholder="October 8/2023"
+                          aria-label="October 10/2023"
+                          data-rp-wrapper="#datepickerWrapperPick"
+                          data-rp-type="range"
+                          data-rp-date-format="M d / Y"
+                          data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
+                          data-min-date="today"
+                          data-default-date="2023-10-08"
+                        />
+                      </div>
+                      {/* <!-- End Datepicker --> */}
                     </div>
+                  </div>
+                  {/* <!-- End Input --> */}
+                  <div class="text-center">
+                    <a
+                      href="../yacht/yacht-booking.html"
+                      class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
+                    >
+                      Book Now
+                    </a>
                   </div>
                 </div>
-                <div class="border border-color-7 rounded p-4 mb-5">
-                  <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">
-                    Why Book With Us?
+              </div>
+              <div class="border border-color-7 rounded p-4 mb-5">
+                <h6 class="font-size-17 font-weight-bold text-gray-3 mx-1 mb-3 pb-1">
+                  Why Book With Us?
+                </h6>
+                <div class="d-flex align-items-center mb-3">
+                  <i class="flaticon-star font-size-25 text-primary mr-3 pr-1"></i>
+                  <h6 class="mb-0 font-size-14 text-gray-1">
+                    <a href="#">No-hassle best price guarantee</a>
                   </h6>
-                  <div class="d-flex align-items-center mb-3">
-                    <i class="flaticon-star font-size-25 text-primary mr-3 pr-1"></i>
-                    <h6 class="mb-0 font-size-14 text-gray-1">
-                      <a href="#">No-hassle best price guarantee</a>
-                    </h6>
-                  </div>
-                  <div class="d-flex align-items-center mb-3">
-                    <i class="flaticon-support font-size-25 text-primary mr-3 pr-1"></i>
-                    <h6 class="mb-0 font-size-14 text-gray-1">
-                      <a href="#">Customer care available 24/7</a>
-                    </h6>
-                  </div>
-                  <div class="d-flex align-items-center mb-3">
-                    <i class="flaticon-favorites-button font-size-25 text-primary mr-3 pr-1"></i>
-                    <h6 class="mb-0 font-size-14 text-gray-1">
-                      <a href="#">Hand-picked Tours &amp; Activities</a>
-                    </h6>
-                  </div>
-                  <div class="d-flex align-items-center mb-0">
-                    <i class="flaticon-airplane font-size-25 text-primary mr-3 pr-1"></i>
-                    <h6 class="mb-0 font-size-14 text-gray-1">
-                      <a href="#">Free Travel Insureance</a>
-                    </h6>
-                  </div>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <i class="flaticon-support font-size-25 text-primary mr-3 pr-1"></i>
+                  <h6 class="mb-0 font-size-14 text-gray-1">
+                    <a href="#">Customer care available 24/7</a>
+                  </h6>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <i class="flaticon-favorites-button font-size-25 text-primary mr-3 pr-1"></i>
+                  <h6 class="mb-0 font-size-14 text-gray-1">
+                    <a href="#">Hand-picked Tours &amp; Activities</a>
+                  </h6>
+                </div>
+                <div class="d-flex align-items-center mb-0">
+                  <i class="flaticon-airplane font-size-25 text-primary mr-3 pr-1"></i>
+                  <h6 class="mb-0 font-size-14 text-gray-1">
+                    <a href="#">Free Travel Insureance</a>
+                  </h6>
                 </div>
               </div>
             </div>
           </div>
-          {/* <!-- Product Cards carousel --> */}
-          <div class="product-card-carousel-block product-card-carousel-v6">
-            <div class="space-1">
-              <div class="w-md-80 w-lg-50 text-center mx-md-auto">
-                <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">
-                  You might also like...
-                </h2>
-              </div>
-              <div
-                class="js-slick-carousel u-slick u-slick--equal-height u-slick--gutters-3"
-                data-slides-show="4"
-                data-slides-scroll="1"
-                data-arrows-classes="d-none d-xl-inline-block u-slick__arrow-classic v1 u-slick__arrow-classic--v1 u-slick__arrow-centered--y rounded-circle"
-                data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left"
-                data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
-                data-pagi-classes="text-center d-xl-none u-slick__pagination mt-4"
-                data-responsive='[{
+        </div>
+        {/* <!-- Product Cards carousel --> */}
+        <div class="product-card-carousel-block product-card-carousel-v6">
+          <div class="space-1">
+            <div class="w-md-80 w-lg-50 text-center mx-md-auto">
+              <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">
+                You might also like...
+              </h2>
+            </div>
+            <div
+              class="js-slick-carousel u-slick u-slick--equal-height u-slick--gutters-3"
+              data-slides-show="4"
+              data-slides-scroll="1"
+              data-arrows-classes="d-none d-xl-inline-block u-slick__arrow-classic v1 u-slick__arrow-classic--v1 u-slick__arrow-centered--y rounded-circle"
+              data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left"
+              data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
+              data-pagi-classes="text-center d-xl-none u-slick__pagination mt-4"
+              data-responsive='[{
                                 "breakpoint": 1025,
                                 "settings": {
                                     "slidesToShow": 3
