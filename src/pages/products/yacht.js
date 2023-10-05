@@ -2,12 +2,16 @@
 import React, { useState, useEffect } from 'react'; 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ReactPaginate from 'react-paginate';
+
 
 // Define the Yacht component
 function Yacht() {
   
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3;
 
   useEffect(() => {
     axios
@@ -16,47 +20,38 @@ function Yacht() {
         const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
         setData(filteredData);
       })
-  }, []);
+  }, [id]);
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const offset = currentPage * itemsPerPage;
+  const currentData = data.slice(offset, offset + itemsPerPage);
 
   return (
     <div>
         
-        {data.map((yacht) => ( 
+        {currentData.map((yacht) => ( 
             <div>
  <li key={yacht.id} className="card mb-5 overflow-hidden">
                                             <div className="product-item__outer w-100">
-      <p>{yacht.name}</p>
+      
+  
 
                                                 <div className="row">
                                                     <div className="col-md-5 col-xl-4">
                                                         <div className="product-item__header">
                                                             <div className="position-relative">
-                                                                <div className="js-slick-carousel u-slick u-slick--equal-height"
-                                                                    data-slides-show="1"
-                                                                    data-slides-scroll="1"
-                                                                    data-arrows-classNamees="d-none d-lg-inline-block u-slick__arrow-classNameic v4 u-slick__arrow-classNameic--v4 u-slick__arrow-centered--y rounded-circle"
-                                                                    data-arrow-left-classNamees="flaticon-back u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--left"
-                                                                    data-arrow-right-classNamees="flaticon-next u-slick__arrow-classNameic-inner u-slick__arrow-classNameic-inner--right"
-                                                                    data-pagi-classNamees="js-pagination text-center u-slick__pagination u-slick__pagination--white position-absolute right-0 bottom-0 left-0 mb-3 mb-0">
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img classNameN="img-fluid min-height-230" src="../../assets/img/300x230/img21.jpg"></img></a>
-                                                                    </div>
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img22.jpg"></img></a>
-                                                                    </div>
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img23.jpg"></img></a>
-                                                                    </div>
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img24.jpg"></img></a>
-                                                                    </div>
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img64.jpg"></img></a>
-                                                                    </div>
-                                                                    <div className="js-slide">
-                                                                        <a href="../yacht/yacht-single-v1.html" className="d-block gradient-overlay-half-bg-gradient-v5"><img className="img-fluid min-height-230" src="../../assets/img/300x230/img65.jpg"></img></a>
-                                                                    </div>
-                                                                </div>
+                                                            <div
+              className="js-slide bg-img-hero min-height-300"
+              style={{
+                backgroundImage: `url(${yacht.image1})`,
+              
+              }}
+            ></div>
 
                                                             </div>
                                                         </div>
@@ -157,7 +152,21 @@ function Yacht() {
       
       
         ))}
-    
+    <div className="pagination-container">
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+      </div>
     </div>
   );
 }
