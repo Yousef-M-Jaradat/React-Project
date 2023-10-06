@@ -25,7 +25,7 @@ function Header_nav() {
   };
   return (
     <div>
-      {localStorage.getItem('user')&& logindata.status ? (
+      {localStorage.getItem("user") && logindata.status ? (
         <header
           id="header"
           className="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
@@ -98,7 +98,7 @@ function Header_nav() {
                     >
                       <Link
                         id="homeMenu"
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
+                        className="nav-link u-header__nav-link  u-header__nav-link-border"
                         to={"/home"}
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -123,7 +123,7 @@ function Header_nav() {
                     >
                       <Link
                         id="yachtMenu"
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
+                        className="nav-link u-header__nav-link  u-header__nav-link-border"
                         to={"/contact"}
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -144,7 +144,7 @@ function Header_nav() {
                     >
                       <Link
                         id="pagesMegaMenu"
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle"
+                        className="nav-link u-header__nav-link "
                         href="javascript:;"
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -166,6 +166,7 @@ function Header_nav() {
                         aria-expanded="false"
                         aria-labelledby="yachtSubMenu"
                       >
+                        <i className="flaticon-user font-size-16 mr-2"></i>
                         {logindata.name}
                       </Link>
 
@@ -186,7 +187,8 @@ function Header_nav() {
                         <li>
                           <Link
                             class="nav-link u-header__sub-menu-nav-link"
-                            to={"/logout"}
+                            to={"/home"}
+                            onClick={handelLogout}
                           >
                             Logout
                           </Link>
@@ -271,7 +273,6 @@ function Header_nav() {
                       data-animation-out="fadeOut"
                     >
                       <Link
-                        id="homeMenu"
                         className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
                         to={"/home"}
                         aria-haspopup="true"
@@ -335,7 +336,6 @@ function Header_nav() {
                       class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
                       to={"/login"}
                     >
-                      
                       <span class="d-inline-block">Login</span>
                     </Link>
                   </a>
@@ -344,7 +344,6 @@ function Header_nav() {
                   <Link
                     class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
                     to={"/register"}
-                    
                   >
                     <span class="d-inline-block">Register</span>
                   </Link>

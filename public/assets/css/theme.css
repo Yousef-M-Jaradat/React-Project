@@ -3709,7 +3709,7 @@ textarea.form-control.is-invalid {
     1.9. Buttons
 \*-------------------------------------------*/
 .btn {
-  display: inline-block;
+  
   font-weight: 500;
   color: #3b444f;
   text-align: center;
@@ -3720,7 +3720,7 @@ textarea.form-control.is-invalid {
   user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
-  padding: 0.9rem 1rem;
+  padding:10px 20px;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.3125rem;
