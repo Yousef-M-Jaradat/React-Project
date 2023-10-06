@@ -1,10 +1,9 @@
 import { data } from "jquery";
 import React from "react";
 import { setStatus } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 
-function Header_nav() {
+function Navbar() {
   const data = localStorage.getItem("user");
   const logindata = JSON.parse(data);
 
@@ -356,4 +355,4 @@ function Header_nav() {
     </div>
   );
 }
-export default Header_nav;
+export default Navbar;

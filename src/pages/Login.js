@@ -2,114 +2,90 @@ import React, { useEffect, useState,useContext,createContext } from "react";
 import axios from 'axios';// Import axios
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
 import '../login.css'
+import styled from "styled-components"; // Import styled-components
+
+
+
+
 function Login() {
-  const [email, setemail] = useState(null);
-  const [password, setpassword] = useState(null);
-  const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
-  const [data, setData] = useState([]); // Initialize data as an empty array
-  const [status, setStatus] = useState(false);
-  const UserContext = createContext();
-
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
-    data.map((apidata, index) => {
-      // check the email is valid
-      if (e.target.email.value === apidata.email) { 
-        const userdata = {
-          name: apidata.firstName,
-          user_id: apidata.id,
-          status: status,
-        }; 
-        localStorage.setItem('user',JSON.stringify(userdata));
-        
-        // check the password is correct
-        if (e.target.password.value === apidata.password) {
-        localStorage.getItem("user");
-          setStatus(true);
-          userdata.status=status
-          console.log(status)
-          if (status===true) {
-            navigate("/");
-          
-          }
-        
 
-          
-        }else{
-                   navigate("/login");
+    const user = data.find((userdata) => userdata.email === email);
+    if (!user) {
+      setError("User not found");
+      return;
+    }
 
-        }
-        
-      }
+    if (user.password === password) {
+      const userData = {
+        name: user.firstName,
+        user_id: user.id,
+        status: true,
+      };
 
-      return index;
-    });
+      localStorage.setItem("user", JSON.stringify(userData));
+      navigate("/");
+    } else {
+      setError("Invalid password");
+    }
   };
-  // get the data from API
+
   useEffect(() => {
+    const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
+
     axios
       .get(apiUrl)
       .then((response) => {
-        const apiData = response.data;
-
-        // Push the API data into the dataArray
-
-        setData(apiData);
-
-        // Handle the successful response here
+        setData(response.data);
       })
       .catch((error) => {
-        // Handle any errors that occurred during the request
         console.error("Error:", error);
       });
-  });
+  }, []); // Empty dependency array for one-time API request
 
   return (
-    <div className="image">
-      <div className='login container'>
+    <div className="login-container">
       <div className="login-form-wrap">
         <h2>Login</h2>
         <form onSubmit={handleSubmit} id="login-form">
-          <p>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
             <input
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="email"
               name="email"
-              class="form-control form-control-lg"
+              className="form-control"
               value={email}
-              placeholder="Email Address"
+              placeholder="Enter your email"
               required
             />
-          </p>
-          <p>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
             <input
-              class="form-control form-control-lg"
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
+              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
               name="password"
               value={password}
-              placeholder="Password"
+              placeholder="Enter your password"
               required
             />
-          </p>
-          <p>
-            <input
-              class="btn btn-primary mb-2 col-12 "
-              type="submit"
-            />
-          </p>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button className="btn btn-primary" type="submit">
+            Log In
+          </button>
         </form>
-      </div>
       </div>
     </div>
   );

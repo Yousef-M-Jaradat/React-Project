@@ -15,7 +15,7 @@ import Booking from "./pages/booking";
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
-import Header_nav from "./pages/home/navbar";
+import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
 
@@ -27,7 +27,7 @@ function App() {
  
    return (
      <div>
-       <Header_nav />
+       <Navbar />
        <Routes>
          <Route path="/Register" element={<Register />} />
          <Route path="/Login" element={<Login />} />

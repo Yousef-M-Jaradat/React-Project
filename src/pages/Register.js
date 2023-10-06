@@ -51,68 +51,66 @@ function Register() {
   };
 
   return (
-    <div>
-      <div className="login container">
-        <div className="login-form-wrap">
-          <h2>Register</h2>
-          <form onSubmit={handleSubmit} className="loginform" id="login-form">
-            <p>
-              <input
-                class="form-control form-control-lg"
-                onChange={handlefirstName}
-                type="text"
-                id="firstName"
-                name="firstName"
-                placeholder="firstName"
-                required
-              />
-            </p>
-            <p>
-              <input
-                class="form-control form-control-lg"
-                onChange={handlelastName}
-                type="text"
-                id="lastName"
-                name="lastName"
-                placeholder="lastName"
-                required
-              />
-            </p>
-            <p>
-              <input
-                class="form-control form-control-lg"
-                onChange={handleEmail}
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-                required
-              />
-            </p>
-            <p>
-              <input
-                class="form-control form-control-lg"
-                onChange={handlePassword}
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                required
-              />
-            </p>
-            <p>
-              <input 
+    <div className="login-container">
+      <div className="login-form-wrap">
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit} id="login-form">
+          <p>
+            <input
+              className="form-control form-control-lg"
+              onChange={handlefirstName}
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="firstName"
+              required
+            />
+          </p>
+          <p>
+            <input
+              className="form-control form-control-lg"
+              onChange={handlelastName}
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="lastName"
+              required
+            />
+          </p>
+          <p>
+            <input
+              className="form-control form-control-lg"
+              onChange={handleEmail}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+          </p>
+          <p>
+            <input
+              className="form-control form-control-lg"
+              onChange={handlePassword}
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </p>
+          <p>
+            <input
               onClick={handleSubmit}
-                class="btn btn-primary mb-2 col-12 "
-                type="submit"
-                id="login"
-                value="Register"
-              />
-            </p>
-          </form>
-          <div id="create-account-wrap">
-            <p>{/* Not a member? <a href="#">Create Account</a> */}</p>
-          </div>
+              className="btn btn-primary mb-2 col-12"
+              type="submit"
+              id="login"
+              value="Register"
+            />
+          </p>
+        </form>
+        <div id="create-account-wrap">
+          <p>{/* Not a member? <a href="#">Create Account</a> */}</p>
         </div>
       </div>
     </div>
