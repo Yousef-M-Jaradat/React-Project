@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-
+import '../login.css';
+import '../userreact.jpeg'
 function Register() {
-  const [username, setUsername] = useState("");
+  const [firstName, setfirstName] = useState("");
+    const [lastName, setlastName] = useState("");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const navigate = useNavigate(); // Initialize useNavigate for navigation
-
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
+const image = "userreact.jpeg";
+  const handlefirstName = (e) => {
+    setfirstName(e.target.value);
+  };
+  const handlelastName = (e) => {
+    setlastName(e.target.value);
   };
 
   const handleEmail = (e) => {
@@ -26,9 +32,11 @@ function Register() {
 
     // Create an object to send in the request body
     const userData = {
-      username: username,
+      firstName: firstName,
+      lastName: lastName,
       email: email,
       password: password,
+      image: image,
     };
 
     axios
@@ -45,24 +53,35 @@ function Register() {
   };
 
   return (
-    <div>
-      <div id="login-form-wrap">
+    <div className="login-container">
+      <div className="login-form-wrap">
         <h2>Register</h2>
         <form onSubmit={handleSubmit} id="login-form">
           <p>
             <input
-              className="logininput"
-              onChange={handleUsername}
+              className="form-control form-control-lg"
+              onChange={handlefirstName}
               type="text"
-              id="username"
-              name="username"
-              placeholder="Username"
+              id="firstName"
+              name="firstName"
+              placeholder="firstName"
               required
             />
           </p>
           <p>
             <input
-              className="logininput"
+              className="form-control form-control-lg"
+              onChange={handlelastName}
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="lastName"
+              required
+            />
+          </p>
+          <p>
+            <input
+              className="form-control form-control-lg"
               onChange={handleEmail}
               type="email"
               id="email"
@@ -73,7 +92,7 @@ function Register() {
           </p>
           <p>
             <input
-              className="logininput"
+              className="form-control form-control-lg"
               onChange={handlePassword}
               type="password"
               id="password"
@@ -84,7 +103,8 @@ function Register() {
           </p>
           <p>
             <input
-              className="logininput"
+              onClick={handleSubmit}
+              className="btn btn-primary mb-2 col-12"
               type="submit"
               id="login"
               value="Register"

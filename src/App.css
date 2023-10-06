@@ -2,6 +2,49 @@
   text-align: center;
 }
 
+/* Pagination container */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Pagination component styles */
+.pagination {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination a.active {
+  background-color: #104d8f;
+}
+
+/* Styling for "Previous" and "Next" buttons */
+.pagination a.previous, .pagination a.next {
+  background-color: #ddd;
+}
+
+/* Styling for the "..." break element */
+.pagination a.break-me {
+  font-weight: bold;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -28,6 +71,29 @@
 .link{
   
   color: white !important;
+}
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  padding-right: 30px; /* Adjust the padding to make space for the icon */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 50px;
+  width: 250px;
+  font-size: 16px;
+  padding: 10px 20px;
+
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #999; /* Adjust the color of the icon */
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
