@@ -82,9 +82,10 @@ function Login() {
             />
           </div>
           {error && <p className="error-message">{error}</p>}
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-primary col-12" type="submit">
             Log In
           </button>
+          
         </form>
       </div>
     </div>
