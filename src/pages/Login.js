@@ -1,6 +1,7 @@
 import React, { useEffect, useState,useContext,createContext } from "react";
 import axios from 'axios';// Import axios
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
+// import '../style.css';
 import '../login.css'
 import styled from "styled-components"; // Import styled-components
 
