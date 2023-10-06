@@ -50,7 +50,7 @@ function SingleProduct()
     return (
       <main id="content">
         <div class="container">
-          <nav class="py-3" aria-label="breadcrumb">
+          {/* <nav class="py-3" aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
               <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
                 <a href="#">Home</a>
@@ -68,7 +68,7 @@ function SingleProduct()
                 Park Avenue Baker Street London
               </li>
             </ol>
-          </nav>
+          </nav> */}
         </div>
         {/* <!-- End Breadcrumb --> */}
         <div class="mb-8">
@@ -190,14 +190,14 @@ function SingleProduct()
                       <i class="flaticon-like font-size-18 text-dark"></i>
                     </a>
                   </li>
-                  <li class="list-group-item px-1">
+                  {/* <li class="list-group-item px-1">
                     <a
                       href="#"
                       class="height-45 width-45 border rounded border-width-2 flex-content-center"
                     >
                       <i class="flaticon-share font-size-18 text-dark"></i>
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div class="py-4 border-top border-bottom mb-4">
@@ -361,8 +361,8 @@ function SingleProduct()
                 <h5 class="font-size-21 font-weight-bold text-dark mb-4">
                   Location
                 </h5>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d7772.225184901051!2d80.28441927545006!3d13.092050163095971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d13.098645!2d80.2916092!4m5!1s0x3a526f5213f46501%3A0x56d2a4b14dba42f2!2sMadras%20High%20Court%2C%20High%20Ct%20Rd%2C%20Parry&#39;s%20Corner%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu%20600108!3m2!1d13.0867057!2d80.28774949999999!5e0!3m2!1sen!2sin!4v1580358870925!5m2!1sen!2sin"
+
+                <iframe src={formData.map}
                   width="100%"
                   height="480"
                   frameborder="0"
@@ -546,7 +546,8 @@ function SingleProduct()
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
-                    <div class="review">
+
+                    {/* <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
                           <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
@@ -576,7 +577,8 @@ function SingleProduct()
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+
                   </div>
                 </div>
                 <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-0">
@@ -614,14 +616,16 @@ function SingleProduct()
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
+                    
                     <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
-                          <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
+                          {/* <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
                             Was This Review...?
-                          </div>
+                          </div> */}
                         </div>
-                        <div class="col-md-6 col-lg-7 col-xl-4">
+
+                        {/* <div class="col-md-6 col-lg-7 col-xl-4">
                           <div class="d-flex justify-content-between my-lg-1">
                             <a class="text-indigo-light" href="#">
                               <i class="flaticon-like-1 font-size-15 mr-1"></i>
@@ -642,7 +646,8 @@ function SingleProduct()
                               </span>
                             </a>
                           </div>
-                        </div>
+                        </div> */}
+
                       </div>
                     </div>
                   </div>
@@ -652,7 +657,9 @@ function SingleProduct()
                 <h5 class="font-size-21 font-weight-bold text-dark mb-6">
                   Write a Review
                 </h5>
-                <div class="row">
+
+
+                {/* <div class="row">
                   <div class="col-md-4 mb-6">
                     <h6 class="font-weight-bold text-dark mb-1">Cleanliness</h6>
                     <span class="text-primary font-size-20 letter-spacing-3">
@@ -705,7 +712,9 @@ function SingleProduct()
                       <small class="far fa-smile text-muted"></small>
                     </span>
                   </div>
-                </div>
+                </div> */}
+
+
                 <form class="js-validate" novalidate="novalidate">
                   <div class="row mb-5 mb-lg-0">
                     {/* <!-- Input --> */}
