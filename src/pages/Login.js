@@ -105,8 +105,6 @@ function Login() {
             <input
               class="btn btn-primary mb-2 col-12 "
               type="submit"
-             
-             
             />
           </p>
         </form>
