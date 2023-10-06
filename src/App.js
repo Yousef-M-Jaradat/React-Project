@@ -13,7 +13,6 @@ import Home from "./pages/home/home";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
 import Aboutus from "./pages/aboutus";
-
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
