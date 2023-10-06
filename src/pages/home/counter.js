@@ -83,7 +83,6 @@ function CounterComponent() {
             </h5>
             <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
             Number of yachats
-           
             </p>
           </div>
 

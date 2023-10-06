@@ -1,5 +1,10 @@
 import React from 'react'
 import img3 from "../img1.jpg";
+import img4 from "./boat1.jpg";
+import img5 from "./boat2.jpg";
+import img6 from "./boat3.jpg";
+import img7 from "./boat4.jpg";
+
 
 export default function Aboutus() {
 
@@ -7,19 +12,19 @@ const myStyle = {
   backgroundImage: `url(${img3})`,
 };
 const imagslider1 = {
-  backgroundImage: `url(${img3})`,
+  backgroundImage: `url(${img4})`,
 };
 const imagslider2 = {
-  backgroundImage: `url(${img3})`,
+  backgroundImage: `url(${img5})`,
 };
 const imagslider3 = {
-  backgroundImage: `url(${img3})`,
+  backgroundImage: `url(${img6})`,
 };
 const imagslider4 = {
-  backgroundImage: `url(${img3})`,
+  backgroundImage: `url(${img7})`,
 };
 const imagslider5 = {
-  backgroundImage: `url(${img3})`,
+  backgroundImage: `url(${img6})`,
 };
 const imagefluid1 = {
   backgroundImage: `url(${img3})`,

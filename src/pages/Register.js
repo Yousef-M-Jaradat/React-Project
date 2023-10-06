@@ -11,7 +11,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const navigate = useNavigate(); // Initialize useNavigate for navigation
-const image = "../userreact.jpeg";
+const image = "userreact.jpeg";
   const handlefirstName = (e) => {
     setfirstName(e.target.value);
   };
