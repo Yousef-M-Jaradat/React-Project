@@ -13,6 +13,7 @@ function Yacht() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [data, setData] = useState([]);
+  const [selectedBeds, setSelectedBeds] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
 
@@ -63,16 +64,23 @@ function Yacht() {
     return price >= min && price <= max;
   });
 
+
+  const handleSelectChange = (event) => {
+    setSelectedBeds(event.target.value);
+  };
+
   const handleSearch = () => {
-    // Your filtering logic here
-    // This logic is already in your code:
-  
-    const filteredData = currentData.filter((yacht) => {
+    // Filter by price
+    const priceFilteredData = currentData.filter((yacht) => {
       const price = parseFloat(yacht.price);
       const min = minPrice !== "" ? parseFloat(minPrice) : 0;
       const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
       return price >= min && price <= max;
     });
+
+    if (selectedBeds !== "") {
+      filteredData = filteredData.filter((yacht) => yacht.beds === parseInt(selectedBeds));
+    }
   
     // Update the filtered data with the search results
     // You may also want to reset the current page to 0
@@ -220,44 +228,14 @@ function Yacht() {
     </div>
   </div>
 </div>
-
-                          <div
-                            id="shopCardOne"
-                            class="collapse show"
-                            aria-labelledby="shopCardHeadingOne"
-                            data-parent="#shopCartAccordion"
-                          >
-                            <div class="card-body pt-0 px-5">
-                              <div class="pb-3 mb-1 d-flex text-lh-1">
-                                <span>£</span>
-                                <span
-                                  id="rangeSliderExample3MinResult"
-                                  class=""
-                                ></span>
-                                <span class="mx-0dot5"> — </span>
-                                <span>£</span>
-                                <span
-                                  id="rangeSliderExample3MaxResult"
-                                  class=""
-                                ></span>
-                              </div>
-                              <input
-                                class="js-range-slider"
-                                type="text"
-                                data-extra-classes="u-range-slider height-35"
-                                data-type="double"
-                                data-grid="false"
-                                data-hide-from-to="true"
-                                data-min="0"
-                                data-max="3456"
-                                data-from="200"
-                                data-to="3456"
-                                data-prefix="$"
-                                data-result-min="#rangeSliderExample3MinResult"
-                                data-result-max="#rangeSliderExample3MaxResult"
-                              ></input>
-                            </div>
-                          </div>
+<label>Number of beds</label>
+      <select onChange={(e) =>  setSelectedBeds(e.target.value)} value={selectedBeds}>
+        <option value="">All</option>
+        <option value="1">1 bed</option>
+        <option value="2">2 beds</option>
+        <option value="7">7 beds</option>
+      
+      </select>
                         </div>
                       </div>
 

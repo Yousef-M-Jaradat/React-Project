@@ -20,7 +20,7 @@ import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
-import Contact from './pages/Contact';
+ import Contact from './pages/contact';
 
 // import Product from "./pages/products/products";
 //import "./style.css";

@@ -12,7 +12,7 @@ function Footer(){
   const id4 = 4;
 
   const handleButtonClick = (id) => {
-    navigate(`/yacht/${id}`);
+    navigate(`/yachts/${id}`);
   };
   
 
