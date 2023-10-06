@@ -33,6 +33,7 @@ function Login() {
           console.log(status)
           if (status===true) {
             navigate("/");
+          
           }
         
 
@@ -104,8 +105,8 @@ function Login() {
             <input
               class="btn btn-primary mb-2 col-12 "
               type="submit"
-              id="login"
-              value="login"
+             
+             
             />
           </p>
         </form>
