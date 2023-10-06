@@ -326,7 +326,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id4)}
         ></input>
         <label class="custom-control-label" for="brandvalkenburg2">
-          Antalya
+        Bodrum
         </label>
       </div>
     </div>

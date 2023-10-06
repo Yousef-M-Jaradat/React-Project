@@ -12,7 +12,7 @@ function Category() {
     1: { name: 'Aqaba', image: 'url(https://traveler.marriott.com/wp-content/uploads/2023/03/aqaba-jordan-1288858945.jpg)' },
     2: { name: 'Abu Dhabi', image: 'url(https://a.cdn-hotels.com/gdcs/production62/d281/a24b4a56-8273-41a9-b9db-09d6b33fdb4e.jpg?impolicy=fcrop&w=800&h=533&q=medium)' },
     3: { name: 'Miami', image: 'url(https://www.worldatlas.com/upload/df/29/12/shutterstock-490898872.jpg)' },
-    4: { name: 'Antalya', image: 'url(https://media.istockphoto.com/id/1161769559/photo/panoramic-bird-view-of-antalya-and-mediterranean-seacoast-and-beach-with-a-paraglider-antalya.jpg?s=612x612&w=0&k=20&c=BtpqGt8GwIu66v49mKIkh17yTd3FPyAOmPORB-L6zt0=)' },
+    4: { name: 'Bodrum', image: 'url(https://a.cdn-hotels.com/gdcs/production198/d1616/28d46508-b839-4fb6-8da8-637f84bf71fd.jpg)' },
   };
 
   const handleButtonClick = (id) => {

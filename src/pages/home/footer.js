@@ -90,9 +90,9 @@ return(
                             
                             <ul class="list-group list-group-flush list-group-borderless mb-0">
                                 <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id1)}>Aqaba</button></li>
-                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id2)}>Dubai</button></li>
-                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id3)}>Antalya</button></li>
-                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id4)}>Miami</button></li>
+                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id2)}>Abu Dhabi</button></li>
+                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id3)}>Miami</button></li>
+                                <li><button class="list-group-item list-group-item-action text-decoration-on-hover" onClick={() => handleButtonClick(id4)}>Bodrum</button></li>
                             </ul>
                           
                         </div>
