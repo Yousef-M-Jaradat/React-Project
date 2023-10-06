@@ -15,6 +15,7 @@ function Yacht() {
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [selectedBeds, setSelectedBeds] = useState("");
+  const [selectedSpeed, setselectedSpeed] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
 
@@ -29,25 +30,6 @@ function Yacht() {
   const handleButtonClick = (id) => {
     navigate(`/yachts/${id}`);
   };
-
-
-//   useEffect(() => {
-//     axios
-//       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
-//         params: {
-//           category_id: id,
-//         },
-//       })
-//       .then((response) => {
-//         setData(response.data);
-//       });
-      
-//   }, [id]);
-
-
-
-
-
  
 useEffect(() => {
   axios
@@ -75,36 +57,24 @@ const handleSearchInputChange = (event) => {
   const currentData = data.slice(offset, offset + itemsPerPage);
 
   
-  const filteredData = currentData.filter((yacht) => {
+  let filteredData = currentData.filter((yacht) => {
     const price = parseFloat(yacht.price);
     const min = minPrice !== "" ? parseFloat(minPrice) : 0;
     const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
     return price >= min && price <= max;
   });
 
-
-  const handleSelectChange = (event) => {
-    setSelectedBeds(event.target.value);
-  };
-
-  const handleSearch = () => {
-    // Filter by price
-    const priceFilteredData = currentData.filter((yacht) => {
-      const price = parseFloat(yacht.price);
-      const min = minPrice !== "" ? parseFloat(minPrice) : 0;
-      const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
-      return price >= min && price <= max;
-    });
-
     if (selectedBeds !== "") {
-      filteredData = filteredData.filter((yacht) => yacht.beds === parseInt(selectedBeds));
-    }
-  
-    // Update the filtered data with the search results
-    // You may also want to reset the current page to 0
-    setData(filteredData);
-    setCurrentPage(0);
+    
+      filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
+      
   };
+
+  if (selectedSpeed !== "") {
+    
+    filteredData = filteredData.filter((yacht) => yacht.speed === selectedSpeed);
+    
+};
 
   return (
     <div className='mt-10'>
@@ -205,18 +175,21 @@ const handleSearchInputChange = (event) => {
                     </div>
                   
 
-                    <div class="sidenav border border-color-8 rounded-xs">
+                    <div className="sidenav border border-color-8 rounded-xs">
                       <div
                         id="shopCartAccordion"
-                        class="accordion rounded shadow-none"
+                        className="accordion rounded shadow-none"
                       >
-                        <div class="border-0">
-                        <div class="pb-4 mb-2">
-  <span class="d-block text-gray-1 text-left font-weight-normal mb-0">
+                        <div className="border-0">
+                        <div className="pb-4 mb-2">
+                           <span class="font-weight-bold font-size-19 text-dark mb-3 mt-4 mx-2">
+                                      Filters
+                                    </span>
+  <span className="d-block text-gray-1 text-left font-weight-normal mb-0 mt-3 mx-2">
     Price Range ($)
   </span>
-  <div class="border-bottom border-width-2 border-color-1 mb-4">
-    <div class="input-group">
+  <div className="border-bottom border-width-2 border-color-1 mx-2 " >
+    <div className="input-group">
       <input
         type="number"
         placeholder="Min Price"
@@ -234,14 +207,30 @@ const handleSearchInputChange = (event) => {
     </div>
   </div>
 </div>
-<label>Number of beds</label>
-      <select onChange={(e) =>  setSelectedBeds(e.target.value)} value={selectedBeds}>
+
+<label className=" text-gray-1 text-left font-weight-normal mb-0 p-2" >Number of beds:</label> 
+      <select className=" w-50 mb-3 "  onChange={(e) =>  setSelectedBeds(e.target.value)} value={selectedBeds}>
         <option value="">All</option>
-        <option value="1">1 bed</option>
-        <option value="2">2 beds</option>
+        <option value="3">3 beds</option>
+        <option value="4">4 beds</option>
+        <option value="5">5 beds</option>
+        <option value="6">6 beds</option>
         <option value="7">7 beds</option>
-      
+        <option value="8">8 beds</option>
+        <option value="9">9 beds</option>
+        <option value="10">10 beds</option>
       </select>
+    
+      <div>
+       <label className=" text-gray-1 text-left font-weight-normal mb-0 p-2"  >Speed:</label>
+      <select className=" w-75 mb-4" onChange={(e) =>  setselectedSpeed(e.target.value)} value={selectedSpeed}>
+        <option value="">All</option>
+        <option value="120">120 </option>
+        <option value="130">130 </option>
+        <option value="140">140 </option>
+   
+      </select>
+      </div>
                         </div>
                       </div>
 
@@ -265,7 +254,7 @@ const handleSearchInputChange = (event) => {
                               >
                                 <span class="row align-items-center">
                                   <span class="col-9">
-                                    <span class="font-weight-bold font-size-17 text-dark mb-3">
+                                    <span class="font-weight-bold font-size-19 text-dark mb-3">
                                       Categories
                                     </span>
                                   </span>
@@ -309,7 +298,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id2)}
         ></input>
         <label class="custom-control-label" for="brandrotterdam">
-          AbuDubai
+        Abu Dhabi
         </label>
       </div>
     </div>
@@ -323,7 +312,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id3)}
         ></input>
         <label class="custom-control-label" for="brandvalkenburg">
-          Amman
+          Miami
         </label>
       </div>
     </div>
@@ -337,7 +326,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id4)}
         ></input>
         <label class="custom-control-label" for="brandvalkenburg2">
-          Amman
+          Antalya
         </label>
       </div>
     </div>
@@ -519,7 +508,7 @@ const handleSearchInputChange = (event) => {
                                       >
                                         <div className="d-flex flex-wrap flex-xl-nowrap align-items-center font-size-14 text-gray-1">
                                           <i className="icon flaticon-placeholder mr-2 font-size-20"></i>{" "}
-                                          Greater London, United Kingdom
+                                          {yacht.location}
                                         </div>
                                       </a>
                                       <div className="mb-3">

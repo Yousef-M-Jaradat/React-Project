@@ -7,6 +7,9 @@ return (
   <div>
     
     <Header />
+    <br></br>
+    <br></br>
+    <br></br>
     <CounterComponent />
     <Category />
   </div>
