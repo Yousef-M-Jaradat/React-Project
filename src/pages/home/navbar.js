@@ -90,7 +90,7 @@ function Navbar() {
                 >
                   <ul className="navbar-nav u-header__navbar-nav">
                     <li
-                      className="nav-item hs-has-sub-menu u-header__nav-item"
+                      className="nav-item  u-header__nav-item"
                       data-event="hover"
                       data-animation-in="slideInUp"
                       data-animation-out="fadeOut"
@@ -266,13 +266,13 @@ function Navbar() {
                 >
                   <ul className="navbar-nav u-header__navbar-nav">
                     <li
-                      className="nav-item hs-has-sub-menu u-header__nav-item"
+                      className="nav-item  u-header__nav-item"
                       data-event="hover"
                       data-animation-in="slideInUp"
                       data-animation-out="fadeOut"
                     >
                       <Link
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
+                        className="nav-link u-header__nav-link  u-header__nav-link-border"
                         to={"/home"}
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -297,7 +297,7 @@ function Navbar() {
                     >
                       <Link
                         id="yachtMenu"
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
+                        className="nav-link u-header__nav-link  u-header__nav-link-border"
                         to={"/contact"}
                         aria-haspopup="true"
                         aria-expanded="false"
@@ -318,7 +318,7 @@ function Navbar() {
                     >
                       <Link
                         id="pagesMegaMenu"
-                        className="nav-link u-header__nav-link u-header__nav-link-toggle"
+                        className="nav-link u-header__nav-link "
                         href="javascript:;"
                         aria-haspopup="true"
                         aria-expanded="false"
