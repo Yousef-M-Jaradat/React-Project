@@ -12,12 +12,15 @@ import Login from "./pages/Login";
 import Home from "./pages/home/home";
 import Register from "./pages/Register";
 import Booking from "./pages/booking";
+import Aboutus from "./pages/aboutus";
+
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
+import Contact from './pages/Contact';
 
 function App() {
   const { pathname } = useLocation(); // Use 'useLocation' to get the current path
@@ -38,6 +41,9 @@ function App() {
          <Route path="/booking" element={<Booking />} />
          <Route path="/profile" element={<Profile />} />
          {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
+         <Route path="/about" element={<Aboutus />} />
+         <Route path="/contact" element={<Contact />} />
+
          <Route path="/yachts/:id" element={<Yacht />} />
          <Route path="/products/:id" element={<SingleProduct />} />
          {/* <Route path="/product" element={<Product />} /> */}

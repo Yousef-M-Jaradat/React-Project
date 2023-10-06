@@ -10,7 +10,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const navigate = useNavigate(); // Initialize useNavigate for navigation
-
+const image='http://64db17df593f57e435b06a91'
   const handlefirstName = (e) => {
     setfirstName(e.target.value);
   };
@@ -35,6 +35,7 @@ function Register() {
       lastName: lastName,
       email: email,
       password: password,
+      password: image,
     };
 
     axios
