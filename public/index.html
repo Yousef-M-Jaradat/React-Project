@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png">
 
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Rubik:300,400,500,700,900&display=swap" rel="stylesheet">
@@ -101,6 +102,8 @@
 
 
 <!-- JS Plugins Init. -->
+
+
 <script>
     $(window).on('load', function () {
         // initialization of HSMegaMenu component
@@ -143,6 +146,42 @@
         // initialization of datepicker
         $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
     });
+
+      $(window).on('load', function () {
+          // initialization of HSMegaMenu component
+          $('.js-mega-menu').HSMegaMenu({
+            event: 'hover',
+            pageContainer: $('.container'),
+            breakpoint: 1199.98,
+            hideTimeOut: 0
+          });
+
+          // initialization of svg injector module
+          $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
+        });
+
+        $(document).on('ready', function () {
+          // initialization of header
+          $.HSCore.components.HSHeader.init($('#header'));
+
+          // initialization of unfold component
+          $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+            afterOpen: function () {
+              $(this).find('input[type="search"]').focus();
+            }
+          });
+
+          // initialization of show animations
+          $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+          // initialization of go to
+          $.HSCore.components.HSGoTo.init('.js-go-to');
+
+          $.HSCore.components.HSSelectPicker.init('.js-select');
+
+          // initialization of datepicker
+          $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
+        });
 </script>
 
   </body>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate ,useParams} from "react-router-dom";
 import Swal from "sweetalert2";
 
 function SingleProduct() {
@@ -909,12 +909,12 @@ function SingleProduct() {
                     </div>
                     {/* <!-- End Input --> */}
                     <div class="text-center">
-                      <a
-                        href="../yacht/yacht-booking.html"
-                        class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
-                      >
-                        Book Now
-                      </a>
+                   
+                       
+                        
+                     <Link to={'/booking'} class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"> Book Now</Link>
+                       
+                   
                     </div>
                   </div>
                 </div>

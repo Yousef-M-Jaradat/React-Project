@@ -1,5 +1,7 @@
 import React from 'react'
 import img1 from "../img1.jpg";
+import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
+
 export default function Contact() {
 
 const myStyle = {
