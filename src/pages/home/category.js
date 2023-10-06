@@ -12,7 +12,7 @@ function Category() {
 
   const handleButtonClick = (id) => {
     // Use the navigate function to go to the Yacht component with the specified id
-    navigate(`/yacht/${id}`);
+    navigate(`/yachts/${id}`);
   };
   
 

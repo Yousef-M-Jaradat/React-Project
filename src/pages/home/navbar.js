@@ -14,7 +14,6 @@ import Category from "../home/category";
 
 
 
-
 function Navbar() {
   return (
     <div>
