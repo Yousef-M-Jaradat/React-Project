@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useParams } from "react-router-dom";
 
 function SingleProduct() {
   let { id } = useParams();

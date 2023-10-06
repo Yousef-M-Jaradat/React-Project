@@ -113,7 +113,24 @@ function Navbar() {
                         style={myStyle}
                       ></ul>
                     </li>
-
+                    <li
+                      className="nav-item hs-has-sub-menu u-header__nav-item"
+                      data-event="hover"
+                      data-animation-in="slideInUp"
+                      data-animation-out="fadeOut"
+                    >
+                      <Link
+                        id="yachtMenu"
+                        className="nav-link u-header__nav-link  u-header__nav-link-border"
+                        to={"/about"}
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-labelledby="yachtSubMenu"
+                      >
+                        {" "}
+                        About
+                      </Link>
+                    </li>
                     <li
                       className="nav-item hs-has-sub-menu u-header__nav-item"
                       data-event="hover"
@@ -289,6 +306,17 @@ function Navbar() {
                       ></ul>
                     </li>
 
+                    <Link
+                      id="yachtMenu"
+                      className="nav-link u-header__nav-link  u-header__nav-link-border"
+                      to={"/about"}
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      aria-labelledby="yachtSubMenu"
+                    >
+                      {" "}
+                      About
+                    </Link>
                     <li
                       className="nav-item hs-has-sub-menu u-header__nav-item"
                       data-event="hover"
