@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
-
+import { useNavigate } from 'react-router-dom';
 
 // Define the Yacht component
 function Yacht() {
@@ -12,9 +12,22 @@ function Yacht() {
  
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
+
+
+  const navigate = useNavigate();
+
+  const id1 = 1;
+  const id2 = 2;
+  const id3 = 3;
+  const id4 = 4;
+
+  const handleButtonClick = (id) => {
+    navigate(`/yachts/${id}`);
+  };
 
 
 //   useEffect(() => {
@@ -35,16 +48,21 @@ function Yacht() {
 
 
  
-  useEffect(() => {
-    axios
-      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts
-      
-      `)
-      .then((response) => {
-        const filteredData = response.data.filter((yacht) => yacht.category_id === parseInt(id));
-        setData(filteredData);
-      })
-  }, [id]);
+useEffect(() => {
+  axios
+    .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
+    .then((response) => {
+      const filteredData = response.data.filter((yacht) => {
+        return yacht.category_id === parseInt(id) &&
+          yacht.name.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+      setData(filteredData);
+    });
+}, [id, searchQuery]);
+
+const handleSearchInputChange = (event) => {
+  setSearchQuery(event.target.value);
+};
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -63,22 +81,6 @@ function Yacht() {
     return price >= min && price <= max;
   });
 
-  const handleSearch = () => {
-    // Your filtering logic here
-    // This logic is already in your code:
-  
-    const filteredData = currentData.filter((yacht) => {
-      const price = parseFloat(yacht.price);
-      const min = minPrice !== "" ? parseFloat(minPrice) : 0;
-      const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
-      return price >= min && price <= max;
-    });
-  
-    // Update the filtered data with the search results
-    // You may also want to reset the current page to 0
-    setData(filteredData);
-    setCurrentPage(0);
-  };
 
   return (
     <div className='mt-10'>
@@ -164,32 +166,20 @@ function Yacht() {
                             </div>
                           </div>
 
-                          <div class="text-center">
-                 
-                          <button
-    type="submit"
-    className="btn btn-primary height-60 w-100 font-weight-bold mb-xl-0 mb-lg-1 transition-3d-hover"
-    onClick={handleSearch}
-  >
-    <i className="flaticon-magnifying-glass mr-2 font-size-17"></i>
-    Search
-  </button>
-                          </div>
+                          <div className="search-container">
+  <input
+    type="text"
+    placeholder="Search by name..."
+    value={searchQuery}
+    onChange={handleSearchInputChange}
+    className="search-input"
+  />
+  <i className="fa fa-search search-icon"></i>
+</div>
                         </div>
                       </div>
                     </div>
-                    <div class="pb-4 mb-2">
-                      <a
-                        href="https://goo.gl/maps/kCVqYkjHX3XvoC4B9"
-                        class="d-block border border-color-1 rounded-xs"
-                      >
-                        <img
-                          src="../../assets/img/map-markers/map.jpg"
-                          alt=""
-                          width="100%"
-                        ></img>
-                      </a>
-                    </div>
+                  
 
                     <div class="sidenav border border-color-8 rounded-xs">
                       <div
@@ -295,123 +285,71 @@ function Yacht() {
                             </h3>
                           </div>
                           <div
-                            id="cityCategoryOne"
-                            class="collapse show"
-                            aria-labelledby="cityCategoryHeadingOne"
-                            data-parent="#cityCategoryAccordion"
-                          >
-                            <div class="card-body pt-0 mt-1 px-5 pb-4">
-                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input"
-                                    id="brandamsterdam"
-                                  ></input>
-                                  <label
-                                    class="custom-control-label"
-                                    for="brandamsterdam"
-                                  >
-                                    Boat
-                                  </label>
-                                </div>
-                              </div>
-                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input"
-                                    id="brandrotterdam"
-                                  ></input>
-                                  <label
-                                    class="custom-control-label"
-                                    for="brandrotterdam"
-                                  >
-                                    Canoe
-                                  </label>
-                                </div>
-                              </div>
-                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input"
-                                    id="brandvalkenburg"
-                                  ></input>
-                                  <label
-                                    class="custom-control-label"
-                                    for="brandvalkenburg"
-                                  >
-                                    Sailboat
-                                  </label>
-                                </div>
-                              </div>
-                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                <div class="custom-control custom-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    class="custom-control-input"
-                                    id="brandeindhoven"
-                                  ></input>
-                                  <label
-                                    class="custom-control-label"
-                                    for="brandeindhoven"
-                                  >
-                                    Yacht
-                                  </label>
-                                </div>
-                              </div>
+  id="cityCategoryOne"
+  class="collapse show"
+  aria-labelledby="cityCategoryHeadingOne"
+  data-parent="#cityCategoryAccordion"
+>
+  <div class="card-body pt-0 mt-1 px-5 pb-4">
+    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          class="custom-control-input"
+          id="brandamsterdam"
+          name="cityRadio"
+          onClick={() => handleButtonClick(id1)}
+        ></input>
+        <label class="custom-control-label" for="brandamsterdam">
+          Aqaba
+        </label>
+      </div>
+    </div>
+    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          class="custom-control-input"
+          id="brandrotterdam"
+          name="cityRadio"
+          onClick={() => handleButtonClick(id2)}
+        ></input>
+        <label class="custom-control-label" for="brandrotterdam">
+          AbuDubai
+        </label>
+      </div>
+    </div>
+    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          class="custom-control-input"
+          id="brandvalkenburg"
+          name="cityRadio"
+          onClick={() => handleButtonClick(id3)}
+        ></input>
+        <label class="custom-control-label" for="brandvalkenburg">
+          Amman
+        </label>
+      </div>
+    </div>
+    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+      <div class="custom-control custom-radio">
+        <input
+          type="radio"
+          class="custom-control-input"
+          id="brandvalkenburg2"
+          name="cityRadio"
+          onClick={() => handleButtonClick(id4)}
+        ></input>
+        <label class="custom-control-label" for="brandvalkenburg2">
+          Amman
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
 
-                              <div class="collapse" id="collapseBrand3">
-                                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                  <div class="custom-control custom-checkbox">
-                                    <input
-                                      type="checkbox"
-                                      class="custom-control-input"
-                                      id="gucci"
-                                    ></input>
-                                    <label
-                                      class="custom-control-label"
-                                      for="gucci"
-                                    >
-                                      Bowrider
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-                                  <div class="custom-control custom-checkbox">
-                                    <input
-                                      type="checkbox"
-                                      class="custom-control-input"
-                                      id="mango"
-                                    ></input>
-                                    <label
-                                      class="custom-control-label"
-                                      for="mango"
-                                    >
-                                      Fishing
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <a
-                                class="link link-collapse small font-size-1 mt-2"
-                                data-toggle="collapse"
-                                href="#collapseBrand3"
-                                role="button"
-                                aria-expanded="false"
-                                aria-controls="collapseBrand3"
-                              >
-                                <span class="link-collapse__default font-size-14">
-                                  Show all
-                                </span>
-                                <span class="link-collapse__active font-size-14">
-                                  Show less
-                                </span>
-                              </a>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -577,7 +515,7 @@ function Yacht() {
                                     </div>
                                     <a href="../yacht/yacht-single-v1.html">
                                       <span className="font-weight-bold font-size-17 text-dark d-flex mb-1">
-                                        {yacht.name}
+                                     {yacht.name}
                                       </span>
                                     </a>
                                     <div className="card-body p-0">

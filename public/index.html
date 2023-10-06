@@ -70,52 +70,56 @@
 <script src="%PUBLIC_URL%/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 <!-- JS Implementing Plugins -->
-<script src="%PUBLIC_URL%/assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
-<script src="%PUBLIC_URL%/documentation/assets/vendor/jquery-ui/jquery-ui.core.min.js"></script>
-<script src="%PUBLIC_URL%/documentation/assets/vendor/jquery-ui/ui/widgets/menu.js"></script>
-<script src="%PUBLIC_URL%/documentation/assets/vendor/jquery-ui/ui/widgets/mouse.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/svg-injector/dist/svg-injector.min.js"></script>
-<script src="%PUBLIC_URL%/documentation/assets/vendor/jquery-ui/ui/widgets/autocomplete.js"></script>
-<script src="%PUBLIC_URL%/documentation/assets/vendor/prism/prism.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/fancybox/jquery.fancybox.min.js"></script>
+        <script src="../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+        <script src="../../documentation/assets/vendor/jquery-ui/jquery-ui.core.min.js"></script>
+        <script src="../../documentation/assets/vendor/jquery-ui/ui/widgets/menu.js"></script>
+        <script src="../../documentation/assets/vendor/jquery-ui/ui/widgets/mouse.js"></script>
+        <script src="../../assets/vendor/svg-injector/dist/svg-injector.min.js"></script>
+        <script src="../../documentation/assets/vendor/jquery-ui/ui/widgets/autocomplete.js"></script>
+        <script src="../../documentation/assets/vendor/prism/prism.js"></script>
+        <script src="../../assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="../../assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="../../assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="../../assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
+        <script src="../../assets/vendor/fancybox/jquery.fancybox.min.js"></script>
 
-<!-- JS MyTravel -->
-<script src="%PUBLIC_URL%/assets/js/hs.core.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.header.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.unfold.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.go-to.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.validation.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.show-animation.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.selectpicker.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.range-datepicker.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.svg-injector.js"></script>
-<script src="%PUBLIC_URL%/assets/vendor/slick-carousel/slick/slick.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.slick-carousel.js"></script>
-<script src="%PUBLIC_URL%/assets/js/components/hs.fancybox.js"></script>
+
+        <!-- JS MyTravel -->
+        <script src="../../assets/js/hs.core.js"></script>
+        <script src="../../assets/js/components/hs.header.js"></script>
+        <script src="../../assets/js/components/hs.unfold.js"></script>
+        <script src="../../assets/js/components/hs.go-to.js"></script>
+        <script src="../../assets/js/components/hs.validation.js"></script>
+        <script src="../../assets/js/components/hs.show-animation.js"></script>
+        <script src="../../assets/js/components/hs.selectpicker.js"></script>
+        <script src="../../assets/js/components/hs.range-datepicker.js"></script>
+        <script src="../../assets/js/components/hs.svg-injector.js"></script>
+        <script src="../../assets/vendor/slick-carousel/slick/slick.js"></script>
+        <script src="../../assets/js/components/hs.slick-carousel.js"></script>
+        <script src="../../assets/js/components/hs.fancybox.js"></script>
 
 
 
 
 <!-- JS Plugins Init. -->
 <script>
-    $(window).on('load', function () {
+   
+
+
+     $(window).on('load', function () {
         // initialization of HSMegaMenu component
         $('.js-mega-menu').HSMegaMenu({
-            event: 'hover',
-            pageContainer: $('.container'),
-            breakpoint: 1199.98,
-            hideTimeOut: 0
+          event: 'hover',
+          pageContainer: $('.container'),
+          breakpoint: 1199.98,
+          hideTimeOut: 0
         });
 
         // initialization of svg injector module
         $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
-    });
+      });
 
-    $(document).on('ready', function () {
+      $(document).on('ready', function () {
         // initialization of header
         $.HSCore.components.HSHeader.init($('#header'));
 
@@ -137,12 +141,14 @@
         // initialization of slick carousel
         $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
 
-         // initialization of popups
+        // initialization of popups
         $.HSCore.components.HSFancyBox.init('.js-fancybox');
 
         // initialization of datepicker
         $.HSCore.components.HSRangeDatepicker.init('.js-range-datepicker');
-    });
+
+
+      });
 </script>
 
   </body>
