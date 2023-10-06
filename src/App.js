@@ -41,7 +41,7 @@ function App() {
          <Route path="/profile" element={<Profile />} />
          {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
          <Route path="/about" element={<Aboutus />} />
-         <Route path="/contact" element={<Contact />} />
+         {/* <Route path="/contact" element={<Contact />} /> */}
 
          <Route path="/yachts/:id" element={<Yacht />} />
          <Route path="/products/:id" element={<SingleProduct />} />

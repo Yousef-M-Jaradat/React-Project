@@ -1,188 +1,192 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useNavigate ,useParams} from "react-router-dom";
-import Swal from "sweetalert2";
+  import React, { useEffect, useState } from "react";
+  import axios from "axios";
+  import { useParams } from "react-router-dom";
 
-function SingleProduct() {
-  let { id } = useParams();
-  const navigate = useNavigate();
+  import { useNavigate } from "react-router-dom";
+  import Swal from "sweetalert2";
 
-  const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    category_id: "",
-    location: "",
-    image1: "",
-    image2: "",
-    image3: "",
-    image4: "",
-    description: "",
-    price: "",
-    speed: "",
-    size: "",
-    person: "",
-    beds: "",
-    fuelCapacity: "",
-  });
-  const [bookingData, setBookingData] = useState({});
-  const [related, setRelatedData] = useState({});
+  function SingleProduct() {
+    let { id } = useParams();
+    const navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+      id: "",
+      name: "",
+      category_id: "",
+      location: "",
+      image1: "",
+      image2: "",
+      image3: "",
+      image4: "",
+      description: "",
+      price: "",
+      speed: "",
+      size: "",
+      person: "",
+      beds: "",
+      fuelCapacity: "",
+    });
+    const [bookingData, setBookingData] = useState({});
+    const [related, setRelatedData] = useState({});
 
     useEffect(() => {
-      // Fetch data from one API
-    const fetchEventData = async () => {
+      // Fetch data from the API when the component mounts
+      const fetchEventData = async () => {
         try {
-        const response = await axios.get(
-          "https://651db05044e393af2d5a346e.mockapi.io/yachts/1" // Replace with the actual API endpoint
-        );
-        if (response.status === 200) {
-          setFormData(response.data);
-          setRelatedData(response.data);
+          const response = await axios.get(
+            `          https://651db05044e393af2d5a346e.mockapi.io/yachts/${id}`
+          );
+          if (response.status === 200) {
+            setFormData(response.data);
+            setRelatedData(response.data);
 
-           
-            // setRelatedData(filteredData);
-            console.log(related);
-        } else {
+            
+              // setRelatedData(filteredData);
+              console.log(related);
+          } else {
+            // Handle error if needed
+          }
+        } catch (error) {
           // Handle error if needed
         }
-      } catch (error) {
-        // Handle error if needed
+      };
+      //  setBookingData((prevData) => ({
+      //    ...prevData,
+      //    date: "" // Update with your default date value
+      //  }));
+
+      // Call the function to fetch event data
+      fetchEventData();
+    }, []);
+
+    // const handleDateChange = (e) => {
+    //   const { value } = e.target;
+    //   setBookingData((prevData) => ({
+    //     ...prevData,
+    //     date: value,
+    //   }));
+    // };
+
+    const handlePost = (e) => {
+      e.preventDefault();
+
+      const startDate = new Date(bookingData.startDate);
+      const endDate = new Date(bookingData.endDate);
+      const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+      const userData = localStorage.getItem("user");
+      const user = JSON.parse(userData);
+      if (localStorage.getItem("user")) {
+        axios
+          .post("https://651a606d340309952f0d2d8f.mockapi.io/booking", {
+            ...bookingData,
+            totalPrice: formData.price * nights,
+            yachtId: id,
+            nights: nights,
+            userId:user.user_id,
+          })
+          .then((response) => {
+            setBookingData({
+              userId: "",
+              productId: "",
+              date: "",
+              totalPrice: "",
+              nights: "",
+            });
+
+            Swal.fire({
+              icon: "success",
+              title: "Data saved!",
+              text: "You will be redirected to /booking.",
+            }).then(() => {
+              navigate("/booking");
+            });
+          })
+          .catch((error) => {
+            // Handle error if needed
+          });
+      } else {
+        // User is logged in, add data to the cart and navigate to "/login"
+        const cartData = {
+          yachtId: id,
+          startDate: startDate,
+          endDate: endDate,
+          nights: nights,
+          totalPrice: formData.price * nights,
+        };
+
+        const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        existingCart.push(cartData);
+
+        localStorage.setItem("cart", JSON.stringify(existingCart));
+        console.log(cartData);
+        console.log(formData.startDate);
+        Swal.fire({
+          icon: "success",
+          title: "Item added to cart!",
+          text: "You will be redirected to /login.",
+        }).then(() => {
+          navigate("/login");
+        });
       }
     };
-    //  setBookingData((prevData) => ({
-    //    ...prevData,
-    //    date: "" // Update with your default date value
-    //  }));
-
-    // Call the function to fetch event data
-    fetchEventData();
-  }, []);
-
-  // const handleDateChange = (e) => {
-  //   const { value } = e.target;
-  //   setBookingData((prevData) => ({
-  //     ...prevData,
-  //     date: value,
-  //   }));
-  // };
-
-  const handlePost = (e) => {
-    e.preventDefault();
-
-    const startDate = new Date(bookingData.startDate);
-    const endDate = new Date(bookingData.endDate);
-    const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
-    if (!sessionStorage.getItem("user")) {
-      axios
-        .post("https://651a606d340309952f0d2d8f.mockapi.io/users", {
-          ...bookingData,
-          totalPrice: formData.price * nights,
-          productId: id,
-          nights: nights,
-        })
-        .then((response) => {
-          setBookingData({
-            userId: "",
-            productId: "",
-            date: "",
-            totalPrice: "",
-            nights: "",
-          });
-
-          Swal.fire({
-            icon: "success",
-            title: "Data saved!",
-            text: "You will be redirected to /booking.",
-          }).then(() => {
-            navigate("/booking");
-          });
-        })
-        .catch((error) => {
-          // Handle error if needed
-        });
-    } else {
-      // User is logged in, add data to the cart and navigate to "/login"
-      const cartData = {
-        productId: id,
-        userId: formData.user_id,
-        startDate: formData.startDate,
-        endDate: formData.endDate,
-        nights: nights,
-        totalPrice: formData.price * nights,
-      };
-
-      const existingCart = JSON.parse(sessionStorage.getItem("cart")) || [];
-
-      existingCart.push(cartData);
-
-      sessionStorage.setItem("cart", JSON.stringify(existingCart));
-
-      // Show a success SweetAlert
-      Swal.fire({
-        icon: "success",
-        title: "Item added to cart!",
-        text: "You will be redirected to /login.",
-      }).then(() => {
-        navigate("/login");
-      });
-    }
-  };
-  return (
-    <main id="content ">
-      <div class="container">
-        <nav class="py-3" aria-label="breadcrumb">
-          <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
-            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-              <a href="#">Home</a>
-            </li>
-            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-              <a href="#">All yachts</a>
-            </li>
-            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-              <a href="#">Yachts</a>
-            </li>
-            <li
-              class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
-              aria-current="page"
-            >
-              Park Avenue Baker Street London
-            </li>
-          </ol>
-        </nav>
-      </div>
-      {/* <!-- End Breadcrumb --> */}
-      <div class="mb-8">
-        {/* <!-- Images Carousel --> */}
-        <div
-          class="js-slick-carousel u-slick u-slick__img-overlay"
-          data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
-          data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
-          data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
-          data-infinite="true"
-          data-slides-show="1"
-          data-slides-scroll="1"
-          data-center-mode="true"
-          data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
-          data-responsive='[{
-                        "breakpoint": 1480,
-                        "settings": {
-                            "centerPadding": "300px"
-                        }
-                    }, {
-                        "breakpoint": 1199,
-                        "settings": {
-                            "centerPadding": "200px"
-                        }
-                    }, {
-                        "breakpoint": 992,
-                        "settings": {
-                            "centerPadding": "120px"
-                        }
-                    }, {
-                        "breakpoint": 554,
-                        "settings": {
-                            "centerPadding": "20px"
-                        }
-                    }]'
+    return (
+      <main id="content">
+        <div class="container">
+          <nav class="py-3" aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                <a href="#">All yachts</a>
+              </li>
+              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+                <a href="#">Yachts</a>
+              </li>
+              <li
+                class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
+                aria-current="page"
+              >
+                Park Avenue Baker Street London
+              </li>
+            </ol>
+          </nav>
+        </div>
+        {/* <!-- End Breadcrumb --> */}
+        <div class="mb-8">
+          {/* <!-- Images Carousel --> */}
+          <div
+            class="js-slick-carousel u-slick u-slick__img-overlay"
+            data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+            data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
+            data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
+            data-infinite="true"
+            data-slides-show="1"
+            data-slides-scroll="1"
+            data-center-mode="true"
+            data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
+            data-responsive='[{
+                          "breakpoint": 1480,
+                          "settings": {
+                              "centerPadding": "300px"
+                          }
+                      }, {
+                          "breakpoint": 1199,
+                          "settings": {
+                              "centerPadding": "200px"
+                          }
+                      }, {
+                          "breakpoint": 992,
+                          "settings": {
+                              "centerPadding": "120px"
+                          }
+                      }, {
+                          "breakpoint": 554,
+                          "settings": {
+                              "centerPadding": "20px"
+                          }
+                      }]'
           >
             {" "}
             <div
@@ -269,14 +273,14 @@ function SingleProduct() {
                       <i class="flaticon-like font-size-18 text-dark"></i>
                     </a>
                   </li>
-                  {/* <li class="list-group-item px-1">
+                  <li class="list-group-item px-1">
                     <a
                       href="#"
                       class="height-45 width-45 border rounded border-width-2 flex-content-center"
                     >
                       <i class="flaticon-share font-size-18 text-dark"></i>
                     </a>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
               <div class="py-4 border-top border-bottom mb-4">
@@ -307,9 +311,9 @@ function SingleProduct() {
                     Once inside the historic palace located on the Right Bank of
                     the Seine, see unmissable and iconic sights such as the Mona
                     Lisa and Venus de Milo. Discover masterpieces of the
-                    Renaissance and ancient Egyptian relics, along with
-                    paintings from the 13th to 20th centuries, prints from the
-                    Royal Collection, and much more.
+                    Renaissance and ancient Egyptian relics, along with paintings
+                    from the 13th to 20th centuries, prints from the Royal
+                    Collection, and much more.
                   </p>
                 </div>
 
@@ -440,8 +444,8 @@ function SingleProduct() {
                 <h5 class="font-size-21 font-weight-bold text-dark mb-4">
                   Location
                 </h5>
-
-                <iframe src={formData.map}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d7772.225184901051!2d80.28441927545006!3d13.092050163095971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d13.098645!2d80.2916092!4m5!1s0x3a526f5213f46501%3A0x56d2a4b14dba42f2!2sMadras%20High%20Court%2C%20High%20Ct%20Rd%2C%20Parry&#39;s%20Corner%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu%20600108!3m2!1d13.0867057!2d80.28774949999999!5e0!3m2!1sen!2sin!4v1580358870925!5m2!1sen!2sin"
                   width="100%"
                   height="480"
                   frameborder="0"
@@ -625,8 +629,7 @@ function SingleProduct() {
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
-
-                    {/* <div class="review">
+                    <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
                           <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
@@ -656,8 +659,7 @@ function SingleProduct() {
                           </div>
                         </div>
                       </div>
-                    </div> */}
-
+                    </div>
                   </div>
                 </div>
                 <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-0">
@@ -695,16 +697,14 @@ function SingleProduct() {
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
-                    
                     <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
-                          {/* <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
+                          <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
                             Was This Review...?
-                          </div> */}
+                          </div>
                         </div>
-
-                        {/* <div class="col-md-6 col-lg-7 col-xl-4">
+                        <div class="col-md-6 col-lg-7 col-xl-4">
                           <div class="d-flex justify-content-between my-lg-1">
                             <a class="text-indigo-light" href="#">
                               <i class="flaticon-like-1 font-size-15 mr-1"></i>
@@ -725,8 +725,7 @@ function SingleProduct() {
                               </span>
                             </a>
                           </div>
-                        </div> */}
-
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -736,9 +735,7 @@ function SingleProduct() {
                 <h5 class="font-size-21 font-weight-bold text-dark mb-6">
                   Write a Review
                 </h5>
-
-
-                {/* <div class="row">
+                <div class="row">
                   <div class="col-md-4 mb-6">
                     <h6 class="font-weight-bold text-dark mb-1">Cleanliness</h6>
                     <span class="text-primary font-size-20 letter-spacing-3">
@@ -791,9 +788,7 @@ function SingleProduct() {
                       <small class="far fa-smile text-muted"></small>
                     </span>
                   </div>
-                </div> */}
-
-
+                </div>
                 <form class="js-validate" novalidate="novalidate">
                   <div class="row mb-5 mb-lg-0">
                     {/* <!-- Input --> */}
@@ -814,7 +809,7 @@ function SingleProduct() {
                     </div>
                     {/* <!-- End Input -->
 
-                                    <!-- Input --> */}
+                                      <!-- Input --> */}
                     <div class="col-sm-6 mb-5">
                       <div class="js-form-message">
                         <input
@@ -876,7 +871,7 @@ function SingleProduct() {
 
                   <div class="p-4 m-1">
                     {/* <!-- End Input -->
-                                    <!-- Input --> */}
+                                      <!-- Input --> */}
                     <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
                       From - To
                     </span>
@@ -892,29 +887,49 @@ function SingleProduct() {
                             </span>
                           </div>
                           <input
-                            class="js-range-datepicker w-auto font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
-                            type="text"
-                            placeholder="October 8/2023"
-                            aria-label="October 10/2023"
-                            data-rp-wrapper="#datepickerWrapperPick"
-                            data-rp-type="range"
-                            data-rp-date-format="M d / Y"
-                            data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
-                            data-min-date="today"
-                            data-default-date="2023-10-08"
+                            type="date"
+                            id="dateInput"
+                            name="dateInput"
+                            min="today"
+                            max="2030-12-31"
+                            required
+                            value={bookingData.startDate}
+                            onChange={(e) =>
+                              setBookingData({
+                                ...bookingData,
+                                startDate: e.target.value,
+                              })
+                            }
                           />
+                          <input
+                            type="date"
+                            id="dateInput"
+                            name="dateInput"
+                            min="today"
+                            max="2030-12-31"
+                            required
+                            value={bookingData.endDate}
+                            onChange={(e) =>
+                              setBookingData({
+                                ...bookingData,
+                                endDate: e.target.value,
+                              })
+                            }
+                          />
+                          {/* <button onClick={handlePost}>Save Date</button> */}
                         </div>
                         {/* <!-- End Datepicker --> */}
                       </div>
                     </div>
                     {/* <!-- End Input --> */}
                     <div class="text-center">
-                   
-                       
-                        
-                     <Link to={'/booking'} class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"> Book Now</Link>
-                       
-                   
+                      <a
+                        href="../yacht/yacht-booking.html"
+                        onClick={handlePost}
+                        class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
+                      >
+                        Book Now
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -967,26 +982,26 @@ function SingleProduct() {
                 data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
                 data-pagi-classes="text-center d-xl-none u-slick__pagination mt-4"
                 data-responsive='[{
-                                "breakpoint": 1025,
-                                "settings": {
-                                    "slidesToShow": 3
-                                }
-                            }, {
-                                "breakpoint": 992,
-                                "settings": {
-                                    "slidesToShow": 2
-                                }
-                            }, {
-                                "breakpoint": 768,
-                                "settings": {
-                                    "slidesToShow": 1
-                                }
-                            }, {
-                                "breakpoint": 554,
-                                "settings": {
-                                    "slidesToShow": 1
-                                }
-                            }]'
+                                  "breakpoint": 1025,
+                                  "settings": {
+                                      "slidesToShow": 3
+                                  }
+                              }, {
+                                  "breakpoint": 992,
+                                  "settings": {
+                                      "slidesToShow": 2
+                                  }
+                              }, {
+                                  "breakpoint": 768,
+                                  "settings": {
+                                      "slidesToShow": 1
+                                  }
+                              }, {
+                                  "breakpoint": 554,
+                                  "settings": {
+                                      "slidesToShow": 1
+                                  }
+                              }]'
               >
                 <div class="js-slide mt-5">
                   <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
@@ -1618,5 +1633,6 @@ function SingleProduct() {
         </div>
       </main>
     );
-}
-export default SingleProduct;
+  }
+
+  export default SingleProduct;
