@@ -15,26 +15,22 @@ import Booking from "./pages/booking";
 import Profile from './pages/profile/Profile';
 import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
-import Navbar from "./pages/home/navbar";
+import Header_nav from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
+import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
+
 // import Product from "./pages/products/products";
 //import "./style.css";
 
 function App() {
   
- const data = localStorage.getItem("user");
- const logindata = JSON.parse(data);
- if (logindata.status==true){
-  window.location.reload();
-
- }
+ 
    return (
      <div>
-     
-       <Navbar />
+       <Header_nav />
        <Routes>
          <Route path="/Register" element={<Register />} />
-         <Route path="/Login" element={<Login/>} />
+         <Route path="/Login" element={<Login />} />
          <Route path="/booking" element={<Booking />} />
          <Route path="/profile" element={<Profile />} />
          {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}

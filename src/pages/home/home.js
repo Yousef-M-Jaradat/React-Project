@@ -4,19 +4,12 @@ import Category from "../home/category";
 import Header from "../home/header";
 function Home(){
 return (
-
-<div>
+  <div>
     
-<Header/>
-<CounterComponent />
-<Category />
-
-
-
-
-</div>
-
-
+    <Header />
+    <CounterComponent />
+    <Category />
+  </div>
 );
 
 };

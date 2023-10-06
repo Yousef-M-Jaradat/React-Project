@@ -11,6 +11,7 @@
     "jquery": "^3.7.1",
     "json-server": "^0.17.4",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.9.0",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
     "react-redux": "^8.1.3",

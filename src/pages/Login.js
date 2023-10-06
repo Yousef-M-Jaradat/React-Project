@@ -20,6 +20,7 @@ function Login() {
       // check the email is valid
       if (e.target.email.value === apidata.email) { 
         const userdata = {
+          name: apidata.firstName,
           user_id: apidata.id,
           status: status,
         }; 
