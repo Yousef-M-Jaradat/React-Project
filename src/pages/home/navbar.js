@@ -23,6 +23,9 @@ function Navbar() {
 const mytext = {
   color: "#297cbb",
 };
+const mytext2 = {
+  color: "white",
+};
   const myStyle2 = {
     width: "500px",
     animationDuration: "300ms",
@@ -242,12 +245,13 @@ const mytext = {
       ) : (
         <header
           style={mybackground}
+          id="header"
           className="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
           data-header-fix-moment="500"
           data-header-fix-effect="slide"
         >
-          <div className="u-header__section u-header__shadow-on-show-hide py-4 py-xl-0">
-            <div id="logoAndNav" className="container-fluid py-xl-4">
+          <div className="u-header__section u-header__shadow-on-show-hide ">
+            <div id="logoAndNav" className="container-fluid ">
               <nav
                 style={myStyle}
                 className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1"
@@ -394,20 +398,22 @@ const mytext = {
 
                 <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
                   <Link
-                   
                     class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
                     to={"/login"}
                   >
-                    <span class="d-inline-block">Login</span>
+                    <span style={mytext2} class="d-inline-block">
+                      Login
+                    </span>
                   </Link>
                 </div>
                 <div class="pl-4 ml-1 u-header__last-item-btn u-header__last-item-btn-lg">
                   <Link
-                  
                     class="btn btn-wide rounded-sm btn-outline-white border-width-2 transition-3d-hover"
                     to={"/register"}
                   >
-                    <span class="d-inline-block">Register</span>
+                    <span style={mytext2} class="d-inline-block">
+                      Register
+                    </span>
                   </Link>
                 </div>
               </nav>

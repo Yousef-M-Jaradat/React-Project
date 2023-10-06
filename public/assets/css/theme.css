@@ -3725,7 +3725,6 @@ textarea.form-control.is-invalid {
   line-height: 1.5;
   border-radius: 0.3125rem;
   transition: all 0.2s ease-in-out;
-  background: #297cbb;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -24824,8 +24823,6 @@ button:focus {
   padding-top: 0;
   padding-bottom: 0;
   width: auto;
-    color: #297cbb;
-
 }
 
 .u-header__navbar-brand-center {
@@ -24833,8 +24830,6 @@ button:focus {
   display: flex;
   -ms-flex-align: center;
   align-items: center;
-    color: #297cbb;
-
 }
 
 .u-header__navbar-brand-vertical {
@@ -24843,14 +24838,11 @@ button:focus {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2.5rem;
-    color: #297cbb;
-
 }
 
 .u-header__navbar-brand-vertical .u-header__navbar-brand-text {
   display: block;
   margin-left: 0;
-  color: #297cbb;
 }
 
 .u-header__navbar-brand-text {
@@ -24873,22 +24865,16 @@ button:focus {
 .u-header__navbar-brand-text-md .u-header__navbar-brand-text {
   font-size: 1.5rem;
   margin-left: 0.75rem;
-    color: #297cbb;
-
 }
 
 .u-header__navbar-brand-text {
   font-weight: 700;
-    color: #297cbb;
-
 }
 
 .u-header__navbar-brand-text-white .u-header__navbar-brand-text,
 .u-header__navbar-brand-text-white .u-header__navbar-brand-text:focus,
 .u-header__navbar-brand-text-white .u-header__navbar-brand-text:hover {
   color: #fff;
-    color: #297cbb;
-
 }
 
 .u-header:not(.js-header-fix-moment)
@@ -45512,12 +45498,16 @@ Letter Spacing
 /* 3D Hover */
 .transition-3d-hover {
   transition: all 0.2s ease-in-out;
+    background-color: #297cbb;
+
 }
 
 .transition-3d-hover:hover,
 .transition-3d-hover:focus {
   -webkit-transform: translateY(-3px);
   transform: translateY(-3px);
+    background-color: #297cbb;
+
 }
 
 .rotate-90 {
