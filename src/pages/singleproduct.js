@@ -118,75 +118,75 @@
 
         existingCart.push(cartData);
 
-        localStorage.setItem("cart", JSON.stringify(existingCart));
-        console.log(cartData);
-console.log(formData.startDate);
-        Swal.fire({
-          icon: "success",
-          title: "Item added to cart!",
-          text: "You will be redirected to /login.",
-        }).then(() => {
-          navigate("/login");
-        });
-      }
-    };
-    return (
-      <main id="content">
-        <div class="container">
-          <nav class="py-3" aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">Home</a>
-              </li>
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">All yachts</a>
-              </li>
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">Yachts</a>
-              </li>
-              <li
-                class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
-                aria-current="page"
-              >
-                Park Avenue Baker Street London
-              </li>
-            </ol>
-          </nav>
-        </div>
-        {/* <!-- End Breadcrumb --> */}
-        <div class="mb-8">
-          {/* <!-- Images Carousel --> */}
-          <div
-            class="js-slick-carousel u-slick u-slick__img-overlay"
-            data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
-            data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
-            data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
-            data-infinite="true"
-            data-slides-show="1"
-            data-slides-scroll="1"
-            data-center-mode="true"
-            data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
-            data-responsive='[{
-                          "breakpoint": 1480,
-                          "settings": {
-                              "centerPadding": "300px"
-                          }
-                      }, {
-                          "breakpoint": 1199,
-                          "settings": {
-                              "centerPadding": "200px"
-                          }
-                      }, {
-                          "breakpoint": 992,
-                          "settings": {
-                              "centerPadding": "120px"
-                          }
-                      }, {
-                          "breakpoint": 554,
-                          "settings": {
-                              "centerPadding": "20px"
-                          }
-                      }]'
+      sessionStorage.setItem("cart", JSON.stringify(existingCart));
+
+      // Show a success SweetAlert
+      Swal.fire({
+        icon: "success",
+        title: "Item added to cart!",
+        text: "You will be redirected to /login.",
+      }).then(() => {
+        navigate("/login");
+      });
+    }
+  };
+  return (
+    <main id="content">
+      <div class="container">
+        <nav class="py-3" aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">All yachts</a>
+            </li>
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">Yachts</a>
+            </li>
+            <li
+              class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
+              aria-current="page"
+            >
+              Park Avenue Baker Street London
+            </li>
+          </ol>
+        </nav>
+      </div>
+      {/* <!-- End Breadcrumb --> */}
+      <div class="mb-8">
+        {/* <!-- Images Carousel --> */}
+        <div
+          class="js-slick-carousel u-slick u-slick__img-overlay"
+          data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+          data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
+          data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
+          data-infinite="true"
+          data-slides-show="1"
+          data-slides-scroll="1"
+          data-center-mode="true"
+          data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
+          data-responsive='[{
+                        "breakpoint": 1480,
+                        "settings": {
+                            "centerPadding": "300px"
+                        }
+                    }, {
+                        "breakpoint": 1199,
+                        "settings": {
+                            "centerPadding": "200px"
+                        }
+                    }, {
+                        "breakpoint": 992,
+                        "settings": {
+                            "centerPadding": "120px"
+                        }
+                    }, {
+                        "breakpoint": 554,
+                        "settings": {
+                            "centerPadding": "20px"
+                        }
+                    }]'
           >
             {" "}
             <div
@@ -273,14 +273,14 @@ console.log(formData.startDate);
                       <i class="flaticon-like font-size-18 text-dark"></i>
                     </a>
                   </li>
-                  <li class="list-group-item px-1">
+                  {/* <li class="list-group-item px-1">
                     <a
                       href="#"
                       class="height-45 width-45 border rounded border-width-2 flex-content-center"
                     >
                       <i class="flaticon-share font-size-18 text-dark"></i>
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div class="py-4 border-top border-bottom mb-4">
@@ -311,9 +311,9 @@ console.log(formData.startDate);
                     Once inside the historic palace located on the Right Bank of
                     the Seine, see unmissable and iconic sights such as the Mona
                     Lisa and Venus de Milo. Discover masterpieces of the
-                    Renaissance and ancient Egyptian relics, along with paintings
-                    from the 13th to 20th centuries, prints from the Royal
-                    Collection, and much more.
+                    Renaissance and ancient Egyptian relics, along with
+                    paintings from the 13th to 20th centuries, prints from the
+                    Royal Collection, and much more.
                   </p>
                 </div>
 
@@ -444,8 +444,8 @@ console.log(formData.startDate);
                 <h5 class="font-size-21 font-weight-bold text-dark mb-4">
                   Location
                 </h5>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d7772.225184901051!2d80.28441927545006!3d13.092050163095971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d13.098645!2d80.2916092!4m5!1s0x3a526f5213f46501%3A0x56d2a4b14dba42f2!2sMadras%20High%20Court%2C%20High%20Ct%20Rd%2C%20Parry&#39;s%20Corner%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu%20600108!3m2!1d13.0867057!2d80.28774949999999!5e0!3m2!1sen!2sin!4v1580358870925!5m2!1sen!2sin"
+
+                <iframe src={formData.map}
                   width="100%"
                   height="480"
                   frameborder="0"
@@ -629,7 +629,8 @@ console.log(formData.startDate);
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
-                    <div class="review">
+
+                    {/* <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
                           <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
@@ -659,7 +660,8 @@ console.log(formData.startDate);
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+
                   </div>
                 </div>
                 <div class="media flex-column flex-md-row align-items-center align-items-md-start mb-0">
@@ -697,14 +699,16 @@ console.log(formData.startDate);
                         Curabitur lacinia neque non metus
                       </p>
                     </div>
+                    
                     <div class="review">
                       <div class="row no-gutters justify-content-between align-items-center border border-color-8 border-width-2 rounded-xs p-3 px-md-3 py-md-2 pr-xl-5">
                         <div class="col">
-                          <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
+                          {/* <div class="font-weight-normal font-size-14 text-gray-1 mx-lg-1 my-lg-1 mb-3 mb-md-0">
                             Was This Review...?
-                          </div>
+                          </div> */}
                         </div>
-                        <div class="col-md-6 col-lg-7 col-xl-4">
+
+                        {/* <div class="col-md-6 col-lg-7 col-xl-4">
                           <div class="d-flex justify-content-between my-lg-1">
                             <a class="text-indigo-light" href="#">
                               <i class="flaticon-like-1 font-size-15 mr-1"></i>
@@ -725,7 +729,8 @@ console.log(formData.startDate);
                               </span>
                             </a>
                           </div>
-                        </div>
+                        </div> */}
+
                       </div>
                     </div>
                   </div>
@@ -735,7 +740,9 @@ console.log(formData.startDate);
                 <h5 class="font-size-21 font-weight-bold text-dark mb-6">
                   Write a Review
                 </h5>
-                <div class="row">
+
+
+                {/* <div class="row">
                   <div class="col-md-4 mb-6">
                     <h6 class="font-weight-bold text-dark mb-1">Cleanliness</h6>
                     <span class="text-primary font-size-20 letter-spacing-3">
@@ -788,7 +795,9 @@ console.log(formData.startDate);
                       <small class="far fa-smile text-muted"></small>
                     </span>
                   </div>
-                </div>
+                </div> */}
+
+
                 <form class="js-validate" novalidate="novalidate">
                   <div class="row mb-5 mb-lg-0">
                     {/* <!-- Input --> */}
@@ -809,7 +818,7 @@ console.log(formData.startDate);
                     </div>
                     {/* <!-- End Input -->
 
-                                      <!-- Input --> */}
+                                    <!-- Input --> */}
                     <div class="col-sm-6 mb-5">
                       <div class="js-form-message">
                         <input
@@ -871,7 +880,7 @@ console.log(formData.startDate);
 
                   <div class="p-4 m-1">
                     {/* <!-- End Input -->
-                                      <!-- Input --> */}
+                                    <!-- Input --> */}
                     <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">
                       From - To
                     </span>
@@ -887,36 +896,17 @@ console.log(formData.startDate);
                             </span>
                           </div>
                           <input
-                            type="date"
-                            id="dateInput"
-                            name="dateInput"
-                            min="today"
-                            max="2030-12-31"
-                            required
-                            value={bookingData.startDate}
-                            onChange={(e) =>
-                              setBookingData({
-                                ...bookingData,
-                                startDate: e.target.value,
-                              })
-                            }
+                            class="js-range-datepicker w-auto font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
+                            type="text"
+                            placeholder="October 8/2023"
+                            aria-label="October 10/2023"
+                            data-rp-wrapper="#datepickerWrapperPick"
+                            data-rp-type="range"
+                            data-rp-date-format="M d / Y"
+                            data-rp-default-date='["October 8 / 2023", "November 8 / 2023"]'
+                            data-min-date="today"
+                            data-default-date="2023-10-08"
                           />
-                          <input
-                            type="date"
-                            id="dateInput"
-                            name="dateInput"
-                            min="today"
-                            max="2030-12-31"
-                            required
-                            value={bookingData.endDate}
-                            onChange={(e) =>
-                              setBookingData({
-                                ...bookingData,
-                                endDate: e.target.value,
-                              })
-                            }
-                          />
-                          {/* <button onClick={handlePost}>Save Date</button> */}
                         </div>
                         {/* <!-- End Datepicker --> */}
                       </div>
@@ -925,7 +915,6 @@ console.log(formData.startDate);
                     <div class="text-center">
                       <a
                         href="../yacht/yacht-booking.html"
-                        onClick={handlePost}
                         class="btn btn-primary d-flex align-items-center justify-content-center height-60 w-100 mb-xl-0 mb-lg-1 transition-3d-hover font-weight-bold"
                       >
                         Book Now
@@ -982,26 +971,26 @@ console.log(formData.startDate);
                 data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right"
                 data-pagi-classes="text-center d-xl-none u-slick__pagination mt-4"
                 data-responsive='[{
-                                  "breakpoint": 1025,
-                                  "settings": {
-                                      "slidesToShow": 3
-                                  }
-                              }, {
-                                  "breakpoint": 992,
-                                  "settings": {
-                                      "slidesToShow": 2
-                                  }
-                              }, {
-                                  "breakpoint": 768,
-                                  "settings": {
-                                      "slidesToShow": 1
-                                  }
-                              }, {
-                                  "breakpoint": 554,
-                                  "settings": {
-                                      "slidesToShow": 1
-                                  }
-                              }]'
+                                "breakpoint": 1025,
+                                "settings": {
+                                    "slidesToShow": 3
+                                }
+                            }, {
+                                "breakpoint": 992,
+                                "settings": {
+                                    "slidesToShow": 2
+                                }
+                            }, {
+                                "breakpoint": 768,
+                                "settings": {
+                                    "slidesToShow": 1
+                                }
+                            }, {
+                                "breakpoint": 554,
+                                "settings": {
+                                    "slidesToShow": 1
+                                }
+                            }]'
               >
                 <div class="js-slide mt-5">
                   <div class="card transition-3d-hover shadow-hover-2 w-100 h-100">
@@ -1633,6 +1622,5 @@ console.log(formData.startDate);
         </div>
       </main>
     );
-  }
-
-  export default SingleProduct;
+}
+export default SingleProduct;
