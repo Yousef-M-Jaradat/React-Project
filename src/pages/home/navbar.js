@@ -201,7 +201,7 @@ const mytext2 = {
                         style={mytext}
                         id="yachtMenu"
                         className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
-                        to={"/contact"}
+                       
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-labelledby="yachtSubMenu"
