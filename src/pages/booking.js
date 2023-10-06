@@ -34,6 +34,31 @@ function Booking() {
     };
   }, []);
 
+  //  const handlePost = (e)=>{
+  //   e.preventDefaoult();
+
+  //   if(session('user')){
+
+  //         const response =  axios.post(
+  //       "https://651a606d340309952f0d2d8f.mockapi.io/users",
+  //       formData
+  //     );
+  //         setFormData({
+  //         name: "",
+  //         type: "",
+  //         price: "",
+  //         location: "",
+  //       });
+  //   }else{
+  //     newsession('cart')
+  //     session('cart') = [
+  //       name = enevtDAta.name,
+  //       type = eventdata.type
+  //     ]
+  //   }
+
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -57,6 +82,8 @@ function Booking() {
       // Handle POST error
     }
   };
+
+ 
 
   return (
     <>

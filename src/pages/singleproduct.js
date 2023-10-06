@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
-function SingleProduct()
-{
-    const [formData, setFormData] = useState({
-        id: "",  
-        name: "",
-        category_id: "",
-        location: "",
-        image1: "",
-        image2: "",
-        image3: "",
-        image4: "",
-        description: "",
-        price: "",
-        speed: "",
-        size : "",
-        person: "",
-        beds: "",
-        fuelCapacity: "",
-        
-        
-    }); 
+function SingleProduct() {
+  let { id } = useParams();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    id: "",
+    name: "",
+    category_id: "",
+    location: "",
+    image1: "",
+    image2: "",
+    image3: "",
+    image4: "",
+    description: "",
+    price: "",
+    speed: "",
+    size: "",
+    person: "",
+    beds: "",
+    fuelCapacity: "",
+  });
+  const [bookingData, setBookingData] = useState({});
+  const [related, setRelatedData] = useState({});
 
     useEffect(() => {
       // Fetch data from one API
@@ -31,59 +35,135 @@ function SingleProduct()
         const response = await axios.get(
           "https://651db05044e393af2d5a346e.mockapi.io/yachts/1" // Replace with the actual API endpoint
         );
-          if (response.status === 200) {
-            setFormData(response.data);
-          } else {
-          }
-        } catch (error) {}
+        if (response.status === 200) {
+          setFormData(response.data);
+          setRelatedData(response.data);
+
+           
+            // setRelatedData(filteredData);
+            console.log(related);
+        } else {
+          // Handle error if needed
+        }
+      } catch (error) {
+        // Handle error if needed
+      }
+    };
+    //  setBookingData((prevData) => ({
+    //    ...prevData,
+    //    date: "" // Update with your default date value
+    //  }));
+
+    // Call the function to fetch event data
+    fetchEventData();
+  }, []);
+
+  // const handleDateChange = (e) => {
+  //   const { value } = e.target;
+  //   setBookingData((prevData) => ({
+  //     ...prevData,
+  //     date: value,
+  //   }));
+  // };
+
+  const handlePost = (e) => {
+    e.preventDefault();
+
+    const startDate = new Date(bookingData.startDate);
+    const endDate = new Date(bookingData.endDate);
+    const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+    if (!sessionStorage.getItem("user")) {
+      axios
+        .post("https://651a606d340309952f0d2d8f.mockapi.io/users", {
+          ...bookingData,
+          totalPrice: formData.price * nights,
+          productId: id,
+          nights: nights,
+        })
+        .then((response) => {
+          setBookingData({
+            userId: "",
+            productId: "",
+            date: "",
+            totalPrice: "",
+            nights: "",
+          });
+
+          Swal.fire({
+            icon: "success",
+            title: "Data saved!",
+            text: "You will be redirected to /booking.",
+          }).then(() => {
+            navigate("/booking");
+          });
+        })
+        .catch((error) => {
+          // Handle error if needed
+        });
+    } else {
+      // User is logged in, add data to the cart and navigate to "/login"
+      const cartData = {
+        productId: id,
+        userId: formData.user_id,
+        startDate: formData.startDate,
+        endDate: formData.endDate,
+        nights: nights,
+        totalPrice: formData.price * nights,
       };
 
-      // Call the function to fetch event data
-      fetchEventData();
+      const existingCart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
-      // Cleanup the event listener when the component unmounts
-      return () => {
-        // Cleanup code here (if needed)
-      };
-    }, []);
+      existingCart.push(cartData);
 
-    return (
-      <main id="content">
-        <div class="container">
-          {/* <nav class="py-3" aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">Home</a>
-              </li>
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">All yachts</a>
-              </li>
-              <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
-                <a href="#">Yachts</a>
-              </li>
-              <li
-                class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
-                aria-current="page"
-              >
-                Park Avenue Baker Street London
-              </li>
-            </ol>
-          </nav> */}
-        </div>
-        {/* <!-- End Breadcrumb --> */}
-        <div class="mb-8">
-          {/* <!-- Images Carousel --> */}
-          <div
-            class="js-slick-carousel u-slick u-slick__img-overlay"
-            data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
-            data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
-            data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
-            data-infinite="true"
-            data-slides-show="1"
-            data-slides-scroll="1"
-            data-center-mode="true"
-            data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
-            data-responsive='[{
+      sessionStorage.setItem("cart", JSON.stringify(existingCart));
+
+      // Show a success SweetAlert
+      Swal.fire({
+        icon: "success",
+        title: "Item added to cart!",
+        text: "You will be redirected to /login.",
+      }).then(() => {
+        navigate("/login");
+      });
+    }
+  };
+  return (
+    <main id="content">
+      <div class="container">
+        <nav class="py-3" aria-label="breadcrumb">
+          <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">All yachts</a>
+            </li>
+            <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1">
+              <a href="#">Yachts</a>
+            </li>
+            <li
+              class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active"
+              aria-current="page"
+            >
+              Park Avenue Baker Street London
+            </li>
+          </ol>
+        </nav>
+      </div>
+      {/* <!-- End Breadcrumb --> */}
+      <div class="mb-8">
+        {/* <!-- Images Carousel --> */}
+        <div
+          class="js-slick-carousel u-slick u-slick__img-overlay"
+          data-arrows-classes="d-none d-md-inline-block u-slick__arrow-classic u-slick__arrow-centered--y rounded-circle"
+          data-arrow-left-classes="flaticon-back u-slick__arrow-classic-inner u-slick__arrow-classic-inner--left ml-md-4 ml-xl-8"
+          data-arrow-right-classes="flaticon-next u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-md-4 mr-xl-8"
+          data-infinite="true"
+          data-slides-show="1"
+          data-slides-scroll="1"
+          data-center-mode="true"
+          data-pagi-classes="d-md-none text-center u-slick__pagination mt-5 mb-0"
+          data-responsive='[{
                         "breakpoint": 1480,
                         "settings": {
                             "centerPadding": "300px"
