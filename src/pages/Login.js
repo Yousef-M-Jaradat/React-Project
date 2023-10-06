@@ -1,6 +1,7 @@
 import React, { useEffect, useState,useContext,createContext } from "react";
 import axios from 'axios';
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
+// import '../style.css';
 
 function Login() {
   const [email, setemail] = useState(null);
