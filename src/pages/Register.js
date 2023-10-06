@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
 import '../login.css';
+import '../userreact.jpeg'
 function Register() {
   const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
@@ -10,7 +11,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const navigate = useNavigate(); // Initialize useNavigate for navigation
-const image='http://64db17df593f57e435b06a91'
+const image = "../userreact.jpeg";
   const handlefirstName = (e) => {
     setfirstName(e.target.value);
   };
@@ -35,7 +36,7 @@ const image='http://64db17df593f57e435b06a91'
       lastName: lastName,
       email: email,
       password: password,
-      password: image,
+      image: image,
     };
 
     axios
