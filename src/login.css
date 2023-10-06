@@ -1,0 +1,16 @@
+.image{
+}
+
+
+.login{
+    display: block;
+    justify-content: center;
+    align-content: center;
+width: 50%;    
+margin-bottom: 20px;
+}
+.login-form-wrap{
+    margin-top: 100px;
+    background-color: rgb(179, 170, 170);
+    padding: 100px;
+}

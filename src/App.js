@@ -1,6 +1,4 @@
-// import logo from './logo.svg';
-// import About from './pages/about';
-// import Booking from './pages/Booking';
+
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
@@ -13,7 +11,6 @@ import SingleProduct from "./pages/singleproduct";
 import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
-//import "./style.css";
 
 function App() {
   return (

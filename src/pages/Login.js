@@ -1,10 +1,11 @@
 import React, { useEffect, useState,useContext,createContext } from "react";
-import axios from 'axios';
+import axios from 'axios';// Import axios
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
+import '../login.css'
 function Login() {
   const [email, setemail] = useState(null);
   const [password, setpassword] = useState(null);
-  const apiUrl = "https://651db05044e393af2d5a346e.mockapi.io/users";
+  const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
   const [data, setData] = useState([]); // Initialize data as an empty array
   const [status, setStatus] = useState(false);
   const UserContext = createContext();
@@ -14,17 +15,33 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target.email.value);
-    //     console.log(e.target.password.value);
+   
     data.map((apidata, index) => {
       // check the email is valid
-      if (e.target.email.value === apidata.email) {
+      if (e.target.email.value === apidata.email) { 
+        const userdata = {
+          user_id: apidata.id,
+          status: status,
+        }; 
+        localStorage.setItem('user',JSON.stringify(userdata));
+        
         // check the password is correct
         if (e.target.password.value === apidata.password) {
+        localStorage.getItem("user");
           setStatus(true);
-          navigate("/",setStatus);
+          userdata.status=status
+          console.log(status)
+          if (status===true) {
+            navigate("/");
+          }
+        
+
+          
+        }else{
+                   navigate("/login");
+
         }
-        return console.log("welcome");
+        
       }
 
       return index;
@@ -50,8 +67,9 @@ function Login() {
   });
 
   return (
-    <div>
-      <div id="login-form-wrap">
+    <div className="image">
+      <div className='login container'>
+      <div className="login-form-wrap">
         <h2>Login</h2>
         <form onSubmit={handleSubmit} id="login-form">
           <p>
@@ -62,7 +80,7 @@ function Login() {
               type="email"
               id="email"
               name="email"
-              className="logininput"
+              class="form-control form-control-lg"
               value={email}
               placeholder="Email Address"
               required
@@ -70,7 +88,7 @@ function Login() {
           </p>
           <p>
             <input
-              className="logininput"
+              class="form-control form-control-lg"
               onChange={(e) => {
                 setpassword(e.target.value);
               }}
@@ -84,13 +102,14 @@ function Login() {
           </p>
           <p>
             <input
-              className="logininput"
+              class="btn btn-primary mb-2 col-12 "
               type="submit"
               id="login"
               value="login"
             />
           </p>
         </form>
+      </div>
       </div>
     </div>
   );
