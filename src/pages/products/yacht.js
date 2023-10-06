@@ -81,7 +81,7 @@ function Yacht() {
   };
 
   return (
-    <div>
+    <div className='mt-10'>
       <main id="content" role="main">
         <div class="container pt-5 pt-xl-8">
           <div class="row mb-5 mb-md-8 mt-xl-1 pb-md-1">

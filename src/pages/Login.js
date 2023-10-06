@@ -1,96 +1,91 @@
 import React, { useEffect, useState,useContext,createContext } from "react";
-import axios from 'axios';
+import axios from 'axios';// Import axios
 import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-import '../style.css'
+import '../login.css'
+import styled from "styled-components"; // Import styled-components
+
+
+
+
 function Login() {
-  const [email, setemail] = useState(null);
-  const [password, setpassword] = useState(null);
-  const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
-  const [data, setData] = useState([]); // Initialize data as an empty array
-  const [status, setStatus] = useState(false);
-  const UserContext = createContext();
-
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(e.target.email.value);
-    //     console.log(e.target.password.value);
-    data.map((apidata, index) => {
-      // check the email is valid
-      if (e.target.email.value === apidata.email) {
-        // check the password is correct
-        if (e.target.password.value === apidata.password) {
-          setStatus(true);
-          navigate("/",setStatus);
-        }
-        return console.log("welcome");
-      }
 
-      return index;
-    });
+    const user = data.find((userdata) => userdata.email === email);
+    if (!user) {
+      setError("User not found");
+      return;
+    }
+
+    if (user.password === password) {
+      const userData = {
+        name: user.firstName,
+        user_id: user.id,
+        status: true,
+      };
+
+      localStorage.setItem("user", JSON.stringify(userData));
+      navigate("/");
+    } else {
+      setError("Invalid password");
+    }
   };
-  // get the data from API
+
   useEffect(() => {
+    const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
+
     axios
       .get(apiUrl)
       .then((response) => {
-        const apiData = response.data;
-
-        // Push the API data into the dataArray
-
-        setData(apiData);
-
-        // Handle the successful response here
+        setData(response.data);
       })
       .catch((error) => {
-        // Handle any errors that occurred during the request
         console.error("Error:", error);
       });
-  });
+  }, []); // Empty dependency array for one-time API request
 
   return (
-    <div>
-      <div id="login-form-wrap">
+    <div className="login-container">
+      <div className="login-form-wrap">
         <h2>Login</h2>
         <form onSubmit={handleSubmit} id="login-form">
-          <p>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
             <input
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="email"
               name="email"
-              className="logininput"
+              className="form-control"
               value={email}
-              placeholder="Email Address"
+              placeholder="Enter your email"
               required
             />
-          </p>
-          <p>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
             <input
-              className="logininput"
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
+              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               id="password"
               name="password"
               value={password}
-              placeholder="Password"
+              placeholder="Enter your password"
               required
             />
-          </p>
-          <p>
-            <input
-              className="logininput"
-              type="submit"
-              id="login"
-              value="login"
-            />
-          </p>
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          <button className="btn btn-primary col-12" type="submit">
+            Log In
+          </button>
+          
         </form>
       </div>
     </div>
