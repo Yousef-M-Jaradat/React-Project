@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 function Navbar() {
   const data = localStorage.getItem("user");
   const logindata = JSON.parse(data);
-
+const mybackground={
+  background:'white'
+}
   const handelLogout = () => {
     logindata.id = "";
     logindata.status = false;
@@ -26,14 +28,18 @@ function Navbar() {
     <div>
       {localStorage.getItem("user") && logindata.status ? (
         <header
+          style={mybackground}
           id="header"
           className="u-header u-header--abs-top-xl u-header--white-nav-links-xl u-header--bg-transparent-xl u-header--show-hide-xl"
           data-header-fix-moment="500"
           data-header-fix-effect="slide"
         >
-          <div className="u-header__section u-header__shadow-on-show-hide py-4 py-xl-0">
-            <div id="logoAndNav" className="container-fluid py-xl-4">
-              <nav className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1">
+          <div className="u-header__section u-header__shadow-on-show-hide py-4 py-xl-0 ">
+            <div  className="container-fluid py-xl-4  ">
+              <nav
+                style={mybackground}
+                className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1 "
+              >
                 <a
                   className="navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white"
                   href="../home/index.html"
