@@ -127,7 +127,7 @@ function SingleProduct() {
     }
   };
   return (
-    <main id="content">
+    <main id="content ">
       <div class="container">
         <nav class="py-3" aria-label="breadcrumb">
           <ol class="breadcrumb breadcrumb-no-gutter mb-0 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
