@@ -16,10 +16,10 @@ function Booking() {
   const end = endDate.toISOString().slice(0, 10);
   const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-    const [bookingData, setBookingData] = useState([]);
+    const [bookingData, setBookingData] = useState([0]);
 
 
-  console.log(startDate);
+  // console.log(startDate);
   // const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +34,7 @@ function Booking() {
             (carts) => carts.id === cart[0].yachtId
           );
           setBookingData(book);
-          console.log(bookingData);
+          console.log(book);
         } else {
         }
       } catch (error) {}
@@ -113,14 +113,14 @@ function Booking() {
                     <li class="d-flex justify-content-between py-2">
                       <span class="font-weight-medium">Yacht Name: </span>
                       <span class="text-secondary text-right">
-                        {/* {bookingData[0].name} */}
+                        {bookingData[0].name}
                       </span>
                     </li>
 
                     <li class="d-flex justify-content-between py-2">
                       <span class="font-weight-medium">Location</span>
                       <span class="text-secondary text-right">
-                        {/* {bookingData[0].location} */}
+                        {bookingData[0].location}
                       </span>
                     </li>
 
@@ -176,11 +176,10 @@ function Booking() {
                   </a>
                 </div> */}
               </div>
-              <a
-                className="btn btn-primary"
-                onClick={() => navigate("/")}
-                style={{ textAlign: "center", color: "white" }}
-              >
+              <a class="btn btn-primary" onClick={() => {
+localStorage.removeItem("cart");
+    navigate('/');
+  }} style={{ textAlign: "center" ,color:"white"}}>
                 Home Page
               </a>
             </div>
@@ -188,16 +187,16 @@ function Booking() {
               <div class="shadow-soft bg-white rounded-sm">
                 <div class="pt-5 pb-4 px-5 border-bottom">
                   <a href="#" class="d-block mb-2">
-                    {/* <img
+                    <img
                       className="img-fluid rounded-sm"
                       src={bookingData[0].image1} // Corrected attribute name from avater to avatar
                       alt="Image-Description"
-                    /> */}
+                    />
                   </a>
                   {/* {eventData.name} */}
                   <div class="flex-horizontal-center text-gray-1">
                     <i class="icon flaticon-pin-1 mr-2 font-size-15"></i>{" "}
-                    {/* {bookingData[0].location} */}
+                    {bookingData[0].location}
                   </div>
                 </div>
                 <div id="basicsAccordion">
