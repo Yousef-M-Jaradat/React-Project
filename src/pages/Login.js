@@ -21,17 +21,22 @@ function Login() {
     }
 
     if (user.password === password) {
+            const userString = localStorage.getItem("user");
+            const users = JSON.parse(userString);
       const userData = {
-        name: user.firstName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
         user_id: user.id,
         status: true,
+
       };
-
       localStorage.setItem("user", JSON.stringify(userData));
-
+      
       // Corrected code to parse user data
-      const userString = localStorage.getItem("user");
-      const users = JSON.parse(userString);
+      // const userString = localStorage.getItem("user");
+      // const users = JSON.parse(userString);
+      console.log(user.firstName);
 
       if (localStorage.getItem("cart")) {
         const cartData = localStorage.getItem("cart");
@@ -54,7 +59,7 @@ function Login() {
           })
           .then((response) => {
             navigate("/booking");
-            localStorage.removeItem("cart");
+            // localStorage.removeItem("cart");
           })
           .catch((error) => {
             console.error("Error while posting booking data:", error);
