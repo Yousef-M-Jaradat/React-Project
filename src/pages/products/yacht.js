@@ -99,83 +99,7 @@ const handleSearchInputChange = (event) => {
                 </button>
                 <div id="sidebar" class="collapse navbar-collapse">
                   <div class="mb-6 w-100">
-                    <div class="pb-4 mb-2">
-                      <div class="sidebar border border-color-1 rounded-xs">
-                        <div class="p-4 mx-1 mb-1">
-                          <span class="d-block text-gray-1  font-weight-normal mb-0 text-left">
-                            Destination
-                          </span>
-                          <div class="mb-4">
-                            <div class="input-group border-bottom border-width-2 border-color-1">
-                              <i class="flaticon-pin-1 d-flex align-items-center mr-2 text-primary font-weight-semi-bold font-size-22"></i>
-                              <input
-                                type="text"
-                                class="form-control font-weight-bold font-size-16 shadow-none hero-form font-weight-bold border-0 p-0"
-                                placeholder="Where are you going?"
-                                aria-label="Keyword or title"
-                                aria-describedby="keywordInputAddon"
-                              ></input>
-                            </div>
-                          </div>
-
-                          <span class="d-block text-gray-1 text-left font-weight-normal mb-0">
-                            From - To
-                          </span>
-                          <div class="border-bottom border-width-2 border-color-1 mb-4">
-                            <div
-                              id="datepickerWrapperFromOne"
-                              class="u-datepicker input-group flex-nowrap"
-                            >
-                              <div class="input-group-prepend">
-                                <span class="d-flex align-items-center mr-2 font-size-21">
-                                  <i class="flaticon-calendar text-primary font-weight-semi-bold"></i>
-                                </span>
-                              </div>
-                              <input
-                                class="js-range-datepicker font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
-                                type="date"
-                                data-rp-wrapper="#datepickerWrapperFromOne"
-                                data-rp-type="range"
-                                data-rp-date-format="M d / Y"
-                                data-rp-default-date='["Jul 7 / 2020", "Aug 25 / 2020"]'
-                              ></input>
-                            </div>
-                          </div>
-
-                          <div class="col dropdown-custom px-0 mb-5">
-                            <span class="d-block text-gray-1 text-left font-weight-normal mb-2">
-                              Trip Type
-                            </span>
-                            <div class="flex-horizontal-center border-bottom border-width-2 border-color-1 pb-2">
-                              <i class="flaticon-sailboat d-flex align-items-center mr-2 font-size-24 text-primary"></i>
-                              <select
-                                class="js-select selectpicker dropdown-select bootstrap-select__custom-nav"
-                                data-style="btn-sm mt-1 py-0 px-0  text-black font-size-16 font-weight-semi-bold d-flex align-items-center"
-                              >
-                                <option value="one" selected>
-                                  Sailboat
-                                </option>
-                                <option value="two">Dinghy Boats</option>
-                                <option value="three">Deck Boats</option>
-                                <option value="four">Bowrider Boats</option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div className="search-container">
-  <input
-    type="text"
-    placeholder="Search by name..."
-    value={searchQuery}
-    onChange={handleSearchInputChange}
-    className="search-input"
-  />
-  <i className="fa fa-search search-icon"></i>
-</div>
-                        </div>
-                      </div>
-                    </div>
-                  
+                    
 
                     <div className="sidenav border border-color-8 rounded-xs">
                       <div
@@ -187,6 +111,16 @@ const handleSearchInputChange = (event) => {
                            <span class="font-weight-bold font-size-19 text-dark mb-3 mt-4 mx-2">
                                       Filters
                                     </span>
+                                    <div className="search-container">
+  <input
+    type="text"
+    placeholder="Search by name..."
+    value={searchQuery}
+    onChange={handleSearchInputChange}
+    className="search-input"
+  />
+  <i className="fa fa-search search-icon"></i>
+</div>
   <span className="d-block text-gray-1 text-left font-weight-normal mb-0 mt-3 mx-2">
     Price Range ($)
   </span>
@@ -347,110 +281,11 @@ const handleSearchInputChange = (event) => {
                 <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1">
                 {resultCount} results found
                 </h3>
-                <ul
-                  class="nav tab-nav-shop flex-nowrap"
-                  id="pills-tab"
-                  role="tablist"
-                >
-                  <li class="nav-item">
-                    <a
-                      class="nav-link font-size-22 p-0"
-                      id="pills-three-example1-tab"
-                      data-toggle="pill"
-                      href="#pills-three-example1"
-                      role="tab"
-                      aria-controls="pills-three-example1"
-                      aria-selected="true"
-                    >
-                      <div class="d-md-flex justify-content-md-center align-items-md-center">
-                        <i class="fa fa-list"></i>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link font-size-22 p-0 ml-2 active"
-                      id="pills-one-example1-tab"
-                      data-toggle="pill"
-                      href="#pills-one-example1"
-                      role="tab"
-                      aria-controls="pills-one-example1"
-                      aria-selected="false"
-                    >
-                      <div class="d-md-flex justify-content-md-center align-items-md-center">
-                        <i class="fa fa-th"></i>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+            
               </div>
 
               <div class="u-slick__tab">
-                <div class="mb-5">
-                  <ul
-                    class="nav flex-nowrap border border-radius-3 tab-nav align-items-center py-2 px-0"
-                    role="tablist"
-                  >
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Recommended
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <select
-                        class="js-select selectpicker dropdown-select bootstrap-select__custom-nav w-auto"
-                        data-style="btn-sm py-1 px-4 px-wd-5 font-weight-normal font-size-15  text-gray-1 d-flex align-items-center"
-                      >
-                        <option value="one" selected>
-                          Price
-                        </option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                      </select>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <select
-                        class="js-select selectpicker dropdown-select bootstrap-select__custom-nav w-auto"
-                        data-style="btn-sm py-1 px-4 px-wd-5 font-weight-normal font-size-15  text-gray-1 d-flex align-items-center"
-                      >
-                        <option value="one" selected>
-                          Stars
-                        </option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                      </select>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Guest Rating
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Distance
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Top Reviewed
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+             
 
                 <div className="tab-content" id="pills-tabContent">
                   <div
