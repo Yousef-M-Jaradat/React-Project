@@ -14,7 +14,7 @@ import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
-import "bootstrap/dist/js/bootstrap"; // Import Bootstrap JavaScript
+import "bootstrap/dist/js/bootstrap"; 
 import Contact from "./pages/contact";
 
 function App() {
