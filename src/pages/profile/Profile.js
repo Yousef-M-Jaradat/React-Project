@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import FormData from 'form-data';
+
 
 export default function Profile() {
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    image: '',
   });
 
   const [userBookings, setUserBookings] = useState([]);
@@ -14,13 +17,14 @@ export default function Profile() {
   const [isEmailModified, setIsEmailModified] = useState(false);
 
   // Get user data
+  const userID = JSON.parse(localStorage.getItem('user')).user_id
+
   useEffect(() => {
-    let id = 7;
     axios
-      .get(`https://64db17df593f57e435b06a91.mockapi.io/AHMED/${id}`)
+      .get(`https://64db17df593f57e435b06a91.mockapi.io/AHMED/${userID}`)
       .then((res) => {
-        const { firstName, lastName, email } = res.data;
-        setUserData({ firstName, lastName, email });
+        const { firstName, lastName, email, image } = res.data;
+        setUserData({ firstName, lastName, email, image });
       })
       .catch((err) => {
         console.log("ERROR GETTING USER DATA:", err);
@@ -52,10 +56,10 @@ export default function Profile() {
     checkEmailExists();
   };
 
+
   const updateUserProfile = () => {
-    let id = 7;
     axios
-      .put(`https://64db17df593f57e435b06a91.mockapi.io/AHMED/${id}`, userData)
+      .put(`https://64db17df593f57e435b06a91.mockapi.io/AHMED/${userID}`, userData)
       .then(() => {
         Swal.fire('Updated', 'Your profile is updated', 'success');
       })
@@ -86,11 +90,10 @@ export default function Profile() {
 
   // Get user's bookings
   useEffect(() => {
-    let id = 7;
     axios
       .get(`https://651a606d340309952f0d2d8f.mockapi.io/booking`)
       .then((res) => {
-        let BookingData = res.data.filter((item) => item.userId == id);
+        let BookingData = res.data.filter((item) => item.userId == userID);
         setUserBookings(BookingData);
       })
       .catch((err) => {
@@ -99,15 +102,17 @@ export default function Profile() {
   }, []);
 
 
+  // Change the active email changing status
   const activeChangeEmail = () => {
     let emailInput = document.getElementById('emailInput');
-    if(emailInput.hasAttribute('readonly')) {
+    if (emailInput.hasAttribute('readonly')) {
       emailInput.removeAttribute('readonly')
     }
     else {
       emailInput.setAttribute('readonly', true)
     }
   }
+
 
   return (
     <div
@@ -122,13 +127,27 @@ export default function Profile() {
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
           <div className="col-md-3 border-right">
+            {console.log(userData)}
             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+              {console.log(userData.image)}
               <img
+                src={`assets/img/${userData.image}`} // local image path
+                alt="User"
                 className="rounded-circle mt-5"
                 width="150px"
-                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-                alt="Profile"
               />
+              <input
+                type="file"
+                accept="image/*"
+                // onChange={handleImageChange}
+                style={{ display: 'none' }}
+                id="imageInput"
+                name='image'
+                className='image'
+              />
+              <label htmlFor="imageInput" className="btn btn-primary mt-3">
+                Change Image
+              </label>
               <span className="font-weight-bold">{userData.firstName} {userData.lastName}</span>
               <span className="text-black-50">{userData.email}</span>
             </div>
@@ -175,18 +194,18 @@ export default function Profile() {
               </form>
               <form onSubmit={handleSubmitEmail}>
                 <label className="labels">Email</label>
-                  <div className="inpt d-flex align-items-center">
+                <div className="inpt d-flex align-items-center">
                   <input readOnly
-                  type="email"
-                  className="form-control w-50"
-                  id='emailInput'
-                  name="email"
-                  placeholder="Email"
-                  value={userData.email}
-                  onChange={handleEmailChange}
-                />
-                <a onClick={activeChangeEmail} className='cursor-pointer ml-2'>change</a>
-                  </div>
+                    type="email"
+                    className="form-control w-50"
+                    id='emailInput'
+                    name="email"
+                    placeholder="Email"
+                    value={userData.email}
+                    onChange={handleEmailChange}
+                  />
+                  <span onClick={activeChangeEmail} className='cursor-pointer ml-2'>change</span>
+                </div>
                 {isEmailModified && (
                   <button className="btn btn-primary profile-button mt-3" type="submit">
                     Save Email
