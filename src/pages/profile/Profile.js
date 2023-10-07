@@ -4,6 +4,9 @@ import Swal from 'sweetalert2';
 import FormData from 'form-data';
 
 
+
+
+
 export default function Profile() {
   const [userData, setUserData] = useState({
     firstName: '',
@@ -198,7 +201,7 @@ useEffect(() => {
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
           <div className="col-md-3 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+            <div className="d-flex flex-column align-items-center text-center profile-box p-3 py-5">
               <img
                 src={CheckImageSrc()}
                 alt="User"
@@ -213,7 +216,7 @@ useEffect(() => {
               <span className="text-black-50">{userData.email}</span>
             </div>
           </div>
-          <div className="col-md-9 border-right">
+          <div className="col-md-9 border-right inpts-box">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="text-right">Profile Settings</h4>
@@ -312,4 +315,8 @@ useEffect(() => {
       </div>
     </div>
   );
+
+
+
+  
 }
