@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2"; // Import SweetAlert
 import "../login.css";
 import styled from "styled-components";
 
@@ -8,7 +9,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [data, setData] = useState([]);
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,28 +17,42 @@ function Login() {
     // Validation for email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setError("Invalid email format");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid email format",
+      });
       return;
     }
 
     const user = data.find((userdata) => userdata.email === email);
     if (!user) {
-      setError("User not found");
+      Swal.fire({
+        icon: "error",
+        title: "User not found",
+      });
+      return;
+    }
+
+    // Password validation - minimum length of 8 characters
+    if (password.length < 8) {
+      Swal.fire({
+        icon: "error",
+        title: "Password must be at least 8 characters long",
+      });
       return;
     }
 
     if (user.password === password) {
+      const userString = localStorage.getItem("user");
+      const users = JSON.parse(userString);
       const userData = {
-        name: user.firstName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
         user_id: user.id,
         status: true,
       };
-
       localStorage.setItem("user", JSON.stringify(userData));
-
-      // Corrected code to parse user data
-      const userString = localStorage.getItem("user");
-      const users = JSON.parse(userString);
 
       if (localStorage.getItem("cart")) {
         const cartData = localStorage.getItem("cart");
@@ -51,7 +65,7 @@ function Login() {
 
         axios
           .post("https://651a606d340309952f0d2d8f.mockapi.io/booking", {
-            userId: users.user_id,
+            userId: userData.user_id,
             yachtId: cart[0].yachtId,
             startDate: startDate,
             endDate: endDate,
@@ -60,7 +74,7 @@ function Login() {
           })
           .then((response) => {
             navigate("/booking");
-            localStorage.removeItem("cart");
+            // localStorage.removeItem("cart");
           })
           .catch((error) => {
             console.error("Error while posting booking data:", error);
@@ -70,7 +84,10 @@ function Login() {
         navigate("/");
       }
     } else {
-      setError("Invalid password");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid password",
+      });
     }
   };
 
@@ -118,7 +135,6 @@ function Login() {
               required
             />
           </div>
-          {error && <p className="error-message">{error}</p>}
           <button className="btn btn-primary col-12" type="submit">
             Log In
           </button>

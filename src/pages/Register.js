@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-import '../login.css';
+import Swal from "sweetalert2";
+import { Navigate, useNavigate } from "react-router-dom";
+import "../login.css";
 
 function Register() {
-  const [firstName, setfirstName] = useState("");
-    const [lastName, setlastName] = useState("");
-
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const apiUrl = "https://64db17df593f57e435b06a91.mockapi.io/AHMED";
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
-const image = "userreact.jpeg";
-  const handlefirstName = (e) => {
-    setfirstName(e.target.value);
+  const navigate = useNavigate();
+  const image = "userreact.jpeg";
+
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
   };
-  const handlelastName = (e) => {
-    setlastName(e.target.value);
+
+  const handleLastName = (e) => {
+    setLastName(e.target.value);
   };
 
   const handleEmail = (e) => {
@@ -27,10 +29,55 @@ const image = "userreact.jpeg";
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the form from submitting the default way
+  const checkEmailAvailability = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}?search=${email}`);
+      if (response.data.length > 0) {
+        return false; // Email already exists
+      } else {
+        return true; // Email is available
+      }
+    } catch (error) {
+      console.error("Error checking email availability:", error);
+      return false; // Assume email is unavailable on error
+    }
+  };
 
-    // Create an object to send in the request body
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+      });
+      return;
+    }
+
+    // Validate password length
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Password",
+        text: "Password must be at least 6 characters long.",
+      });
+      return;
+    }
+
+    const isEmailAvailable = await checkEmailAvailability();
+
+    if (!isEmailAvailable) {
+      Swal.fire({
+        icon: "error",
+        title: "Email Already Exists",
+        text: "This email address is already registered. Please use a different email.",
+      });
+      return;
+    }
+
     const userData = {
       firstName: firstName,
       lastName: lastName,
@@ -43,13 +90,21 @@ const image = "userreact.jpeg";
       .post(apiUrl, userData)
       .then((response) => {
         const responseData = response.data;
-        // Handle the successful response here
+        Swal.fire({
+          icon: "success",
+          title: "Registration Successful",
+          text: "You have successfully registered.",
+        });
+        navigate("/Login");
       })
       .catch((error) => {
-        // Handle any errors that occurred during the request
         console.error("Error:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: "An error occurred during registration. Please try again later.",
+        });
       });
-    navigate("/Login");
   };
 
   return (
@@ -60,22 +115,22 @@ const image = "userreact.jpeg";
           <p>
             <input
               className="form-control form-control-lg"
-              onChange={handlefirstName}
+              onChange={handleFirstName}
               type="text"
               id="firstName"
               name="firstName"
-              placeholder="firstName"
+              placeholder="First Name"
               required
             />
           </p>
           <p>
             <input
               className="form-control form-control-lg"
-              onChange={handlelastName}
+              onChange={handleLastName}
               type="text"
               id="lastName"
               name="lastName"
-              placeholder="lastName"
+              placeholder="Last Name"
               required
             />
           </p>
@@ -106,13 +161,13 @@ const image = "userreact.jpeg";
               onClick={handleSubmit}
               className="btn btn-primary mb-2 col-12"
               type="submit"
-              id="login"
+              id="register"
               value="Register"
             />
           </p>
         </form>
         <div id="create-account-wrap">
-          <p>{/* Not a member? <a href="#">Create Account</a> */}</p>
+          {/* Not a member? <a href="#">Create Account</a> */}
         </div>
       </div>
     </div>
