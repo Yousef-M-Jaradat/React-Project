@@ -19,7 +19,7 @@ import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Footer from "./pages/home/footer";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
- import Contact from './pages/contact';
+ import Contact from "./pages/Contact";
 
 function App() {
   const { pathname } = useLocation(); // Use 'useLocation' to get the current path
@@ -41,7 +41,7 @@ function App() {
          <Route path="/profile" element={<Profile />} />
          {/* <Route path="/singleProduct" element={<SingleProduct />} /> */}
          <Route path="/about" element={<Aboutus />} />
-         {/* <Route path="/contact" element={<Contact />} /> */}
+         <Route path="/contact" element={<Contact />} />
 
          <Route path="/yachts/:id" element={<Yacht />} />
          <Route path="/products/:id" element={<SingleProduct />} />
