@@ -1,6 +1,15 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 function Header() {
+    const navigate = useNavigate();
+
+    const id1 = 1;
+
+    const handleButtonClick = (id) => {
+        navigate(`/yachts/${id}`);
+      };
     
     const heroBlockStyle = {
        backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)), url(https://tripfinder-boat.vercel.app/_next/image?url=%2Fimages%2Fbanner%2F1.jpg&w=1920&q=75)'
@@ -20,7 +29,7 @@ function Header() {
                     <div className="space-top-lg-2 space-top-xl-3">
                                    <div className="card border-0">
                             <div className="card-body">
-                                <form className="js-validate">
+                                <form className="js-validate" >
                                   <div className="row d-block nav-select d-lg-flex mb-lg-3 px-lg-3 px-2">
                                     <div className="col-sm-12 col-lg-3dot7 mb-4 mb-lg-0 ">
                                     
@@ -31,34 +40,29 @@ function Header() {
                                             data-searchbox-classNamees="input-group-sm">
                                             <option className="border-bottom border-color-1" value="project1" data-content='
                                                 <span className="d-flex align-items-center">
-                                                    <span className="font-size-16">London, United Kingdom</span>
+                                                    <span className="font-size-16">  Aqaba, Jordan </span>
                                                 </span>'>
-                                                London, United Kingdom
-                                            </option>
-                                            <option className="border-bottom border-color-1" value="project2" data-content='
-                                                <span className="d-flex align-items-center">
-                                                    <span className="font-size-16">New York, United States</span>
-                                                </span>'>
-                                                New York, United States
+                                                Aqaba, Jordan
                                             </option>
                                             <option  className="border-bottom border-color-1" value="project3" data-content='
                                                 <span className="d-flex align-items-center">
-                                                    <span className="font-size-16">New South Wales, Australia</span>
+                                                    <span className="font-size-16">Abu Dhabi, UAE</span>
                                                 </span>'>
-                                                New South Wales, Australia
-                                            </option>
-                                            <option className="border-bottom border-color-1" value="project4" data-content='
-                                                <span className="d-flex align-items-center">
-                                                    <span className="font-size-16">Istanbul, Turkey</span>
-                                                </span>'>
-                                                Istanbul, Turkey
+                                                Abu Dhabi, UAE
                                             </option>
                                             <option className="" value="project4" data-content='
                                                 <span className="d-flex align-items-center">
-                                                    <span className="font-size-16">Reykjavík, Iceland</span>
+                                                    <span className="font-size-16">Reykjavík, USA</span>
                                                 </span>'>
-                                                Reykjavík, Iceland
+                                                Miami, USA
                                             </option>
+                                            <option className="border-bottom border-color-1" value="project4" data-content='
+                                                <span className="d-flex align-items-center">
+                                                    <span className="font-size-16">Bodrum, Turkey</span>
+                                                </span>'>
+                                                Bodrum, Turkey
+                                            </option>
+                                           
                                         </select>
                                   
                                     </div>
@@ -104,7 +108,7 @@ function Header() {
                                     </div>
 
                                     <div className="col-sm-12 col-lg-1dot8 align-self-lg-end text-md-right">
-                                        <button type="submit" className="btn btn-primary text-white font-weight-semi-bold btn-md mb-xl-0 mb-lg-1 transition-3d-hover"><i className="flaticon-magnifying-glass font-size-20 mr-2"></i>Search</button>
+                                        <button type="submit"  onClick={() => handleButtonClick(id1)} className="btn btn-primary text-white font-weight-semi-bold btn-md mb-xl-0 mb-lg-1 transition-3d-hover"><i className="flaticon-magnifying-glass font-size-20 mr-2"></i>Search</button>
                                     </div>
                                   </div>
                              
