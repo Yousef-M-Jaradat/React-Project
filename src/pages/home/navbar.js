@@ -11,6 +11,7 @@ function Navbar() {
     logindata.id = "";
     logindata.status = false;
     localStorage.setItem("user", JSON.stringify(logindata));
+    localStorage.clear();
     window.location.reload();
     localStorage.clear();
   };
