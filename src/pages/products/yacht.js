@@ -17,6 +17,7 @@ function Yacht() {
   const [selectedBeds, setSelectedBeds] = useState("");
   const [selectedSpeed, setselectedSpeed] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [resultCount, setResultCount] = useState(0);
   const itemsPerPage = 3;
 
 
@@ -40,6 +41,7 @@ useEffect(() => {
           yacht.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
       setData(filteredData);
+      setResultCount(filteredData.length);
     });
 }, [id, searchQuery]);
 
@@ -343,7 +345,7 @@ const handleSearchInputChange = (event) => {
             <div class="col-lg-8 col-xl-9 order-md-1 order-lg-2">
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1">
-                  1,984 results found.
+                {resultCount} results found
                 </h3>
                 <ul
                   class="nav tab-nav-shop flex-nowrap"
