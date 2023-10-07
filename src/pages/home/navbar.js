@@ -13,6 +13,7 @@ function Navbar() {
     localStorage.setItem("user", JSON.stringify(logindata));
     localStorage.clear();
     window.location.reload();
+    localStorage.clear();
   };
 
   const myStyle = {

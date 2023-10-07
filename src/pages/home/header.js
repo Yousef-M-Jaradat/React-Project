@@ -3,13 +3,13 @@ import React from "react";
 function Header() {
     
     const heroBlockStyle = {
-        backgroundImage: "url(../../assets/img/1920x960/img1.jpg)",
-      };   
+       backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)), url(https://tripfinder-boat.vercel.app/_next/image?url=%2Fimages%2Fbanner%2F1.jpg&w=1920&q=75)'
+      };  
   return(
 <div>
 
 
-<div className="hero-block hero-v7 bg-img-hero-bottom gradient-overlay-half-sapphire-gradient text-center z-index-2" style={heroBlockStyle}>
+<div className="hero-block hero-v7 bg-img-hero-bottom  text-center z-index-2" style={heroBlockStyle}>
                 <div className="container space-2 space-top-xl-10">
                   
                     <div className="py-wd-10 pb-5">

@@ -1,12 +1,8 @@
-import React, { useEffect, useState,useContext,createContext } from "react";
-import axios from 'axios';// Import axios
-import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
-// import '../style.css';
-import '../login.css'
-import styled from "styled-components"; // Import styled-components
-
-
-
+import React, { useEffect, useState, useContext, createContext } from "react";
+import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
+import "../login.css";
+import styled from "styled-components";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -32,7 +28,41 @@ function Login() {
       };
 
       localStorage.setItem("user", JSON.stringify(userData));
-      navigate("/");
+
+      // Corrected code to parse user data
+      const userString = localStorage.getItem("user");
+      const users = JSON.parse(userString);
+
+      if (localStorage.getItem("cart")) {
+        const cartData = localStorage.getItem("cart");
+        const cart = JSON.parse(cartData);
+        const startDate = new Date(cart[0].startDate);
+        const endDate = new Date(cart[0].endDate);
+        const nights = Math.floor(
+          (endDate - startDate) / (1000 * 60 * 60 * 24)
+        );
+        // console.log(cart[0].endDate);
+
+        axios
+          .post("https://651a606d340309952f0d2d8f.mockapi.io/booking", {
+            userId: users.user_id,
+            yachtId: cart[0].yachtId,
+            startDate: startDate,
+            endDate: endDate,
+            totalPrice: cart[0].totalPrice,
+            nights: nights,
+          })
+          .then((response) => {
+            navigate("/booking");
+            localStorage.removeItem("cart");
+          })
+          .catch((error) => {
+            console.error("Error while posting booking data:", error);
+            // Handle the error appropriately
+          });
+      } else {
+        navigate("/");
+      }
     } else {
       setError("Invalid password");
     }
@@ -86,7 +116,6 @@ function Login() {
           <button className="btn btn-primary col-12" type="submit">
             Log In
           </button>
-          
         </form>
       </div>
     </div>
