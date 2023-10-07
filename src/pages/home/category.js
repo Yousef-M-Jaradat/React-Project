@@ -48,6 +48,7 @@ function Category() {
                 className="min-height-350 bg-img-hero rounded-border p-5 gradient-overlay-half-bg-gradient transition-3d-hover shadow-hover-2"
               
                 style={{ backgroundImage: categoryData[categoryId].image }}
+                onClick={() => handleButtonClick(categoryId)}
               >
                 <header className="w-100 d-flex justify-content-between mb-3">
                   <div>

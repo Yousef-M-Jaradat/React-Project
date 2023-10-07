@@ -1,12 +1,9 @@
 import React from 'react'
-import img1 from "../img1.jpg";
+import img1 from "./boat1.jpg";
 import 'bootstrap/dist/js/bootstrap'; // Import Bootstrap JavaScript
 
 export default function Contact() {
 
-const myStyle = {
-  backgroundImage: `url(${img1})`,
-};
 
 const myStyle2 = {
   width: 1500,
@@ -25,7 +22,7 @@ const link = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8352535
       {/* <!-- ========== MAIN CONTENT ========== --> */}
       <main id="content">
         {/* <!-- Hero Section --> */}
-        <div class="bg-img-hero text-center mb-5 mb-lg-8" style={myStyle}>
+        <div class="bg-img-hero text-center mb-5 mb-lg-8" style={{ backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)' }}>
           <div class="container space-top-xl-3 py-6 py-xl-0">
             <div class="row justify-content-center py-xl-4">
               {/* <!-- Info --> */}

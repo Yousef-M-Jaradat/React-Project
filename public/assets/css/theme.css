@@ -46235,3 +46235,7 @@ Letter Spacing
 /*--------------------------------------------
   File for your custom SCSS & CSS style here.
 ----------------------------------------------*/
+
+.bookingsTable tr td  {
+  vertical-align: middle;
+}

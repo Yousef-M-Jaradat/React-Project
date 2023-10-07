@@ -84,29 +84,7 @@ function Blog() {
                                 </div>
                             
                             </div>
-                            <nav aria-label="Page navigation">
-                                <ul className="list-pagination-1 pagination border border-color-4 rounded-sm mb-5 mb-lg-0 overflow-auto overflow-xl-visible justify-content-md-center align-items-center py-2">
-                                    <li className="page-item">
-                                        <a className="page-link border-right rounded-0 text-gray-5" href="#" aria-label="Previous">
-                                            <i className="flaticon-left-direction-arrow font-size-10 font-weight-bold"></i>
-                                            <span className="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li className="page-item"><a className="page-link font-size-14 active" href="#">1</a></li>
-                                    <li className="page-item"><a className="page-link font-size-14 " href="#">2</a></li>
-                                    <li className="page-item"><a className="page-link font-size-14" href="#">3</a></li>
-                                    <li className="page-item disabled"><a className="page-link font-size-14" href="#">...</a></li>
-                                    <li className="page-item"><a className="page-link font-size-14" href="#">14</a></li>
-                                    <li className="page-item"><a className="page-link font-size-14" href="#">15</a></li>
-                                   
-                                    <li className="page-item">
-                                        <a className="page-link border-left rounded-0 text-gray-5" href="#" aria-label="Next">
-                                            <i className="flaticon-right-thin-chevron font-size-10 font-weight-bold"></i>
-                                            <span className="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                          
                         </div>
                         <div className="col-lg-4 col-xl-3">
                           

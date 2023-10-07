@@ -105,6 +105,7 @@ function SingleProduct() {
           nights: nights,
           userId: user.user_id,
         })
+        
         .then((response) => {
           setBookingData({
             userId: "",
@@ -122,9 +123,23 @@ function SingleProduct() {
             navigate("/booking");
           });
         })
+        
         .catch((error) => {
           // Handle error if needed
         });
+         const cartData = {
+           yachtId: id,
+           startDate: startDate,
+           endDate: endDate,
+           nights: nights,
+           totalPrice: formData.price * nights,
+         };
+               const existingCart =
+                 JSON.parse(localStorage.getItem("cart")) || [];
+
+               existingCart.push(cartData);
+
+               localStorage.setItem("cart", JSON.stringify(existingCart));
     } else {
       // User is logged in, add data to the cart and navigate to "/login"
       const cartData = {
@@ -140,8 +155,8 @@ function SingleProduct() {
       existingCart.push(cartData);
 
       localStorage.setItem("cart", JSON.stringify(existingCart));
-      console.log(cartData);
-      console.log(formData.startDate);
+      // console.log(cartData);
+      // console.log(formData.startDate);
       Swal.fire({
         icon: "success",
         title: "Item added to cart!",
