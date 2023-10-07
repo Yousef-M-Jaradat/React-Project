@@ -188,11 +188,11 @@ const mytext2 = {
                         style={mytext}
                         id="pagesMegaMenu"
                         className="nav-link u-header__nav-link "
-                        href="javascript:;"
+                        to={"/blog"}
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        Pages
+                        Blog
                       </Link>
                     </li>
                     <li
