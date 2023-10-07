@@ -313,13 +313,13 @@ a:hover {
 }
 
 a:not([href]):not([tabindex]) {
-  color: red;
+  /* color: red; */
   text-decoration: none;
 }
 
 a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
-  color: red;
+  /* color: red; */
   text-decoration: none;
 }
 
@@ -623,7 +623,7 @@ mark,
 }
 
 .list-inline-item:not(:last-child) {
-  margin-right: 0.5rem;
+  margin-right: 2rem;
 }
 
 .initialism {
@@ -10801,7 +10801,7 @@ a.badge-purple-1.focus {
   display: block;
   padding: 0.425rem 1.25rem;
   margin-bottom: -1px;
-  background-color: #fff;
+
   border: 1px solid #e7eaf3;
 }
 
@@ -10820,7 +10820,7 @@ a.badge-purple-1.focus {
 .list-group-item:disabled {
   color: #8c98a4;
   pointer-events: none;
-  background-color: #fff;
+
 }
 
 .list-group-item.active {
@@ -10980,6 +10980,7 @@ a.badge-purple-1.focus {
 .list-group-flush:last-child .list-group-item:last-child {
   margin-bottom: 0;
   border-bottom: 0;
+
 }
 
 .list-group-item-primary {
@@ -23622,7 +23623,7 @@ a.text-purple-1:focus {
 
 .space-1,
 .space-top-1 {
-  padding-top: 2rem !important;
+  padding-top: 2rem ;
 }
 
 .space-1,
@@ -24324,7 +24325,7 @@ button:focus {
 }
 
 .list-group .list-group-item {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .list-group .list-group-icon {
@@ -24345,6 +24346,7 @@ button:focus {
 
 .list-group .disabled .u-icon {
   color: #77838f;
+ 
   background-color: rgba(119, 131, 143, 0.1);
 }
 
@@ -36357,6 +36359,7 @@ label.btn {
 /* Background Transparent */
 [class*="btn-soft-"].btn-bg-transparent {
   background-color: transparent;
+ 
 }
 
 /* Toggle */
@@ -36883,7 +36886,9 @@ label.btn {
     margin-left: 0.9375rem;
   }
 }
-
+.footer{
+  background-color: rgba(25, 160, 255, 0.20);
+}
 /*------------------------------------
   Card Group - Break
 ------------------------------------*/
@@ -46218,6 +46223,13 @@ Letter Spacing
   100% {
     opacity: 1;
   }
+}
+.footer {
+  box-shadow: 2px 2px 2px 3px var(--blue);
+  background-color: white !important;
+}
+.hay{
+   background-color: rgba(25, 160, 255, 0.11) !important;
 }
 
 /*--------------------------------------------
