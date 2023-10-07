@@ -11,6 +11,7 @@ function Navbar() {
     logindata.id = "";
     logindata.status = false;
     localStorage.setItem("user", JSON.stringify(logindata));
+    localStorage.clear();
     window.location.reload();
     localStorage.clear();
   };
@@ -48,9 +49,9 @@ const mytext2 = {
                 style={myStyle}
                 className="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space my-1 "
               >
-                <a
+                <Link
                   className="navbar-brand u-header__navbar-brand-default u-header__navbar-brand-center u-header__navbar-brand-text-white"
-                  href="../home/index.html"
+                  to={"/home"}
                   aria-label="MyYacht"
                 >
                   {/* <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55px" height="53px" style="margin-bottom: 0;">
@@ -60,11 +61,11 @@ const mytext2 = {
                   <span style={mytext} className="u-header__navbar-brand-text">
                     MyYacht
                   </span>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-collapsed"
-                  href="../home/index.html"
+                  to={"/home"}
                   aria-label="MyYacht"
                 >
                   {/* <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55px" height="53px" style="margin-bottom: 0;">
@@ -74,11 +75,11 @@ const mytext2 = {
                   <span className="u-header__navbar-brand-text" style={mytext}>
                     MyYacht
                   </span>
-                </a>
+                </Link>
 
-                <a
+                <Link
                   className="navbar-brand u-header__navbar-brand u-header__navbar-brand-center u-header__navbar-brand-on-scroll"
-                  href="../home/index.html"
+                  to={"/home"}
                   aria-label="MyYacht"
                 >
                   {/* <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55px" height="53px" style="margin-bottom: 0;">
@@ -88,7 +89,7 @@ const mytext2 = {
                   <span className="u-header__navbar-brand-text" style={mytext}>
                     MyYacht
                   </span>
-                </a>
+                </Link>
 
                 <button
                   type="button"
@@ -202,7 +203,6 @@ const mytext2 = {
                         style={mytext}
                         id="yachtMenu"
                         className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
-                       
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-labelledby="yachtSubMenu"
