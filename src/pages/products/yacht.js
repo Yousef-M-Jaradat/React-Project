@@ -33,16 +33,23 @@ function Yacht() {
     axios
       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
       .then((response) => {
-        const filteredData = response.data.filter((yacht) => {
+        let filteredData = response.data.filter((yacht) => {
           return (
             yacht.category_id === parseInt(id) &&
             yacht.name.toLowerCase().includes(searchQuery.toLowerCase())
           );
         });
+        if (selectedBeds !== "") {
+          filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
+        }
+        if (selectedSpeed !== "") {
+          filteredData = filteredData.filter(
+            (yacht) => yacht.speed === selectedSpeed
+          );}
         setData(filteredData);
         setResultCount(filteredData.length);
       });
-  }, [id, searchQuery ]);
+  }, [id, searchQuery, selectedBeds ,selectedSpeed ]);
 
   const handleSearchInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -64,15 +71,7 @@ function Yacht() {
     return price >= min && price <= max;
   });
 
-  if (selectedBeds !== "") {
-    filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
-  }
-
-  if (selectedSpeed !== "") {
-    filteredData = filteredData.filter(
-      (yacht) => yacht.speed === selectedSpeed
-    );
-  }
+ 
 
   return (
     <div className="mt-10">
