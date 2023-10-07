@@ -15,7 +15,7 @@ import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
 import "bootstrap/dist/js/bootstrap"; // Import Bootstrap JavaScript
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 
 function App() {
   const { pathname } = useLocation(); // Use 'useLocation' to get the current path
