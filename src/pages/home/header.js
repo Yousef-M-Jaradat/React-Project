@@ -1,80 +1,84 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 function Header() {
+    const navigate = useNavigate();
+
+    const id1 = 1;
+
+    const handleButtonClick = (id) => {
+        navigate(`/yachts/${id}`);
+      };
     
     const heroBlockStyle = {
-        backgroundImage: "url(../../assets/img/1920x960/img1.jpg)",
-      };   
+       backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)), url(https://tripfinder-boat.vercel.app/_next/image?url=%2Fimages%2Fbanner%2F1.jpg&w=1920&q=75)'
+      };  
   return(
 <div>
 
 
-<div class="hero-block hero-v7 bg-img-hero-bottom gradient-overlay-half-sapphire-gradient text-center z-index-2" style={heroBlockStyle}>
-                <div class="container space-2 space-top-xl-10">
+<div className="hero-block hero-v7 bg-img-hero-bottom  text-center z-index-2" style={heroBlockStyle}>
+                <div className="container space-2 space-top-xl-10">
                   
-                    <div class="py-wd-10 pb-5">
-                      <h1 class="font-size-60 font-size-xs-30 text-white font-weight-bold">Boat Holidays Made Easy</h1>
-                      <p class="font-size-20 font-weight-normal text-white">Rent a boat from the #1 yacht charter platform</p>
+                    <div className="py-wd-10 pb-5">
+                      <h1 className="font-size-60 font-size-xs-30 text-white font-weight-bold">Boat Holidays Made Easy</h1>
+                      <p className="font-size-20 font-weight-normal text-white">Rent a boat from the #1 yacht charter platform</p>
                     </div>
                    
-                    <div class="space-top-lg-2 space-top-xl-3">
-                                   <div class="card border-0">
-                            <div class="card-body">
-                                <form class="js-validate">
-                                  <div class="row d-block nav-select d-lg-flex mb-lg-3 px-lg-3 px-2">
-                                    <div class="col-sm-12 col-lg-3dot7 mb-4 mb-lg-0 ">
+                    <div className="space-top-lg-2 space-top-xl-3">
+                                   <div className="card border-0">
+                            <div className="card-body">
+                                <form className="js-validate" >
+                                  <div className="row d-block nav-select d-lg-flex mb-lg-3 px-lg-3 px-2">
+                                    <div className="col-sm-12 col-lg-3dot7 mb-4 mb-lg-0 ">
                                     
-                                        <span class="d-block text-gray-1  font-weight-normal mb-0 text-left">Destination or Hotel Name</span>
-                                        <select class="js-select selectpicker dropdown-select tab-dropdown col-12 pl-0 flaticon-pin-1 d-flex align-items-center text-primary font-weight-semi-bold" title="Where are you going?"
+                                        <span className="d-block text-gray-1  font-weight-normal mb-0 text-left">Destination or Hotel Name</span>
+                                        <select className="js-select selectpicker dropdown-select tab-dropdown col-12 pl-0 flaticon-pin-1 d-flex align-items-center text-primary font-weight-semi-bold" title="Where are you going?"
                                             data-style=""
                                             data-live-search="true"
-                                            data-searchbox-classes="input-group-sm">
-                                            <option class="border-bottom border-color-1" value="project1" data-content='
-                                                <span class="d-flex align-items-center">
-                                                    <span class="font-size-16">London, United Kingdom</span>
+                                            data-searchbox-classNamees="input-group-sm">
+                                            <option className="border-bottom border-color-1" value="project1" data-content='
+                                                <span className="d-flex align-items-center">
+                                                    <span className="font-size-16">  Aqaba, Jordan </span>
                                                 </span>'>
-                                                London, United Kingdom
+                                                Aqaba, Jordan
                                             </option>
-                                            <option class="border-bottom border-color-1" value="project2" data-content='
-                                                <span class="d-flex align-items-center">
-                                                    <span class="font-size-16">New York, United States</span>
+                                            <option  className="border-bottom border-color-1" value="project3" data-content='
+                                                <span className="d-flex align-items-center">
+                                                    <span className="font-size-16">Abu Dhabi, UAE</span>
                                                 </span>'>
-                                                New York, United States
+                                                Abu Dhabi, UAE
                                             </option>
-                                            <option  class="border-bottom border-color-1" value="project3" data-content='
-                                                <span class="d-flex align-items-center">
-                                                    <span class="font-size-16">New South Wales, Australia</span>
+                                            <option className="" value="project4" data-content='
+                                                <span className="d-flex align-items-center">
+                                                    <span className="font-size-16">Reykjavík, USA</span>
                                                 </span>'>
-                                                New South Wales, Australia
+                                                Miami, USA
                                             </option>
-                                            <option class="border-bottom border-color-1" value="project4" data-content='
-                                                <span class="d-flex align-items-center">
-                                                    <span class="font-size-16">Istanbul, Turkey</span>
+                                            <option className="border-bottom border-color-1" value="project4" data-content='
+                                                <span className="d-flex align-items-center">
+                                                    <span className="font-size-16">Bodrum, Turkey</span>
                                                 </span>'>
-                                                Istanbul, Turkey
+                                                Bodrum, Turkey
                                             </option>
-                                            <option class="" value="project4" data-content='
-                                                <span class="d-flex align-items-center">
-                                                    <span class="font-size-16">Reykjavík, Iceland</span>
-                                                </span>'>
-                                                Reykjavík, Iceland
-                                            </option>
+                                           
                                         </select>
                                   
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3dot6 mb-4 mb-lg-0 ">
+                                    <div className="col-sm-12 col-lg-3dot6 mb-4 mb-lg-0 ">
                                    
-                                        <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">Check In - Out</span>
-                                        <div class="js-focus-state">
-                                            <div class="border-bottom border-width-2 border-color-1">
-                                                <div id="datepickerWrapperFrom" class="u-datepicker input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="d-flex align-items-center mr-2">
-                                                          <i class="flaticon-calendar text-primary font-weight-semi-bold"></i>
+                                        <span className="d-block text-gray-1 font-weight-normal mb-0 text-left">Check In - Out</span>
+                                        <div className="js-focus-state">
+                                            <div className="border-bottom border-width-2 border-color-1">
+                                                <div id="datepickerWrapperFrom" className="u-datepicker input-group">
+                                                    <div className="input-group-prepend">
+                                                        <span className="d-flex align-items-center mr-2">
+                                                          <i className="flaticon-calendar text-primary font-weight-semi-bold"></i>
                                                         </span>
                                                     </div>
-                                                    <input class="js-range-datepicker font-size-lg-16 shadow-none font-weight-bold form-control hero-form bg-transparent  border-0" type="date"
+                                                    <input className="js-range-datepicker font-size-lg-16 shadow-none font-weight-bold form-control hero-form bg-transparent  border-0" type="date"
                                                          data-rp-wrapper="#datepickerWrapperFrom"
                                                          data-rp-type="range"
                                                          data-rp-date-format="M d / Y"
@@ -86,13 +90,13 @@ function Header() {
                                    
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-2dot8 mb-4 mb-lg-0">
+                                    <div className="col-sm-12 col-lg-2dot8 mb-4 mb-lg-0">
                                   
-                                        <span class="d-block text-gray-1 font-weight-normal mb-0 text-left">Boat Type</span>
-                                        <div class="js-focus-state">
-                                            <div class="d-flex border-bottom border-width-2 border-color-1">
-                                                <i class="flaticon-backpack d-flex align-items-center mr-2 text-primary font-weight-semi-bold"></i>
-                                                <select class="js-select selectpicker dropdown-select">
+                                        <span className="d-block text-gray-1 font-weight-normal mb-0 text-left">Boat Type</span>
+                                        <div className="js-focus-state">
+                                            <div className="d-flex border-bottom border-width-2 border-color-1">
+                                                <i className="flaticon-backpack d-flex align-items-center mr-2 text-primary font-weight-semi-bold"></i>
+                                                <select className="js-select selectpicker dropdown-select">
                                                     <option value="2 Rooms - 3 Guests" selected>sailboat</option>
                                                     <option value="2 Rooms - 3 Guests">2 Rooms - 4 Guests</option>
                                                     <option value="2 Rooms - 3 Guests">3 Rooms - 6 Guests</option>
@@ -103,8 +107,8 @@ function Header() {
                               
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-1dot8 align-self-lg-end text-md-right">
-                                        <button type="submit" class="btn btn-primary text-white font-weight-semi-bold btn-md mb-xl-0 mb-lg-1 transition-3d-hover"><i class="flaticon-magnifying-glass font-size-20 mr-2"></i>Search</button>
+                                    <div className="col-sm-12 col-lg-1dot8 align-self-lg-end text-md-right">
+                                        <button type="submit"  onClick={() => handleButtonClick(id1)} className="btn btn-primary text-white font-weight-semi-bold btn-md mb-xl-0 mb-lg-1 transition-3d-hover"><i className="flaticon-magnifying-glass font-size-20 mr-2"></i>Search</button>
                                     </div>
                                   </div>
                              

@@ -14,7 +14,10 @@ function Yacht() {
   const [maxPrice, setMaxPrice] = useState("");
   const [searchQuery, setSearchQuery] = useState('');
   const [data, setData] = useState([]);
+  const [selectedBeds, setSelectedBeds] = useState("");
+  const [selectedSpeed, setselectedSpeed] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [resultCount, setResultCount] = useState(0);
   const itemsPerPage = 3;
 
 
@@ -28,25 +31,6 @@ function Yacht() {
   const handleButtonClick = (id) => {
     navigate(`/yachts/${id}`);
   };
-
-
-//   useEffect(() => {
-//     axios
-//       .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`, {
-//         params: {
-//           category_id: id,
-//         },
-//       })
-//       .then((response) => {
-//         setData(response.data);
-//       });
-      
-//   }, [id]);
-
-
-
-
-
  
 useEffect(() => {
   axios
@@ -57,6 +41,7 @@ useEffect(() => {
           yacht.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
       setData(filteredData);
+      setResultCount(filteredData.length);
     });
 }, [id, searchQuery]);
 
@@ -74,13 +59,24 @@ const handleSearchInputChange = (event) => {
   const currentData = data.slice(offset, offset + itemsPerPage);
 
   
-  const filteredData = currentData.filter((yacht) => {
+  let filteredData = currentData.filter((yacht) => {
     const price = parseFloat(yacht.price);
     const min = minPrice !== "" ? parseFloat(minPrice) : 0;
     const max = maxPrice !== "" ? parseFloat(maxPrice) : Infinity;
     return price >= min && price <= max;
   });
 
+    if (selectedBeds !== "") {
+    
+      filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
+      
+  };
+
+  if (selectedSpeed !== "") {
+    
+    filteredData = filteredData.filter((yacht) => yacht.speed === selectedSpeed);
+    
+};
 
   return (
     <div className='mt-10'>
@@ -103,70 +99,19 @@ const handleSearchInputChange = (event) => {
                 </button>
                 <div id="sidebar" class="collapse navbar-collapse">
                   <div class="mb-6 w-100">
-                    <div class="pb-4 mb-2">
-                      <div class="sidebar border border-color-1 rounded-xs">
-                        <div class="p-4 mx-1 mb-1">
-                          <span class="d-block text-gray-1  font-weight-normal mb-0 text-left">
-                            Destination
-                          </span>
-                          <div class="mb-4">
-                            <div class="input-group border-bottom border-width-2 border-color-1">
-                              <i class="flaticon-pin-1 d-flex align-items-center mr-2 text-primary font-weight-semi-bold font-size-22"></i>
-                              <input
-                                type="text"
-                                class="form-control font-weight-bold font-size-16 shadow-none hero-form font-weight-bold border-0 p-0"
-                                placeholder="Where are you going?"
-                                aria-label="Keyword or title"
-                                aria-describedby="keywordInputAddon"
-                              ></input>
-                            </div>
-                          </div>
+                    
 
-                          <span class="d-block text-gray-1 text-left font-weight-normal mb-0">
-                            From - To
-                          </span>
-                          <div class="border-bottom border-width-2 border-color-1 mb-4">
-                            <div
-                              id="datepickerWrapperFromOne"
-                              class="u-datepicker input-group flex-nowrap"
-                            >
-                              <div class="input-group-prepend">
-                                <span class="d-flex align-items-center mr-2 font-size-21">
-                                  <i class="flaticon-calendar text-primary font-weight-semi-bold"></i>
-                                </span>
-                              </div>
-                              <input
-                                class="js-range-datepicker font-size-16 ml-1 shadow-none font-weight-bold form-control hero-form bg-transparent border-0 flatpickr-input p-0"
-                                type="date"
-                                data-rp-wrapper="#datepickerWrapperFromOne"
-                                data-rp-type="range"
-                                data-rp-date-format="M d / Y"
-                                data-rp-default-date='["Jul 7 / 2020", "Aug 25 / 2020"]'
-                              ></input>
-                            </div>
-                          </div>
-
-                          <div class="col dropdown-custom px-0 mb-5">
-                            <span class="d-block text-gray-1 text-left font-weight-normal mb-2">
-                              Trip Type
-                            </span>
-                            <div class="flex-horizontal-center border-bottom border-width-2 border-color-1 pb-2">
-                              <i class="flaticon-sailboat d-flex align-items-center mr-2 font-size-24 text-primary"></i>
-                              <select
-                                class="js-select selectpicker dropdown-select bootstrap-select__custom-nav"
-                                data-style="btn-sm mt-1 py-0 px-0  text-black font-size-16 font-weight-semi-bold d-flex align-items-center"
-                              >
-                                <option value="one" selected>
-                                  Sailboat
-                                </option>
-                                <option value="two">Dinghy Boats</option>
-                                <option value="three">Deck Boats</option>
-                                <option value="four">Bowrider Boats</option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div className="search-container">
+                    <div className="sidenav border border-color-8 rounded-xs">
+                      <div
+                        id="shopCartAccordion"
+                        className="accordion rounded shadow-none"
+                      >
+                        <div className="border-0">
+                        <div className="pb-4 mb-2">
+                           <span class="font-weight-bold font-size-19 text-dark mb-3 mt-4 mx-2">
+                                      Filters
+                                    </span>
+                                    <div className="search-container">
   <input
     type="text"
     placeholder="Search by name..."
@@ -176,23 +121,11 @@ const handleSearchInputChange = (event) => {
   />
   <i className="fa fa-search search-icon"></i>
 </div>
-                        </div>
-                      </div>
-                    </div>
-                  
-
-                    <div class="sidenav border border-color-8 rounded-xs">
-                      <div
-                        id="shopCartAccordion"
-                        class="accordion rounded shadow-none"
-                      >
-                        <div class="border-0">
-                        <div class="pb-4 mb-2">
-  <span class="d-block text-gray-1 text-left font-weight-normal mb-0">
+  <span className="d-block text-gray-1 text-left font-weight-normal mb-0 mt-3 mx-2">
     Price Range ($)
   </span>
-  <div class="border-bottom border-width-2 border-color-1 mb-4">
-    <div class="input-group">
+  <div className="border-bottom border-width-2 border-color-1 mx-2 " >
+    <div className="input-group">
       <input
         type="number"
         placeholder="Min Price"
@@ -211,43 +144,29 @@ const handleSearchInputChange = (event) => {
   </div>
 </div>
 
-                          <div
-                            id="shopCardOne"
-                            class="collapse show"
-                            aria-labelledby="shopCardHeadingOne"
-                            data-parent="#shopCartAccordion"
-                          >
-                            <div class="card-body pt-0 px-5">
-                              <div class="pb-3 mb-1 d-flex text-lh-1">
-                                <span>£</span>
-                                <span
-                                  id="rangeSliderExample3MinResult"
-                                  class=""
-                                ></span>
-                                <span class="mx-0dot5"> — </span>
-                                <span>£</span>
-                                <span
-                                  id="rangeSliderExample3MaxResult"
-                                  class=""
-                                ></span>
-                              </div>
-                              <input
-                                class="js-range-slider"
-                                type="text"
-                                data-extra-classes="u-range-slider height-35"
-                                data-type="double"
-                                data-grid="false"
-                                data-hide-from-to="true"
-                                data-min="0"
-                                data-max="3456"
-                                data-from="200"
-                                data-to="3456"
-                                data-prefix="$"
-                                data-result-min="#rangeSliderExample3MinResult"
-                                data-result-max="#rangeSliderExample3MaxResult"
-                              ></input>
-                            </div>
-                          </div>
+<label className=" text-gray-1 text-left font-weight-normal mb-0 p-2" >Number of beds:</label> 
+      <select className=" w-50 mb-3 "  onChange={(e) =>  setSelectedBeds(e.target.value)} value={selectedBeds}>
+        <option value="">All</option>
+        <option value="3">3 beds</option>
+        <option value="4">4 beds</option>
+        <option value="5">5 beds</option>
+        <option value="6">6 beds</option>
+        <option value="7">7 beds</option>
+        <option value="8">8 beds</option>
+        <option value="9">9 beds</option>
+        <option value="10">10 beds</option>
+      </select>
+    
+      <div>
+       <label className=" text-gray-1 text-left font-weight-normal mb-0 p-2"  >Speed:</label>
+      <select className=" w-75 mb-4" onChange={(e) =>  setselectedSpeed(e.target.value)} value={selectedSpeed}>
+        <option value="">All</option>
+        <option value="120">120 </option>
+        <option value="130">130 </option>
+        <option value="140">140 </option>
+   
+      </select>
+      </div>
                         </div>
                       </div>
 
@@ -271,7 +190,7 @@ const handleSearchInputChange = (event) => {
                               >
                                 <span class="row align-items-center">
                                   <span class="col-9">
-                                    <span class="font-weight-bold font-size-17 text-dark mb-3">
+                                    <span class="font-weight-bold font-size-19 text-dark mb-3">
                                       Categories
                                     </span>
                                   </span>
@@ -315,7 +234,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id2)}
         ></input>
         <label class="custom-control-label" for="brandrotterdam">
-          AbuDubai
+        Abu Dhabi
         </label>
       </div>
     </div>
@@ -329,7 +248,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id3)}
         ></input>
         <label class="custom-control-label" for="brandvalkenburg">
-          Amman
+          Miami
         </label>
       </div>
     </div>
@@ -343,7 +262,7 @@ const handleSearchInputChange = (event) => {
           onClick={() => handleButtonClick(id4)}
         ></input>
         <label class="custom-control-label" for="brandvalkenburg2">
-          Amman
+        Bodrum
         </label>
       </div>
     </div>
@@ -360,112 +279,13 @@ const handleSearchInputChange = (event) => {
             <div class="col-lg-8 col-xl-9 order-md-1 order-lg-2">
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1">
-                  1,984 results found.
+                {resultCount} results found
                 </h3>
-                <ul
-                  class="nav tab-nav-shop flex-nowrap"
-                  id="pills-tab"
-                  role="tablist"
-                >
-                  <li class="nav-item">
-                    <a
-                      class="nav-link font-size-22 p-0"
-                      id="pills-three-example1-tab"
-                      data-toggle="pill"
-                      href="#pills-three-example1"
-                      role="tab"
-                      aria-controls="pills-three-example1"
-                      aria-selected="true"
-                    >
-                      <div class="d-md-flex justify-content-md-center align-items-md-center">
-                        <i class="fa fa-list"></i>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link font-size-22 p-0 ml-2 active"
-                      id="pills-one-example1-tab"
-                      data-toggle="pill"
-                      href="#pills-one-example1"
-                      role="tab"
-                      aria-controls="pills-one-example1"
-                      aria-selected="false"
-                    >
-                      <div class="d-md-flex justify-content-md-center align-items-md-center">
-                        <i class="fa fa-th"></i>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+            
               </div>
 
               <div class="u-slick__tab">
-                <div class="mb-5">
-                  <ul
-                    class="nav flex-nowrap border border-radius-3 tab-nav align-items-center py-2 px-0"
-                    role="tablist"
-                  >
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Recommended
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <select
-                        class="js-select selectpicker dropdown-select bootstrap-select__custom-nav w-auto"
-                        data-style="btn-sm py-1 px-4 px-wd-5 font-weight-normal font-size-15  text-gray-1 d-flex align-items-center"
-                      >
-                        <option value="one" selected>
-                          Price
-                        </option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                      </select>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <select
-                        class="js-select selectpicker dropdown-select bootstrap-select__custom-nav w-auto"
-                        data-style="btn-sm py-1 px-4 px-wd-5 font-weight-normal font-size-15  text-gray-1 d-flex align-items-center"
-                      >
-                        <option value="one" selected>
-                          Stars
-                        </option>
-                        <option value="two">Two</option>
-                        <option value="three">Three</option>
-                        <option value="four">Four</option>
-                      </select>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Guest Rating
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Distance
-                      </a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center flex-shrink-0 flex-xl-shrink-1 border-left">
-                      <a
-                        href="#"
-                        class="nav-link font-weight-normal text-gray-1 text-lh-1dot6 py-1 px-4 px-wd-5 font-weight-normal font-size-15 "
-                      >
-                        Top Reviewed
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+             
 
                 <div className="tab-content" id="pills-tabContent">
                   <div
@@ -525,7 +345,7 @@ const handleSearchInputChange = (event) => {
                                       >
                                         <div className="d-flex flex-wrap flex-xl-nowrap align-items-center font-size-14 text-gray-1">
                                           <i className="icon flaticon-placeholder mr-2 font-size-20"></i>{" "}
-                                          Greater London, United Kingdom
+                                          {yacht.location}
                                         </div>
                                       </a>
                                       <div className="mb-3">

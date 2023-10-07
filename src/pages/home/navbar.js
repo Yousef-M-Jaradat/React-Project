@@ -11,7 +11,9 @@ function Navbar() {
     logindata.id = "";
     logindata.status = false;
     localStorage.setItem("user", JSON.stringify(logindata));
+    localStorage.clear();
     window.location.reload();
+    localStorage.clear();
   };
 
   const myStyle = {
@@ -201,7 +203,7 @@ const mytext2 = {
                         style={mytext}
                         id="yachtMenu"
                         className="nav-link u-header__nav-link u-header__nav-link-toggle u-header__nav-link-border"
-                        to={"/contact"}
+                       
                         aria-haspopup="true"
                         aria-expanded="false"
                         aria-labelledby="yachtSubMenu"
