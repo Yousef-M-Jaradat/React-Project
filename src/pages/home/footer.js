@@ -118,13 +118,13 @@ return(
                 </div>
             </div>
            
-            <div className="space-1" style={{ display: "flex", justifyContent: "center", alignItems: "center" , paddingTop:"rem" }}>
+            {/* <div className="space-1" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
         <div className="container">
           <div className="d-lg-flex d-md-block justify-content-center align-items-center">
             <p className="mb-3 mb-lg-0 text-gray-1">© 2020 MyTravel. All rights reserved</p>
           </div>
         </div>
-      </div>
+      </div> */}
         </footer>
       
 

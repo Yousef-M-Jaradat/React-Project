@@ -332,7 +332,7 @@ function Yacht() {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="col-md-7 col-xl-5 flex-horizontal-center">
+                                <div className="col-md-7 col-xl-5 flex-horizontal-center ">
                                   <div className="w-100 position-relative m-4 ms-auto">
                                     <div className="position-absolute top-0 right-0 pr-md-3 d-none d-md-block">
                                       <button
