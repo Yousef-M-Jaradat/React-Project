@@ -1,25 +1,22 @@
-
-import React, { useState, useEffect } from 'react'; 
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
 
 // Define the Yacht component
 function Yacht() {
-  
   const { id } = useParams();
- 
+
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
   const [selectedBeds, setSelectedBeds] = useState("");
   const [selectedSpeed, setselectedSpeed] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
   const [resultCount, setResultCount] = useState(0);
   const itemsPerPage = 3;
-
 
   const navigate = useNavigate();
 
@@ -31,23 +28,25 @@ function Yacht() {
   const handleButtonClick = (id) => {
     navigate(`/yachts/${id}`);
   };
- 
-useEffect(() => {
-  axios
-    .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
-    .then((response) => {
-      const filteredData = response.data.filter((yacht) => {
-        return yacht.category_id === parseInt(id) &&
-          yacht.name.toLowerCase().includes(searchQuery.toLowerCase());
-      });
-      setData(filteredData);
-      setResultCount(filteredData.length);
-    });
-}, [id, searchQuery]);
 
-const handleSearchInputChange = (event) => {
-  setSearchQuery(event.target.value);
-};
+  useEffect(() => {
+    axios
+      .get(`https://651db05044e393af2d5a346e.mockapi.io/yachts`)
+      .then((response) => {
+        const filteredData = response.data.filter((yacht) => {
+          return (
+            yacht.category_id === parseInt(id) &&
+            yacht.name.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        });
+        setData(filteredData);
+        setResultCount(filteredData.length);
+      });
+  }, [id, searchQuery ]);
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
@@ -58,7 +57,6 @@ const handleSearchInputChange = (event) => {
   const offset = currentPage * itemsPerPage;
   const currentData = data.slice(offset, offset + itemsPerPage);
 
-  
   let filteredData = currentData.filter((yacht) => {
     const price = parseFloat(yacht.price);
     const min = minPrice !== "" ? parseFloat(minPrice) : 0;
@@ -66,20 +64,18 @@ const handleSearchInputChange = (event) => {
     return price >= min && price <= max;
   });
 
-    if (selectedBeds !== "") {
-    
-      filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
-      
-  };
+  if (selectedBeds !== "") {
+    filteredData = filteredData.filter((yacht) => yacht.beds === selectedBeds);
+  }
 
   if (selectedSpeed !== "") {
-    
-    filteredData = filteredData.filter((yacht) => yacht.speed === selectedSpeed);
-    
-};
+    filteredData = filteredData.filter(
+      (yacht) => yacht.speed === selectedSpeed
+    );
+  }
 
   return (
-    <div className='mt-10'>
+    <div className="mt-10">
       <main id="content" role="main">
         <div class="container pt-5 pt-xl-8">
           <div class="row mb-5 mb-md-8 mt-xl-1 pb-md-1">
@@ -99,74 +95,84 @@ const handleSearchInputChange = (event) => {
                 </button>
                 <div id="sidebar" class="collapse navbar-collapse">
                   <div class="mb-6 w-100">
-                    
-
-                    <div className="sidenav border border-color-8 rounded-xs">
+                    <div className="sidenav border border-color-2 rounded-xs">
                       <div
                         id="shopCartAccordion"
                         className="accordion rounded shadow-none"
                       >
-                        <div className="border-0">
-                        <div className="pb-4 mb-2">
-                           <span class="font-weight-bold font-size-19 text-dark mb-3 mt-4 mx-2">
-                                      Filters
-                                    </span>
-                                    <div className="search-container">
-  <input
-    type="text"
-    placeholder="Search by name..."
-    value={searchQuery}
-    onChange={handleSearchInputChange}
-    className="search-input"
-  />
-  <i className="fa fa-search search-icon"></i>
-</div>
-  <span className="d-block text-gray-1 text-left font-weight-normal mb-0 mt-3 mx-2">
-    Price Range ($)
-  </span>
-  <div className="border-bottom border-width-2 border-color-1 mx-2 " >
-    <div className="input-group">
-      <input
-        type="number"
-        placeholder="Min Price"
-        value={minPrice}
-        onChange={(e) => setMinPrice(e.target.value)}
-        className="form-control"
-      />
-      <input
-        type="number"
-        placeholder="Max Price"
-        value={maxPrice}
-        onChange={(e) => setMaxPrice(e.target.value)}
-        className="form-control"
-      />
-    </div>
-  </div>
-</div>
+                        <div className="border-5">
+                          <div className="pb-4 mb-2">
+                            <div class="font-weight-bold font-size-20 text-dark mb-3  mt-3 mx-2">
+                              Filter the results:
+                            </div>
+                            <div className="search-container px-4 w-100">
+                              <input
+                                type="text"
+                                placeholder="Search by name..."
+                                value={searchQuery}
+                                onChange={handleSearchInputChange}
+                                className="search-input"
+                              />
+                              {/* <i className="fa fa-search search-icon"></i> */}
+                            </div>
+                            <div className="d-block  text-left font-weight-normal mb-2 mt-3  px-4 font-size-18">
+                              Price Range ($)
+                            </div>
+                            <div className="  px-4">
+                              <div className="input-group">
+                                <input
+                                  type="number"
+                                  placeholder="Min Price"
+                                  value={minPrice}
+                                  onChange={(e) => setMinPrice(e.target.value)}
+                                  className="form-control"
+                                />
+                                <input
+                                  type="number"
+                                  placeholder="Max Price"
+                                  value={maxPrice}
+                                  onChange={(e) => setMaxPrice(e.target.value)}
+                                  className="form-control"
+                                />
+                              </div>
+                            </div>
+                          </div>
 
-<label className=" text-gray-1 text-left font-weight-normal mb-0 p-2" >Number of beds:</label> 
-      <select className=" w-50 mb-3 "  onChange={(e) =>  setSelectedBeds(e.target.value)} value={selectedBeds}>
-        <option value="">All</option>
-        <option value="3">3 beds</option>
-        <option value="4">4 beds</option>
-        <option value="5">5 beds</option>
-        <option value="6">6 beds</option>
-        <option value="7">7 beds</option>
-        <option value="8">8 beds</option>
-        <option value="9">9 beds</option>
-        <option value="10">10 beds</option>
-      </select>
-    
-      <div>
-       <label className=" text-gray-1 text-left font-weight-normal mb-0 p-2"  >Speed:</label>
-      <select className=" w-75 mb-4" onChange={(e) =>  setselectedSpeed(e.target.value)} value={selectedSpeed}>
-        <option value="">All</option>
-        <option value="120">120 </option>
-        <option value="130">130 </option>
-        <option value="140">140 </option>
-   
-      </select>
-      </div>
+                          <div className="px-4 mb-3">
+                          <label className="d-block text-left font-weight-normal mb-2  font-size-18">
+                            Number of beds:
+                          </label>
+                          <select
+                            className=" w-100  border broder-color-2 p-1"
+                            onChange={(e) => setSelectedBeds(e.target.value)}
+                            value={selectedBeds}
+                          >
+                            <option value="">All</option>
+                            <option value="3">3 beds</option>
+                            <option value="4">4 beds</option>
+                            <option value="5">5 beds</option>
+                            <option value="6">6 beds</option>
+                            <option value="7">7 beds</option>
+                            <option value="8">8 beds</option>
+                            <option value="9">9 beds</option>
+                            <option value="10">10 beds</option>
+                          </select>
+                          </div>
+                          <div className="px-4 mb-3">
+                            <label className="d-block text-left font-weight-normal mb-2 font-size-18 ">
+                              Speed:
+                            </label>
+                            <select
+                              className=" w-100  border broder-color-2 p-1"
+                              onChange={(e) => setselectedSpeed(e.target.value)}
+                              value={selectedSpeed}
+                            >
+                              <option value="">All</option>
+                              <option value="120">120 </option>
+                              <option value="130">130 </option>
+                              <option value="140">140 </option>
+                            </select>
+                          </div>
                         </div>
                       </div>
 
@@ -204,71 +210,82 @@ const handleSearchInputChange = (event) => {
                             </h3>
                           </div>
                           <div
-  id="cityCategoryOne"
-  class="collapse show"
-  aria-labelledby="cityCategoryHeadingOne"
-  data-parent="#cityCategoryAccordion"
->
-  <div class="card-body pt-0 mt-1 px-5 pb-4">
-    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          class="custom-control-input"
-          id="brandamsterdam"
-          name="cityRadio"
-          onClick={() => handleButtonClick(id1)}
-        ></input>
-        <label class="custom-control-label" for="brandamsterdam">
-          Aqaba
-        </label>
-      </div>
-    </div>
-    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          class="custom-control-input"
-          id="brandrotterdam"
-          name="cityRadio"
-          onClick={() => handleButtonClick(id2)}
-        ></input>
-        <label class="custom-control-label" for="brandrotterdam">
-        Abu Dhabi
-        </label>
-      </div>
-    </div>
-    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          class="custom-control-input"
-          id="brandvalkenburg"
-          name="cityRadio"
-          onClick={() => handleButtonClick(id3)}
-        ></input>
-        <label class="custom-control-label" for="brandvalkenburg">
-          Miami
-        </label>
-      </div>
-    </div>
-    <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
-      <div class="custom-control custom-radio">
-        <input
-          type="radio"
-          class="custom-control-input"
-          id="brandvalkenburg2"
-          name="cityRadio"
-          onClick={() => handleButtonClick(id4)}
-        ></input>
-        <label class="custom-control-label" for="brandvalkenburg2">
-        Bodrum
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
+                            id="cityCategoryOne"
+                            class="collapse show"
+                            aria-labelledby="cityCategoryHeadingOne"
+                            data-parent="#cityCategoryAccordion"
+                          >
+                            <div class="card-body pt-0 mt-1 px-5 pb-4">
+                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                <div class="custom-control custom-radio">
+                                  <input
+                                    type="radio"
+                                    class="custom-control-input"
+                                    id="brandamsterdam"
+                                    name="cityRadio"
+                                    onClick={() => handleButtonClick(id1)}
+                                  ></input>
+                                  <label
+                                    class="custom-control-label"
+                                    for="brandamsterdam"
+                                  >
+                                    Aqaba
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                <div class="custom-control custom-radio">
+                                  <input
+                                    type="radio"
+                                    class="custom-control-input"
+                                    id="brandrotterdam"
+                                    name="cityRadio"
+                                    onClick={() => handleButtonClick(id2)}
+                                  ></input>
+                                  <label
+                                    class="custom-control-label"
+                                    for="brandrotterdam"
+                                  >
+                                    Abu Dhabi
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                <div class="custom-control custom-radio">
+                                  <input
+                                    type="radio"
+                                    class="custom-control-input"
+                                    id="brandvalkenburg"
+                                    name="cityRadio"
+                                    onClick={() => handleButtonClick(id3)}
+                                  ></input>
+                                  <label
+                                    class="custom-control-label"
+                                    for="brandvalkenburg"
+                                  >
+                                    Miami
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-3">
+                                <div class="custom-control custom-radio">
+                                  <input
+                                    type="radio"
+                                    class="custom-control-input"
+                                    id="brandvalkenburg2"
+                                    name="cityRadio"
+                                    onClick={() => handleButtonClick(id4)}
+                                  ></input>
+                                  <label
+                                    class="custom-control-label"
+                                    for="brandvalkenburg2"
+                                  >
+                                    Bodrum
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -278,15 +295,12 @@ const handleSearchInputChange = (event) => {
             </div>
             <div class="col-lg-8 col-xl-9 order-md-1 order-lg-2">
               <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="font-size-21 font-weight-bold mb-0 text-lh-1">
-                {resultCount} results found
+                <h3 class="font-size-21 font-weight-bold mb-2 text-lh-1">
+                  {resultCount} results found
                 </h3>
-            
               </div>
 
               <div class="u-slick__tab">
-             
-
                 <div className="tab-content" id="pills-tabContent">
                   <div
                     id="pills-three-example1"
@@ -295,7 +309,7 @@ const handleSearchInputChange = (event) => {
                     data-target-group="groups"
                   >
                     <ul className="d-block list-unstyled products-group prodcut-list-view">
-        {/* {filteredYachts.map((yacht) => ( */}
+                      {/* {filteredYachts.map((yacht) => ( */}
                       {filteredData.map((yacht) => (
                         <div>
                           <li
@@ -335,7 +349,7 @@ const handleSearchInputChange = (event) => {
                                     </div>
                                     <a href="../yacht/yacht-single-v1.html">
                                       <span className="font-weight-bold font-size-17 text-dark d-flex mb-1">
-                                     {yacht.name}
+                                        {yacht.name}
                                       </span>
                                     </a>
                                     <div className="card-body p-0">
@@ -413,7 +427,7 @@ const handleSearchInputChange = (event) => {
                                       <div className="text-center text-md-left text-xl-center d-flex flex-column mb-2 pb-1 ml-md-3 ml-xl-0">
                                         <div className="mb-0">
                                           <span className="font-weight-bold font-size-22">
-                                          {parseFloat(yacht.price).toFixed(2)}
+                                            {parseFloat(yacht.price).toFixed(2)}
                                           </span>
                                           <span className="mr-1 font-size-14 text-gray-1">
                                             / week
@@ -422,7 +436,7 @@ const handleSearchInputChange = (event) => {
                                       </div>
                                       <div className="d-flex justify-content-center justify-content-md-start justify-content-xl-center">
                                         <a
-                                        href={`/products/${yacht.id}`}
+                                          href={`/products/${yacht.id}`}
                                           className="btn btn-outline-primary d-flex align-items-center justify-content-center font-weight-bold min-height-50 border-radius-3 border-width-2 px-2 px-5 py-2"
                                         >
                                           View Detail
@@ -436,25 +450,22 @@ const handleSearchInputChange = (event) => {
                           </li>
                         </div>
                       ))}
-
-</ul>
-                        <div className="pagination-container">
-      <ReactPaginate
-        previousLabel={'Previous'}
-        nextLabel={'Next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={'pagination'}
-        subContainerClassName={'pages pagination'}
-        activeClassName={'active'}
-      />
-    </div>
-
-               
+                    </ul>
+                    <div className="pagination-container">
+                      <ReactPaginate
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        breakLabel={"..."}
+                        breakClassName={"break-me"}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
