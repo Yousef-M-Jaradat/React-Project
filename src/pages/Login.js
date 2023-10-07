@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import "../login.css";
@@ -13,6 +13,13 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validation for email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Invalid email format");
+      return;
+    }
 
     const user = data.find((userdata) => userdata.email === email);
     if (!user) {
@@ -41,7 +48,6 @@ function Login() {
         const nights = Math.floor(
           (endDate - startDate) / (1000 * 60 * 60 * 24)
         );
-        // console.log(cart[0].endDate);
 
         axios
           .post("https://651a606d340309952f0d2d8f.mockapi.io/booking", {
