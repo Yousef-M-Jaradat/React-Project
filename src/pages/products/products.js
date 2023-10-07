@@ -5,11 +5,12 @@ import Navbar from "../home/navbar";
 function Product(params) {
  return(
 
-    <div>
-        <Navbar />
+<div>
+
+<Navbar />
 <Filter />
 
-    </div>
+</div>
  )   
 }
 
