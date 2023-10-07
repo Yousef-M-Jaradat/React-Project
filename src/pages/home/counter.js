@@ -28,7 +28,7 @@ function CounterComponent() {
         setLocationCount(locationCounter);
       }
       if (showroomCounter < targetShowroomCount) {
-        showroomCounter += 1; 
+        showroomCounter += 30; 
         setShowroomCount(showroomCounter);
       }
       if (professionalCounter < targetProfessionalCount) {

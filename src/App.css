@@ -24,14 +24,14 @@
 .pagination a {
   text-decoration: none;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: rgb(41,124,187);
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .pagination a.active {
-  background-color: #104d8f;
+  background-color: #14467b;
 }
 
 /* Styling for "Previous" and "Next" buttons */
