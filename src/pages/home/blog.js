@@ -132,7 +132,7 @@ function Blog() {
                                         City
                                     </a>
                                     <a className="btn d-flex align-items-center justify-content-center btn-gray-1 rounded-xs transition-3d-hover font-size-14 text-gray-1 height-35 width-80 mr-2 mb-2" href="../yacht/yacht-list.html">
-                                        Yatch
+                                        Yacht
                                     </a>
                                     <a className="btn d-flex align-items-center justify-content-center btn-gray-1 rounded-xs transition-3d-hover font-size-14 text-gray-1 height-35 width-90 mr-2 mb-2" href="../activities/activities-list.html">
                                         Activity
