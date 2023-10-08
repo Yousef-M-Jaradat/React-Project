@@ -33,7 +33,7 @@ return (
                                 <a className="d-block">
                                     <div className="color-hover py-4 px-3 bg-gray-4 rounded-xs text-center transition-3d-hover shadow-hover-2">
                                     <i className="flaticon-wifi-signal mr-3 text-brown-light font-size-60"></i>
-                                        <h6 className="font-size-17 text-gray-3 text-center font-weight-bold">Wifi</h6>
+                                        <h6 className="font-size-17 text-gray-3 text-center font-weight-bold">Wifi (Internet)</h6>
                                     </div>
                                 </a>
                             </div>

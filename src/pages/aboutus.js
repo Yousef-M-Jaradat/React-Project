@@ -4,7 +4,13 @@ import img4 from "./boat1.jpg";
 import img5 from "./boat2.jpg";
 import img6 from "./boat3.jpg";
 import img7 from "./boat4.jpg";
-
+import shatha from "./shatha.jpg";
+import sereen from "./sereen.jpg";
+import rama from "./rama.jpg";
+import noor from "./noor.jpg";
+import yousef from "./noor.jpg";
+import ahmad from "./noor.jpg";
+import CounterComponent from "./home/counter";
 
 export default function Aboutus() {
 
@@ -64,7 +70,7 @@ const imagefluid11 = {
       {/* <!-- ========== MAIN CONTENT ========== --> */}
       <main id="content">
         {/* <!-- Hero Section --> */}
-        <div className="bg-img-hero text-center mb-1" style={myStyle}>
+        <div className="bg-img-hero text-center mb-4" style={{ backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)',height:'550px'}}>
           <div className="container space-top-xl-3 py-6 py-xl-0">
             <div className="row justify-content-center py-xl-4">
               <div className="py-xl-10 py-5">
@@ -92,7 +98,7 @@ const imagefluid11 = {
           </div>
         </div>
 
-        <div className="slider border-bottom border-color-3">
+        {/* <div className="slider border-bottom border-color-3">
           <div className="container space-1">
             <div className="w-md-80 w-lg-70 text-center mx-md-auto mb-5 mt-3">
               <h2 className="section-title text-black font-size-xs-28 font-weight-bold mb-0">
@@ -166,7 +172,7 @@ const imagefluid11 = {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <!-- End Slider --> */}
         {/* <!-- Features Section --> */}
         <div className="container text-center space-1">
@@ -503,64 +509,7 @@ const imagefluid11 = {
         </div>
         {/* <!-- End Testimonials Section --> */}
         {/* <!-- Features Section --> */}
-        <div
-          className="gradient-overlay-half-bg-blue bg-img-hero"
-          style={imagefluid1}
-        >
-          <div className="container text-center space-1">
-            {/* <!-- Features --> */}
-            <div className="row">
-              {/* <!-- Icon Block --> */}
-              <div className="col-md-3">
-                <i className="flaticon-node text-white font-size-80 mb-3"></i>
-                <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
-                  5340
-                </h5>
-                <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
-                  Total Length of Boats Sold Since 2009
-                </p>
-              </div>
-              {/* <!-- End Icon Block --> */}
-
-              {/* <!-- Icon Block --> */}
-              <div className="col-md-3">
-                <i className="flaticon-cardinal-points text-white font-size-80 mb-3"></i>
-                <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
-                  19
-                </h5>
-                <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
-                  Locations with Easy Access off the Deep Water Channel
-                </p>
-              </div>
-              {/* <!-- End Icon Block --> */}
-
-              {/* <!-- Icon Block --> */}
-              <div className="col-md-3">
-                <i className="flaticon-anchor text-white font-size-80 mb-3"></i>
-                <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
-                  18000
-                </h5>
-                <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
-                  sq. ft. Showroom loaded with New & Used Boats
-                </p>
-              </div>
-              {/* <!-- End Icon Block --> */}
-
-              {/* <!-- Icon Block --> */}
-              <div className="col-md-3">
-                <i className="flaticon-star text-white font-size-80 mb-3"></i>
-                <h5 className="font-size-30 text-white font-weight-bold mb-2 js-counter">
-                  30
-                </h5>
-                <p className="text-white px-xl-2 text-lh-inherit px-uw-3">
-                  Number of Licensed Yachting Professionals
-                </p>
-              </div>
-              {/* <!-- End Icon Block --> */}
-            </div>
-            {/* <!-- End Features --> */}
-          </div>
-        </div>
+     <CounterComponent />
         {/* <!-- End Features Section --> */}
         {/* <!-- Team --> */}
         <div className="team border-bottom border-color-3">
@@ -602,14 +551,14 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid11} alt="Image-Descrition" />
+                    <img src={shatha} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  David Robets
+                  Shatha Rababah
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Founder & Director
+                  Telcom Engineer 
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -643,14 +592,14 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid11} alt="Image-Descrition" />
+                    <img src={sereen} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Augusta Silva{" "}
+                  Sereen Qamhieh
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Chief Operating Officer
+                  Full stuck developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -684,14 +633,14 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid11} alt="Image-Descrition" />
+                    <img src={noor} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Bernice Lucas
+                 Nooraldeen
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Dairector - Hotels
+                Full stuck developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -725,11 +674,11 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid7} alt="Image-Descrition" />
+                    <img src={rama} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Jessica Brown
+                  Rama
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
                   Chief Executive
@@ -766,14 +715,14 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid7} alt="Image-Descrition" />
+                    <img src={yousef} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  David Jackson
+                  Yousef Jaradat
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
-                  Founder & CEO
+                 Full stuck developer
                 </span>
               </div>
               <div className="col-lg-4  col-md-6 inner-right inner-bottom-sm inner-left">
@@ -807,11 +756,11 @@ const imagefluid11 = {
                         </li>
                       </ul>
                     </div>
-                    <img src={imagefluid7} alt="Image-Descrition" />
+                    <img src={ahmad} alt="Image-Descrition" style={{width:'200px'}}/>
                   </figure>
                 </div>
                 <h6 className="font-size-17 font-weight-bold text-gray-11 mb-0">
-                  Kyle Martin
+                 Ahmed Khatatbeh
                 </h6>
                 <span className="text-blue-lighter-1 font-size-normal">
                   Founder & CEO

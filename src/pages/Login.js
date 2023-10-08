@@ -107,7 +107,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-form-wrap">
-        <h2>Login</h2>
+        <h2 className="login">Login</h2>
         <form onSubmit={handleSubmit} id="login-form">
           <div className="form-group">
             <label htmlFor="email">Email Address</label>

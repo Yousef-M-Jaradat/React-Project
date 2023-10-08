@@ -16,7 +16,8 @@ function Booking() {
   const end = endDate.toISOString().slice(0, 10);
   const nights = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
 
-  const [bookingData, setBookingData] = useState([0]);
+    const [bookingData, setBookingData] = useState([0]);
+
 
   // console.log(startDate);
   // const navigate = useNavigate();
@@ -50,9 +51,9 @@ function Booking() {
   return (
     <>
       <main id="content" class="bg-gray space-2">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8 col-xl-9">
+        <div class="container" >
+        <div className="row"  style={{ display: 'flex', alignItems: 'center',height:'780px' }}>
+            <div class="col-lg-8 col-xl-9 " >
               <div class="mb-5 shadow-soft bg-white rounded-sm">
                 <div class="py-6 px-5 border-bottom">
                   <div class="flex-horizontal-center">
@@ -170,17 +171,14 @@ function Booking() {
                   </a>
                 </div> */}
               </div>
-              <a
-                class="btn btn-primary"
-                onClick={() => {
-                  navigate("/");
-                }}
-                style={{ textAlign: "center", color: "white" }}
-              >
+              <a class="btn btn-primary" onClick={() => {
+localStorage.removeItem("cart");
+    navigate('/');
+  }} style={{ textAlign: "center" ,color:"white"}}>
                 Home Page
               </a>
             </div>
-            <div class="col-lg-4 col-xl-3">
+            <div class="col-lg-4 col-xl-3 " style={{marginTop:'50px'}}>
               <div class="shadow-soft bg-white rounded-sm">
                 <div class="pt-5 pb-4 px-5 border-bottom">
                   <a href="#" class="d-block mb-2">

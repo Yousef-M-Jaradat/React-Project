@@ -14,8 +14,8 @@ import Yacht from "./pages/products/yacht";
 import Navbar from "./pages/home/navbar";
 import Blog from "./pages/home/blog";
 import Footer from "./pages/home/footer";
-import "bootstrap/dist/js/bootstrap"; // Import Bootstrap JavaScript
-import Contact from "./pages/Contact";
+import "bootstrap/dist/js/bootstrap"; 
+import Contact from "./pages/contact";
 
 function App() {
   const { pathname } = useLocation(); // Use 'useLocation' to get the current path
@@ -24,7 +24,7 @@ function App() {
   const routesWithoutFooter = ["/Login"];
 
   // Check if the current path is in the list of routes without the footer
-  const hideFooter = routesWithoutFooter.includes("Login");
+  const hideFooter = routesWithoutFooter.includes(pathname);
 
   return (
     <div>
@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
       </Routes>
-      <hr></hr>
+   
       {!hideFooter && <Footer />}
     </div>
   );
