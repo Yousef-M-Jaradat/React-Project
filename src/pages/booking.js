@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Booking() {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const userData = localStorage.getItem("user");
   const user = JSON.parse(userData);
@@ -24,7 +24,6 @@ function Booking() {
 
   useEffect(() => {
     const fetchEventData = async () => {
-        
       try {
         const response = await axios.get(
           "https://651db05044e393af2d5a346e.mockapi.io/yachts"
@@ -40,18 +39,14 @@ function Booking() {
       } catch (error) {}
     };
 
-    
     const homePage = () => {
-    navigate('/');
-  };
-
+      navigate("/");
+    };
 
     fetchEventData();
 
     return () => {};
-  },[]);
-
-  
+  }, []);
 
   return (
     <>

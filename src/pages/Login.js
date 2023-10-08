@@ -51,6 +51,7 @@ function Login() {
         email: user.email,
         user_id: user.id,
         status: true,
+        
       };
       localStorage.setItem("user", JSON.stringify(userData));
 

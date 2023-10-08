@@ -36,11 +36,13 @@ function Reviews() {
        .post("https://651db05044e393af2d5a346e.mockapi.io/review", {
          comment: commentText, // Send the comment text
          yacht_id: id,
-         username: user.name,
-         image: user.image,
-         userId: user.id,
+         username: user.firstName,
+         image:
+           "https://www.shutterstock.com/shutterstock/photos/1849644754/display_1500/stock-photo-nice-to-meet-you-portrait-of-smiling-confident-young-lady-intern-trainee-employee-looking-at-1849644754.jpg",
+         userId: user.user_id,
        })
        .then((response) => {
+         //  console.log(user.name);
          // Handle success, reset state variables here
          setCommentText(""); // Clear the comment text after posting
        })
