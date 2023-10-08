@@ -604,7 +604,7 @@ function SingleProduct() {
           </div>
         </div>
         {/* <!-- Product Cards carousel --> */}
-        <div class="product-card-carousel-block product-card-carousel-v6">
+        {/* <div class="product-card-carousel-block product-card-carousel-v6">
           <div class="space-1">
             <div class="w-md-80 w-lg-50 text-center mx-md-auto">
               <h2 class="section-title text-black font-size-30 font-weight-bold mb-0">
@@ -722,7 +722,7 @@ function SingleProduct() {
                  ))}
           </div>
             </div>
-          </div>
+          </div> */}
         </div>
       
     </main>

@@ -23,7 +23,7 @@ function Reviews() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [id]);
+  }, [commentText]);
 
    const userData = localStorage.getItem("user");
    const user = JSON.parse(userData);
