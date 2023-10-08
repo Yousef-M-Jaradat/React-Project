@@ -7,7 +7,7 @@ function Blog() {
 <div> 
      <main id="content">
           
-     <div className="bg-img-hero text-center mb-5 mb-lg-8" style={{ backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)' }}>
+     <div className="bg-img-hero text-center mb-5 mb-lg-8" style={{ backgroundImage: 'linear-gradient(rgba(41,124,187, 0.3), rgba(41,124,187, 0.3)) , url(../../assets/img/1920x600/img1.jpg)' ,height:'550px'}}>
       <div className="container space-top-xl-3 py-6 py-xl-0">
         <div className="row justify-content-center py-xl-4">
           <div className="py-xl-10 py-5">
