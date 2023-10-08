@@ -51,22 +51,22 @@ return(
                                     <ul className="list-inline mb-0">
                                         <li className="list-inline-item " >
                                             <a className="btn btn-icon btn-social btn-bg-transparent" href="#">
-                                                <span className="fab fa-facebook-f btn-icon__inner " style={{fontSize:"30px"}}></span>
+                                                <span className="fab fa-facebook-f btn-icon__inner " style={{fontSize:"25px"}}></span>
                                             </a>
                                         </li>
                                         <li className="list-inline-item ">
                                             <a className="btn btn-icon btn-social btn-bg-transparent" href="#">
-                                                <span className="fab fa-twitter  btn-icon__inner" style={{fontSize:"30px"}}></span>
+                                                <span className="fab fa-twitter  btn-icon__inner" style={{fontSize:"25px"}}></span>
                                             </a>
                                         </li>
                                         <li className="list-inline-item ">
                                             <a className="btn btn-icon btn-social btn-bg-transparent" href="#">
-                                                <span className="fab fa-instagram btn-icon__inner" style={{fontSize:"30px"}}></span>
+                                                <span className="fab fa-instagram btn-icon__inner" style={{fontSize:"25px"}}></span>
                                             </a>
                                         </li>
                                         <li className="list-inline-item ">
                                             <a className="btn btn-icon btn-social btn-bg-transparent" href="#">
-                                                <span className="fab fa-linkedin-in btn-icon__inner" style={{fontSize:"30px"}}></span>
+                                                <span className="fab fa-linkedin-in btn-icon__inner" style={{fontSize:"25px"}}></span>
                                             </a>
                                         </li>
                                     </ul>
