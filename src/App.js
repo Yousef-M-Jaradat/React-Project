@@ -21,7 +21,7 @@ function App() {
   const { pathname } = useLocation(); // Use 'useLocation' to get the current path
 
   // List of routes where you want to hide the footer
-  const routesWithoutFooter = ["/Login"];
+  const routesWithoutFooter = ["/pathname"];
 
   // Check if the current path is in the list of routes without the footer
   const hideFooter = routesWithoutFooter.includes("Login");
@@ -45,7 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
       </Routes>
-      <hr></hr>
+   
       {!hideFooter && <Footer />}
     </div>
   );

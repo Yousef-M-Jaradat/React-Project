@@ -79,7 +79,7 @@ return(
                           
                             <ul className="list-group list-group-flush list-group-borderless mb-0" >
 
-                                <li><a  href="../others/about.html" class="text-decoration-on-hover list-group-item  list-group-item-action">About us</a></li>
+                                <li><Link  href="../others/about.html" class="text-decoration-on-hover list-group-item  list-group-item-action"  to={"/about"}>About us</Link></li>
                                 <li><a class="text-decoration-on-hover list-group-item list-group-item-action" href="../others/contact.html">Contact us</a></li>
                                 <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/terms-conditions.html">Privacy Statement</a></li>
                                 <li><a class="list-group-item list-group-item-action text-decoration-on-hover" href="../others/about.html">Partners</a></li>

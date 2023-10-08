@@ -625,6 +625,7 @@ function SingleProduct() {
                         className="card-img-top"
                         src="../../assets/img/300x230/img21.jpg"
                         alt="Image Description"
+                     
                       />
                     </a>
                     <div className="position-absolute top-0 right-0 pt-3 pr-3">

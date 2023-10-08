@@ -320,6 +320,7 @@ function Yacht() {
                                 <div className="col-md-5 col-xl-4">
                                   <div className="product-item__header">
                                     <div className="position-relative">
+                                    <a href={`/products/${yacht.id}`}>
                                       <div
                                         className="js-slide bg-img-hero min-height-300 "
                                         style={{
@@ -328,7 +329,8 @@ function Yacht() {
                                           height: "280px",
                                           backgroundSize: "100% 100%",
                                         }}
-                                      ></div>
+                                        
+                                      ></div></a>
                                     </div>
                                   </div>
                                 </div>

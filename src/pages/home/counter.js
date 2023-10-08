@@ -20,7 +20,7 @@ function CounterComponent() {
 
     const interval = setInterval(() => {
       if (boatCounter < targetBoatCount) {
-        boatCounter += 100; 
+        boatCounter += 50; 
         setBoatCount(boatCounter);
       }
       if (locationCounter < targetLocationCount) {
