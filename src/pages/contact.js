@@ -58,14 +58,14 @@ const link = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8352535
         <div class="border-bottom border-color-8 pb-6 pb-lg-8 mb-5 mb-lg-7">
           <div class="container pb-1">
             <div class="row">
-              <div class="col-md-6 col-lg-4">
+              <div class="col-md-6 col-lg-3">
                 <div class="mb-5 mb-lg-0 text-center text-md-left">
                   <h6 class="text-gray-3 font-weight-bold font-size-21">
-                    London
+                    Abu Dhabi
                   </h6>
                   <div class="mb-3 mb-md-5">
                     <p class="mb-1 text-gray-1">82 Bernie Greens Apt. 210,</p>
-                    <p class="mb-0 text-gray-1">Hendon Way, London, UK</p>
+                    <p class="mb-0 text-gray-1">Hendon Way, Abu Dhabi, UAE</p>
                   </div>
                   <div class="mb-1">
                     <p class="mb-1 text-gray-1">+53 213 5941 295</p>
@@ -78,16 +78,16 @@ const link = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8352535
                   </a>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4">
+              <div class="col-md-6 col-lg-3">
                 <div class="mb-5 mb-lg-0 text-center text-md-left">
                   <h6 class="text-gray-3 font-weight-bold font-size-21">
-                    Paris
+                    Aqaba
                   </h6>
                   <div class="mb-3 mb-md-5">
                     <p class="mb-1 text-gray-1">
                       290 Maryam Springs Suite 260,
                     </p>
-                    <p class="mb-0 text-gray-1">Courbevoie, Paris, France</p>
+                    <p class="mb-0 text-gray-1">Courbevoie, Aqaba, JORDAN</p>
                   </div>
                   <div class="mb-0">
                     <p class="mb-1 text-gray-1">+36 213 5941 295</p>
@@ -100,16 +100,38 @@ const link = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8352535
                   </a>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4">
+              <div class="col-md-6 col-lg-3">
                 <div class="text-center text-md-left">
                   <h6 class="text-gray-3 font-weight-bold font-size-21">
-                    New York
+                    Miami
                   </h6>
                   <div class="mb-3 mb-md-5">
                     <p class="mb-1 text-gray-1">
                       21 Valentin Rapids Apt. 335 New
                     </p>
-                    <p class="mb-0 text-gray-1">Jersey, New York, USA</p>
+                    <p class="mb-0 text-gray-1">Jersey, Miami, USA</p>
+                  </div>
+                  <div class="mb-0">
+                    <p class="mb-1 text-gray-1">+47 213 5941 295</p>
+                    <p class="mb-0 text-gray-1">contact.newyork@example.com</p>
+                  </div>
+                  <a class="d-inline-block" href="#">
+                    <div class="border-bottom border-primary font-weight-normal font-size-14 text-primary">
+                      View On Map
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <div class="text-center text-md-left">
+                  <h6 class="text-gray-3 font-weight-bold font-size-21">
+                    Bodrum
+                  </h6>
+                  <div class="mb-3 mb-md-5">
+                    <p class="mb-1 text-gray-1">
+                      21 Valentin Rapids Apt. 335 New
+                    </p>
+                    <p class="mb-0 text-gray-1"> Bodrum, Turki</p>
                   </div>
                   <div class="mb-0">
                     <p class="mb-1 text-gray-1">+47 213 5941 295</p>
@@ -201,10 +223,7 @@ const link = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8352535
               </form>
             </div>
           </div>
-          <iframe
-            src={link}
-           style={myStyle2}
-          ></iframe>
+          <iframe src={link} style={myStyle2}></iframe>
         </div>
       </main>
       {/* <!-- ========== END MAIN CONTENT ========== --> */}

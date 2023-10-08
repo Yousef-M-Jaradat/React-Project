@@ -176,25 +176,7 @@ const mytext2 = {
                       </Link>
                     </li>
 
-                    <li
-                      className="nav-item hs-has-mega-menu u-header__nav-item"
-                      data-event="hover"
-                      data-animation-in="slideInUp"
-                      data-animation-out="fadeOut"
-                      data-max-width="722px"
-                      data-position="right"
-                    >
-                      <Link
-                        style={mytext}
-                        id="pagesMegaMenu"
-                        className="nav-link u-header__nav-link "
-                        href="javascript:;"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Pages
-                      </Link>
-                    </li>
+                    
                     <li
                       className="nav-item hs-has-sub-menu u-header__nav-item"
                       data-event="hover"
@@ -383,25 +365,7 @@ const mytext2 = {
                       </Link>
                     </li>
 
-                    <li
-                      className="nav-item hs-has-mega-menu u-header__nav-item"
-                      data-event="hover"
-                      data-animation-in="slideInUp"
-                      data-animation-out="fadeOut"
-                      data-max-width="722px"
-                      data-position="right"
-                    >
-                      <Link
-                        style={mytext}
-                        id="pagesMegaMenu"
-                        className="nav-link u-header__nav-link "
-                        href="javascript:;"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Pages
-                      </Link>
-                    </li>
+                   
                   </ul>
                 </div>
 
